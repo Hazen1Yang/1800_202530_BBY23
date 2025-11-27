@@ -5,7 +5,6 @@
     <meta name="pathfinder-application" content="pathfinder" />
     <meta charset="utf-8" />
     <meta name="author" content="Matthew, Hazen, Vincent, Melina." />
-    <!--This makes it so it's responsive to the device's screen size-->
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta
       name="description"
@@ -13,69 +12,101 @@
     />
     <meta name="generator" content="Phoenix Code, VS Code" />
     <meta name="keywords" content="XHTML,CSS,BCIT" />
-    <!-- The little icon that appears beside the tab name. -->
-    <link rel="icon" href="/images/logo.png" type="image/png" />
 
-    <script type="module" src="/src/index.js"></script>
+    <link rel="icon" href="images/logo.png" type="image/png" />
+    <link rel="stylesheet" href="src/styles/style.css">
+
+    <!-- Small animation library -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+    />
+
+    <script type="module" src="src/index.js"></script>
   </head>
 
   <body>
-    <site-navbar></site-navbar>
+ <header id="home">
+      <div class="left">
+        <div class="row">
+          <img id="logo" src="images/study.png" width="10%" alt="Study" />
+          <h4>Pathfinder</h4>
+        </div>
+      </div>
+      <nav>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="quiz.html">Quiz</a></li>
+          <li><a href="programs.html">Programs</a></li>
+          <li><a href="profile.html">Profile</a></li>
+          <li><a href="#careers">Careers</a></li>
+          <li><a href="#how">FAQ</a></li>
+          <li><a href="#about">About</a></li>
+        </ul>
+      </nav>
+    </header>
     <aside>
-      <!-- Main content goes here -->
+
+      <!-- INTRO SECTION -->
       <div id="inbetween">
         <a href="index.html">
-          <!-- Yes, it's intentionally set to not use a percentage for width. -->
           <img
+            class="animate__animated animate__fadeInDown"
             src="https://www.svgrepo.com/show/530614/map.svg"
             alt="map"
             width="200"
         /></a>
-        <h1>
-          Welcome to PathFinder, <span id="name-goes-here">my friend!</span>
-          <br />
+
+        <h1 class="animate__animated animate__fadeInUp">
+          Welcome to PathFinder,
+          <span id="name-goes-here">my friend!</span><br />
           <span id="quote-goes-here">Join other students like yourself.</span>
         </h1>
+
         <button
           id="indexAuthBtn"
-          class="btn"
+          class="btn animate__animated animate__pulse animate__infinite"
           onclick="window.location.href='login.html'"
-          type="button"
         >
-          Login/Signup
+          Login / Signup
         </button>
       </div>
 
+      <!-- FEATURE ICONS -->
       <div class="mobile-img">
         <div id="middle">
+
           <a href="login.html">
-            <img src="/images/bus.png" width="10%" alt=" Bus" />
+            <img src="images/bus.png" width="10%" alt=" Bus" />
           </a>
           <a href="quiz.html">
-            <img src="/images/textbook.png" width="10%" alt="Textbook" />
+            <img src="images/textbook.png" width="10%" alt="Textbook" />
           </a>
           <a href="goals.html">
-            <img src="/images/school-bag.png" width="10%" alt="School Bag" />
+            <img src="images/school-bag.png" width="10%" alt="School Bag" />
           </a>
           <a href="main.html">
-            <img src="/images/school.png" width="10%" alt="School" />
+            <img src="images/school.png" width="10%" alt="School" />
           </a>
+
           <div id="side_text">
-            If you're struggling to choose a career path, you're not alone. Many
-            people find it challenging to decide on a career that aligns with
-            their interests and skills.
+            If you're struggling to choose a career path, you're not alone.
+            Many people find it challenging to decide on a career that aligns
+            with their interests and skills.
           </div>
         </div>
       </div>
 
+      <!-- VALUE PROPOSITION -->
       <div id="bottom">
         <div class="text-center">
-          <h2>Think, plan, and track<br />your career all in one place</h2>
+          <h2>Think, plan, and track<br />your career — all in one place</h2>
           <p>
             Efficiently manage your goals, job applications, and professional
             growth — with personalized career insights and updates.
           </p>
         </div>
+
         <div id="slim">
           <div class="left">How did it all start?</div>
           <div class="right">
@@ -89,41 +120,82 @@
           </div>
         </div>
 
+        <!-- STORY SECTION -->
         <h2>The Start</h2>
         <div class="mobile-img">
           <div class="row">
-            We started this app in order to make a difference in the world. We
-            want to help people find their career path and make the right
-            choices. This was started as a school project for BCIT.
+            We started this app to make a difference. Our goal: help people find
+            meaningful careers and feel confident about their future. Pathfinder
+            began as a BCIT project — but it grew fast because students like you
+            needed real guidance.
           </div>
-          <a href="https://www.bcit.ca/" target="_blank"
-            ><img src="/images/classroom.png" width="10%" alt="Classroom"
-          /></a>
+          <a href="https://www.bcit.ca/" target="_blank">
+            <img
+              src="images/classroom.png"
+              width="10%"
+              alt="Classroom"
+            />
+          </a>
 
-          <h2>Our goal</h2>
+          <!-- OUR GOAL -->
+          <h2>Our Goal</h2>
           <div class="row">
-            Our goal is to help people find their career path and make the right
-            choices. We want to make a difference in the world and help people
-            achieve their dreams. We know it's hard to choose a career path,
-            especially for young people, hard to know what you're getting
-            yourself into.
+            We want to give everyone clarity. A career is a big decision — and
+            most young people feel lost. Pathfinder helps you understand the job
+            market, discover your strengths, and map out a realistic plan.
           </div>
-          <a href="goals.html"
-            ><img src="/images/children.png" width="10%" alt="Children"
-          /></a>
+          <a href="goals.html">
+            <img
+              src="images/children.png"
+              width="10%"
+              alt="Children"
+            />
+          </a>
 
-          <h2>How we'll do it</h2>
+          <!-- HOW WE'LL DO IT -->
+          <h2>How We'll Do It</h2>
           <div class="row">
-            We will achieve this by getting you to do a personalisation survey
-            to best match you with a career. You will be able to check the
-            latest news of your selected career as well as talk to professionals
-            in the field and see what companies are looking for.
+            You start with a personal career survey. Then we match you with
+            paths that fit your personality, skills, and goals. You can explore
+            salaries, growth forecasts, work environments, and even connect with
+            mentors.
           </div>
-          <a href="quiz.html"
-            ><img src="/images/board.png" width="10%" alt="Board"
-          /></a>
+          <a href="quiz.html">
+            <img
+              src="images/board.png"
+              width="10%"
+              alt="Board"
+            />
+          </a>
         </div>
 
+        <!-- *** NEW SECTION ADDITIONS *** -->
+
+        <!-- QUICK FEATURES -->
+        <section class="feature-block">
+          <h2>What You Can Do Inside Pathfinder</h2>
+          <ul>
+            <li>✓ Take a personalized career quiz</li>
+            <li>✓ Explore top 2025 in-demand careers</li>
+            <li>✓ Save favourite jobs and programs</li>
+            <li>✓ Track your goals and progress</li>
+            <li>✓ View salary data and job outlook</li>
+            <li>✓ Learn from professionals in the field</li>
+          </ul>
+        </section>
+
+        <!-- TESTIMONIAL STYLE SECTION -->
+        <section class="testimonial-block">
+          <h2>What Students Say</h2>
+          <p>
+            “Pathfinder helped me finally understand what I want to do after
+            school. The quiz was scary accurate!”
+          </p>
+          <p>“It’s like having a career coach in your pocket.”</p>
+          <p>“Super clean UI — I actually use it daily.”</p>
+        </section>
+
+        <!-- BCIT IMAGE -->
         <figure id="bcit">
           <a
             href="https://www.bcit.ca/programs/computer-systems-technology-diploma-full-time-5500dipma/"
@@ -137,6 +209,7 @@
           </a>
         </figure>
       </div>
+      <footer>Page Created By Matthew, Melina, and Hazen.</footer>
       <site-footer></site-footer>
     </aside>
   </body>
