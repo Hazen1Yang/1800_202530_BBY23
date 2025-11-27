@@ -57,7 +57,6 @@ h1 {
   text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
 }
 h2 {
-  color: var(--primary-color);
   font-weight: 600;
   font-size: clamp(1.4rem, 3.2vw, 2rem);
   padding: 1rem 0.5rem;
