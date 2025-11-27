@@ -153,6 +153,9 @@ class SiteNavbar extends HTMLElement {
           <a href="index.html"><div class="menu-logo">Pathfinder</div></a>
             <a href="main.html">App</a>
             <a href="quiz.html">Surveys</a>
+            <a href="programs.html">Programs</a>
+            <a href="#profile.html">Profile</a>
+            <a href="#careers">Careers</a>
             <a href="goals.html">Goals</a>
             <a href="task.html">Tasks</a>
             <a href="index.html#slim">About Us</a>

@@ -8,11 +8,12 @@
       href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&family=Pacifico&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="src/styles/app_home.css" />
-    <link rel="stylesheet" href="src/styles/programs.css" />
-    <!-- Web Components for shared navbar and footer layout -->
-    <script type="module" src="/src/components/app_site-navbar.js"></script>
-    <script type="module" src="/src/components/app_site-footer.js"></script>
+    <!-- The little icon that appears beside the tab name. -->
+    <link rel="icon" href="/images/logo.png" type="image/png" />
+
+    <!-- Use a single main script (for here tasksData.js) to import all other JS and CSS 
+         (such as app.js). This makes builds and hosting more reliable. -->
+    <script type="module" src="/src/programs.js"></script>
   </head>
   <body>
     <!-- Navbar -->
@@ -441,8 +442,5 @@
 
     <!-- Footer -->
     <site-footer></site-footer>
-
-    <!-- Programs JavaScript -->
-    <script type="module" src="/src/programs.js"></script>
   </body>
 </html>

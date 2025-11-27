@@ -14,44 +14,18 @@
     <meta name="keywords" content="XHTML,CSS,BCIT" />
 
     <link rel="icon" href="images/logo.png" type="image/png" />
-    <link rel="stylesheet" href="src/styles/style.css">
 
-    <!-- Small animation library -->
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
-    />
-
+    <!-- style.css already has animations. -->
     <script type="module" src="src/index.js"></script>
   </head>
 
   <body>
- <header id="home">
-      <div class="left">
-        <div class="row">
-          <img id="logo" src="images/study.png" width="10%" alt="Study" />
-          <h4>Pathfinder</h4>
-        </div>
-      </div>
-      <nav>
-        <ul>
-          <li><a href="index.html">Home</a></li>
-          <li><a href="quiz.html">Quiz</a></li>
-          <li><a href="programs.html">Programs</a></li>
-          <li><a href="profile.html">Profile</a></li>
-          <li><a href="#careers">Careers</a></li>
-          <li><a href="#how">FAQ</a></li>
-          <li><a href="#about">About</a></li>
-        </ul>
-      </nav>
-    </header>
+    <site-navbar></site-navbar>
     <aside>
-
       <!-- INTRO SECTION -->
       <div id="inbetween">
         <a href="index.html">
           <img
-            class="animate__animated animate__fadeInDown"
             src="https://www.svgrepo.com/show/530614/map.svg"
             alt="map"
             width="200"
@@ -75,24 +49,23 @@
       <!-- FEATURE ICONS -->
       <div class="mobile-img">
         <div id="middle">
-
           <a href="login.html">
-            <img src="images/bus.png" width="10%" alt=" Bus" />
+            <img src="/images/bus.png" width="10%" alt=" Bus" />
           </a>
           <a href="quiz.html">
-            <img src="images/textbook.png" width="10%" alt="Textbook" />
+            <img src="/images/textbook.png" width="10%" alt="Textbook" />
           </a>
           <a href="goals.html">
-            <img src="images/school-bag.png" width="10%" alt="School Bag" />
+            <img src="/images/school-bag.png" width="10%" alt="School Bag" />
           </a>
           <a href="main.html">
-            <img src="images/school.png" width="10%" alt="School" />
+            <img src="/images/school.png" width="10%" alt="School" />
           </a>
 
           <div id="side_text">
-            If you're struggling to choose a career path, you're not alone.
-            Many people find it challenging to decide on a career that aligns
-            with their interests and skills.
+            If you're struggling to choose a career path, you're not alone. Many
+            people find it challenging to decide on a career that aligns with
+            their interests and skills.
           </div>
         </div>
       </div>
@@ -130,11 +103,7 @@
             needed real guidance.
           </div>
           <a href="https://www.bcit.ca/" target="_blank">
-            <img
-              src="images/classroom.png"
-              width="10%"
-              alt="Classroom"
-            />
+            <img src="/images/classroom.png" width="10%" alt="Classroom" />
           </a>
 
           <!-- OUR GOAL -->
@@ -145,11 +114,7 @@
             market, discover your strengths, and map out a realistic plan.
           </div>
           <a href="goals.html">
-            <img
-              src="images/children.png"
-              width="10%"
-              alt="Children"
-            />
+            <img src="/images/children.png" width="10%" alt="Children" />
           </a>
 
           <!-- HOW WE'LL DO IT -->
@@ -161,11 +126,7 @@
             mentors.
           </div>
           <a href="quiz.html">
-            <img
-              src="images/board.png"
-              width="10%"
-              alt="Board"
-            />
+            <img src="/images/board.png" width="10%" alt="Board" />
           </a>
         </div>
 
@@ -174,25 +135,29 @@
         <!-- QUICK FEATURES -->
         <section class="feature-block">
           <h2>What You Can Do Inside Pathfinder</h2>
-          <ul>
-            <li>✓ Take a personalized career quiz</li>
-            <li>✓ Explore top 2025 in-demand careers</li>
-            <li>✓ Save favourite jobs and programs</li>
-            <li>✓ Track your goals and progress</li>
-            <li>✓ View salary data and job outlook</li>
-            <li>✓ Learn from professionals in the field</li>
-          </ul>
+          <div class="row">
+            <ul>
+              <li>✓ Take a personalized career quiz</li>
+              <li>✓ Explore top 2025 in-demand careers</li>
+              <li>✓ Save favourite jobs and programs</li>
+              <li>✓ Track your goals and progress</li>
+              <li>✓ View salary data and job outlook</li>
+              <li>✓ Learn from professionals in the field</li>
+            </ul>
+          </div>
         </section>
 
         <!-- TESTIMONIAL STYLE SECTION -->
         <section class="testimonial-block">
           <h2>What Students Say</h2>
-          <p>
-            “Pathfinder helped me finally understand what I want to do after
-            school. The quiz was scary accurate!”
-          </p>
-          <p>“It’s like having a career coach in your pocket.”</p>
-          <p>“Super clean UI — I actually use it daily.”</p>
+          <div class="row">
+            <p>
+              “Pathfinder helped me finally understand what I want to do after
+              school. The quiz was scary accurate!”
+            </p>
+            <p>“It’s like having a career coach in your pocket.”</p>
+            <p>“Super clean UI — I actually use it daily.”</p>
+          </div>
         </section>
 
         <!-- BCIT IMAGE -->
@@ -209,7 +174,6 @@
           </a>
         </figure>
       </div>
-      <footer>Page Created By Matthew, Melina, and Hazen.</footer>
       <site-footer></site-footer>
     </aside>
   </body>

@@ -14,8 +14,10 @@ export default defineConfig({
         // We dont have a profile page yet but this is here just in case
         // for in the future, just uncomment it if you do ever add one.
         // profile: resolve(__dirname, "profile.html"),
+        // careers: resolve(__dirname, "careers.html"),
         goals: resolve(__dirname, "goals.html"),
         quiz: resolve(__dirname, "quiz.html"),
+        programs: resolve(__dirname, "programs.html"),
         // Even though users shouldn't even need to access template.html
         // i still put it in just in case.
         template: resolve(__dirname, "template.html"),
