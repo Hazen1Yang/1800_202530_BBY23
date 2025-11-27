@@ -1,6 +1,8 @@
 import { auth, db } from "./firebaseConfig.js";
 import { setDoc, doc, getDoc, increment, updateDoc } from "firebase/firestore";
 import { TASKS } from "./tasks.js";
+import "./app.js";
+import "./styles/task.css";
 
 const FAKE_DEBUG_MODE = false;
 

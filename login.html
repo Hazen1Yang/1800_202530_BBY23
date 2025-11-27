@@ -2,12 +2,12 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <title>Pathfinder • Authentication</title>
+  <title>Pathfinder Authentication</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <link rel="stylesheet" href="src/styles/auth.css" />
-  <link rel="stylesheet" href="src/styles/style.css" />
-  <script type="module" src="/src/app.js"></script>
+  <!-- Use a single main script (for here tasksData.js) to import all other JS and CSS 
+       (such as app.js and task.css). This makes builds and hosting more reliable. -->
+  <script type="module" src="/src/loginSignup.js"></script>
 </head>
 
 <body>
@@ -88,11 +88,5 @@
 </main>
 
 <site-footer></site-footer>
-
-<!-- Firebase scripts -->
-<script type="module" src="/src/firebaseConfig.js"></script>
-<script type="module" src="/src/authentication.js"></script>
-<script type="module" src="/src/loginSignup.js"></script>
-
 </body>
 </html>

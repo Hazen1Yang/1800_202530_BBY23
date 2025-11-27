@@ -19,10 +19,10 @@ import {
 import "./components/footer.js";
 import "./components/navbar.js";
 
-// Custom global styles:
+// Global style for all pages (you can still import a different css file after):
 import "./styles/style.css";
 
-// Custom global JS code (shared with all pages)
+// Custom global JS code (shared with all pages):
 onAuthReady(async (user) => {
   if (!user) {
     const currentPage = window.location.pathname.split("/").pop();

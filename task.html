@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <!-- Update this with name of the page. -->
-    <title>Pathfinder Template</title>
+    <title>Pathfinder Tasks</title>
     <meta name="pathfinder-application" content="pathfinder" />
     <meta charset="utf-8" />
     <meta name="author" content="Matthew, Hazen, Vincent, Melina." />
@@ -16,8 +16,10 @@
     <meta name="keywords" content="XHTML,CSS,BCIT" />
     <!-- The little icon that appears beside the tab name. -->
     <link rel="icon" href="/images/logo.png" type="image/png" />
-      <script type="module" src="/src/app.js"></script>
 
+    <!-- Use a single main script (for here tasksData.js) to import all other JS and CSS 
+         (such as app.js). This makes builds and hosting more reliable. -->
+    <script type="module" src="/src/tasksData.js"></script>
   </head>
 
   <body>
@@ -28,12 +30,11 @@
     <main class="container my-4">
       <h1>Hello</h1>
       <!-- Your layout or app content goes here -->
-      <div id="task-container"></div>
-
-  <!-- load the JS file -->
-
+      <div class="text-center">
+        <div id="task-container" class="extra"></div>
+      </div>
     </main>
-    <script type="module" src="/src/tasksData.js"></script>
+
     <!-- Footer -->
     <site-footer></site-footer>
   </body>

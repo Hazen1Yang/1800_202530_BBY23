@@ -201,6 +201,31 @@
   margin: 0;
 }
 
+.btn-link {
+  background: none;
+  border: none;
+  color: #dc3545;
+  cursor: pointer;
+  font-size: 14px;
+  text-decoration: underline;
+  padding: 10px;
+  text-align: center;
+  margin: 20px 0;
+}
+
+.btn-link:hover {
+  color: #a71d2a;
+}
+
+.btn-success {
+  background-color: #28a745;
+  color: white;
+}
+
+.btn-success:hover {
+  background-color: #218838;
+}
+
 /* Responsive Design */
 @media (max-width: 768px) {
   .quiz-container {
