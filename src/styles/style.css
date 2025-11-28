@@ -54,9 +54,8 @@ h1 {
   color: var(--text-dark);
   text-align: center;
   font-weight: 700;
-  font-size: clamp(2.5rem, 6vw, 4rem);
+  font-size: clamp(1.5rem, vw, 4rem);
   padding: clamp(1rem, 4vw, 2rem);
-  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
 }
 h2 {
   color: var(--extra-color);
@@ -192,11 +191,6 @@ aside {
   box-shadow: 0 -4px 20px var(--shadow);
 }
 
-.row {
-  margin: 1.5rem 0;
-  background: var(--light-bg);
-  border-radius: 10px;
-}
 
 #bottom img {
   padding: 1rem;
