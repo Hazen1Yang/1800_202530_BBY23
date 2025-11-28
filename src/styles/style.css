@@ -420,3 +420,16 @@ textarea:focus {
   margin: 8px 0;
   border-radius: 8px;
 }
+site-navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  display: block;
+}
+
+/* Add top padding to main content so it doesn't hide behind the nav */
+main {
+  padding-top: 70px; /* adjust based on your navbar height */
+}

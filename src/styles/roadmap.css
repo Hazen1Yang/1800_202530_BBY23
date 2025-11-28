@@ -1,0 +1,255 @@
+/* src/styles/roadmap.css */
+
+/* PAGE LAYOUT */
+.roadmap-page {
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 1.75rem 1.25rem 3rem;
+}
+
+/* HERO / INTRO */
+.roadmap-hero {
+  text-align: left;
+  margin-bottom: 2rem;
+}
+
+.roadmap-hero h1 {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+.roadmap-hero p {
+  margin-bottom: 0.4rem;
+  line-height: 1.6;
+}
+
+.roadmap-hero a {
+  text-decoration: underline;
+}
+
+.roadmap-subtitle {
+  font-size: 0.95rem;
+  color: #475569; /* slate-600 */
+  margin-top: 0.35rem;
+}
+
+/* SUMMARY CARDS */
+.roadmap-summary {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 1rem;
+  margin-bottom: 2.2rem;
+}
+
+.roadmap-card {
+  background: #ffffff;
+  border-radius: 14px;
+  padding: 1.1rem 1.2rem 1rem;
+  box-shadow: 0 10px 25px rgba(15, 23, 42, 0.06);
+  border: 1px solid #e2e8f0; /* slate-200 */
+  position: relative;
+  overflow: hidden;
+}
+
+.roadmap-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    circle at top left,
+    rgba(45, 212, 191, 0.15),  /* teal-400 */
+    transparent 55%
+  );
+  pointer-events: none;
+}
+
+.roadmap-card h2 {
+  margin-top: 0;
+  font-size: 1.15rem;
+  margin-bottom: 0.4rem;
+}
+
+.roadmap-card p {
+  margin-bottom: 0.6rem;
+}
+
+.roadmap-card ul {
+  padding-left: 1.2rem;
+  margin: 0.2rem 0 0;
+}
+
+/* TIMELINE LAYOUT FOR STEPS */
+.roadmap-steps {
+  margin-bottom: 2.4rem;
+  position: relative;
+}
+
+.roadmap-steps > h2 {
+  font-size: 1.45rem;
+  margin-bottom: 1.2rem;
+}
+
+/* Vertical timeline line */
+.roadmap-steps::before {
+  content: "";
+  position: absolute;
+  left: 18px;
+  top: 2.5rem;
+  bottom: 0.5rem;
+  width: 3px;
+  background: linear-gradient(
+    to bottom,
+    #99f6e4, /* teal-200 */
+    #22c55e  /* emerald-500 */
+  );
+  opacity: 0.9;
+}
+
+/* EACH STEP */
+.roadmap-step {
+  background: #ffffff;
+  border-radius: 14px;
+  padding: 0.95rem 1.1rem 1.1rem;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 8px 20px rgba(15, 23, 42, 0.05);
+  margin-bottom: 1rem;
+  position: relative;
+  margin-left: 1.8rem; /* spacing away from timeline */
+}
+
+/* small connector dot from line to card */
+.roadmap-step::before {
+  content: "";
+  position: absolute;
+  left: -16px;
+  top: 20px;
+  width: 11px;
+  height: 11px;
+  border-radius: 999px;
+  background: #14b8a6; /* teal-500 */
+  box-shadow: 0 0 0 4px rgba(45, 212, 191, 0.45);
+}
+
+.step-header {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  margin-bottom: 0.35rem;
+}
+
+.step-number {
+  width: 30px;
+  height: 30px;
+  border-radius: 999px;
+  background: #14b8a6; /* teal-500 */
+  color: #f9fafb;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  font-size: 0.95rem;
+  flex-shrink: 0;
+}
+
+.step-header h3 {
+  margin: 0;
+  font-size: 1.05rem;
+}
+
+.roadmap-step p {
+  margin: 0.35rem 0 0.5rem;
+  line-height: 1.5;
+}
+
+.roadmap-step ul {
+  padding-left: 1.2rem;
+  margin: 0.1rem 0 0.6rem;
+}
+
+.roadmap-step li {
+  margin-bottom: 0.3rem;
+}
+
+.tip {
+  font-size: 0.9rem;
+  color: #64748b; /* slate-500 */
+  font-style: italic;
+}
+
+/* Links inside each step */
+.step-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 0.6rem;
+}
+
+/* FOOTER SECTION */
+.roadmap-footer-section {
+  margin-top: 2rem;
+  padding: 1.3rem 1.2rem 1.1rem;
+  border-radius: 16px;
+  background: linear-gradient(
+    to right,
+    #ecfeff, /* cyan-50 */
+    #f9fafb
+  );
+  border: 1px solid #a5f3fc; /* cyan-200 */
+}
+
+.roadmap-footer-section h2 {
+  margin-top: 0;
+  font-size: 1.2rem;
+  margin-bottom: 0.45rem;
+}
+
+.roadmap-footer-section p {
+  margin-bottom: 0.7rem;
+}
+
+.roadmap-footer-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
+
+/* BUTTONS on this page */
+.roadmap-page .btn {
+  padding: 0.6rem 1.2rem;
+  border-radius: 999px;
+  font-size: 0.95rem;
+}
+
+/* primary button just reuses your global .btn styles; tweak secondary */
+.roadmap-page .btn.secondary {
+  background: #e0f2fe;          /* light blue */
+  border: 1px solid #bae6fd;    /* blue-200 */
+  color: #0f172a;               /* slate-900 */
+}
+
+/* Hover states */
+.roadmap-page .btn.secondary:hover {
+  background: #dbeafe;          /* blue-100 */
+}
+
+/* Extra lines added by roadmap.js */
+.track-blurb {
+  margin-top: 0.25rem;
+}
+
+.score-line {
+  margin-top: 0.15rem;
+  font-size: 0.85rem;
+  color: #6b7280; /* gray-ish text */
+}
+
+/* RESPONSIVE */
+@media (min-width: 720px) {
+  .roadmap-summary {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .roadmap-steps {
+    padding-left: 0.3rem;
+  }
+}
