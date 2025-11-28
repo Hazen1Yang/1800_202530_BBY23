@@ -1,334 +1,108 @@
-// Career Quiz JavaScript
+// src/quiz.js
 
-import "./app.js";
-import "./styles/quiz.css";
+// Map A–E answers to categories
+// T = Tech, H = Health, E = Engineering/Trades, C = Creative, B = Business
+const answerMapping = {
+  A: "T",
+  B: "H",
+  C: "E",
+  D: "C",
+  E: "B"
+};
 
-// All 50 quiz questions organized by page
-const quizData = [
-  // Page 1 (Questions 1-10)
-  [
-    "Doing the same task for a long period of time.",
-    "Building things and/or repairing them.",
-    "Exploring a subject from different points of view.",
-    "Finishing one job before you start the next.",
-    "Directing people in their activities.",
-    "Maintaining a steady pace throughout an activity.",
-    "Doing trial runs and applying changes.",
-    "Being responsible for organizing an activity and planning something for everyone to do.",
-    "Helping people solve their problems.",
-    "Being responsible for a project or activity and have to look after many different details to complete it.",
-  ],
-  // Page 2 (Questions 11-20)
-  [
-    "Learning about scientific topics by reading books, watching TV shows or visiting websites.",
-    "Working with tools and machinery.",
-    "Working according to prescribed methods.",
-    "Solving your own problems and do projects using your own ideas.",
-    "Doing a project or other job carefully, one step at a time.",
-    "Planning the tasks or activities of others.",
-    "Taking charge of things and get them done.",
-    "Trying new ways of doing things.",
-    "Spending your days working with machines or equipment.",
-    "Maintaining equipment or machinery.",
-  ],
-  // Page 3 (Questions 21-30)
-  [
-    "Working in the field of community services.",
-    "Doing activities where you always know what is expected of you.",
-    "Speaking with people and listening to them.",
-    "Calculating to solve a problem.",
-    "Helping people improve their lives.",
-    "Working with your hands, doing things such as plumbing repairs, sewing, fixing cars, or wallpapering.",
-    "Discovering how things are made and work through reading books, watching television or searching on websites.",
-    "Doing an activity where your work is closely checked regularly.",
-    "Assisting people when they are sick or in trouble.",
-    "Working in a team.",
-  ],
-  // Page 4 (Questions 31-40)
-  [
-    "Working with materials such as wood, stone, clay, fabric or metal.",
-    "Thinking to invent or create.",
-    "Leading a committee, an association or a team.",
-    "Bringing comfort to others.",
-    "Working by following well-established procedures.",
-    "Working with tools, equipment or technical instruments.",
-    "Having a job in which you are working with machines or things rather than dealing with people.",
-    "Being in control of a group rather than just a member.",
-    "Cooperating with others.",
-    "Working on research projects.",
-  ],
-  // Page 5 (Questions 41-50)
-  [
-    "Taking responsibility for decisions.",
-    "Getting people to do what you want.",
-    "Going through evidence to solve problems.",
-    "Looking after people.",
-    "Doing an activity where you are told what to do and how.",
-    "Discussing with people to know their opinions.",
-    "Organizing your tasks in your own way.",
-    "Working to discover new ideas or things.",
-    "Working on one thing at a time.",
-    "Doing hobbies on your own, such as building models, gardening, refinishing old furniture, etc.",
-  ],
-];
-
-// Rating options
-const ratingOptions = [
-  { value: 1, label: "Not interested at all" },
-  { value: 2, label: "Slightly interested" },
-  { value: 3, label: "Moderately interested" },
-  { value: 4, label: "Very interested" },
-  { value: 5, label: "Extremely interested" },
-];
-
-// Quiz state
-let currentPage = 0;
-let answers = {};
-
-// Initialize quiz
-function initQuiz() {
-  loadAnswers();
-  renderQuestions();
-  updateProgress();
-  updateNavigation();
-  updatePageIndicator();
-
-  // Add event listeners
-  document.getElementById("nextBtn").addEventListener("click", nextPage);
-  document.getElementById("prevBtn").addEventListener("click", prevPage);
-  document.getElementById("submitBtn").addEventListener("click", submitQuiz);
-  document
-    .getElementById("deleteBtn")
-    .addEventListener("click", deleteAllAnswers);
+function getRadioValue(name) {
+  const checked = document.querySelector(`input[name="${name}"]:checked`);
+  return checked ? checked.value : null;
 }
 
-// Render questions for current page
-function renderQuestions() {
-  const questionsContainer = document.getElementById("quizQuestions");
-  questionsContainer.innerHTML = "";
+// Main scoring logic
+function calculateCategoryScores(formData) {
+  const scores = { T: 0, H: 0, E: 0, C: 0, B: 0 };
 
-  const currentQuestions = quizData[currentPage];
-  const startIndex = currentPage * 10;
-
-  currentQuestions.forEach((question, index) => {
-    const questionNumber = startIndex + index;
-    const questionDiv = createQuestionElement(question, questionNumber);
-    questionsContainer.appendChild(questionDiv);
-  }); 
-}
-
-// Create a question element
-function createQuestionElement(questionText, questionNumber) {
-  const div = document.createElement("div");
-  div.className = "question-item";
-
-  const questionTitle = document.createElement("div");
-  questionTitle.className = "question-text";
-  questionTitle.textContent = questionText;
-
-  const ratingScale = document.createElement("div");
-  ratingScale.className = "rating-scale";
-
-  // Left label
-  const leftLabel = document.createElement("div");
-  leftLabel.className = "rating-label left";
-  leftLabel.textContent = "Not interested at all";
-  ratingScale.appendChild(leftLabel);
-
-  // Rating options
-  const optionsContainer = document.createElement("div");
-  optionsContainer.className = "rating-options";
-
-  ratingOptions.forEach((option) => {
-    const optionDiv = document.createElement("div");
-    optionDiv.className = "rating-option";
-
-    const input = document.createElement("input");
-    input.type = "radio";
-    input.name = `question_${questionNumber}`;
-    input.value = option.value;
-    input.id = `q${questionNumber}_${option.value}`;
-
-    // Check if this option was previously selected
-    if (answers[questionNumber] === option.value) {
-      input.checked = true;
+  // Questions 1–4, 9, 10, 11 use A–E
+  const letterQuestions = ["q1", "q2", "q3", "q4", "q9", "q10", "q11"];
+  letterQuestions.forEach((q) => {
+    const answer = formData[q];
+    if (!answer) return;
+    const category = answerMapping[answer];
+    if (category) {
+      scores[category] += 2; // interests & goals are heavier
     }
-
-    input.addEventListener("change", () => {
-      saveAnswer(questionNumber, option.value);
-    });
-
-    const label = document.createElement("label");
-    label.htmlFor = input.id;
-    label.textContent = option.label;
-
-    optionDiv.appendChild(input);
-    optionDiv.appendChild(label);
-    optionsContainer.appendChild(optionDiv);
   });
 
-  ratingScale.appendChild(optionsContainer);
+  // Skill questions 5–8 use 1–5
+  const math = Number(formData.q5 || 0);     // math → T, E, B
+  const comps = Number(formData.q6 || 0);    // computers → T
+  const comm = Number(formData.q7 || 0);     // communication → H, C, B
+  const handsOn = Number(formData.q8 || 0);  // hands-on → E, T
 
-  // Right label
-  const rightLabel = document.createElement("div");
-  rightLabel.className = "rating-label right";
-  rightLabel.textContent = "Extremely interested";
-  ratingScale.appendChild(rightLabel);
+  scores.T += Math.round(math * 0.7 + comps * 1.2 + handsOn * 0.6);
+  scores.E += Math.round(math * 0.5 + handsOn * 1.3);
+  scores.B += Math.round(math * 0.6 + comm * 0.7);
+  scores.H += Math.round(comm * 1.1);
+  scores.C += Math.round(comm * 0.8);
 
-  div.appendChild(questionTitle);
-  div.appendChild(ratingScale);
-
-  return div;
-}
-
-// Save answer
-function saveAnswer(questionNumber, value) {
-  answers[questionNumber] = parseInt(value);
-  localStorage.setItem("careerQuizAnswers", JSON.stringify(answers));
-  updateProgress();
-  updateNavigation();
-}
-
-// Load answers from localStorage
-function loadAnswers() {
-  const saved = localStorage.getItem("careerQuizAnswers");
-  if (saved) {
-    answers = JSON.parse(saved);
-  }
-}
-
-// Update progress bar
-function updateProgress() {
-  const totalQuestions = 50;
-  const answeredQuestions = Object.keys(answers).length;
-  const percentage = Math.round((answeredQuestions / totalQuestions) * 100);
-
-  const progressFill = document.getElementById("progressFill");
-  const progressText = document.getElementById("progressText");
-
-  progressFill.style.width = percentage + "%";
-  progressText.textContent = percentage + "%";
-}
-
-// Update navigation buttons
-function updateNavigation() {
-  const prevBtn = document.getElementById("prevBtn");
-  const nextBtn = document.getElementById("nextBtn");
-  const submitBtn = document.getElementById("submitBtn");
-
-  // Show/hide previous button
-  if (currentPage === 0) {
-    prevBtn.style.display = "none";
-  } else {
-    prevBtn.style.display = "inline-block";
+  // Q12: timing preference → slight nudge
+  const q12 = formData.q12;
+  if (q12 === "A") {
+    scores.E += 1;
+    scores.T += 1;
+  } else if (q12 === "C") {
+    scores.B += 1;
+    scores.H += 1;
   }
 
-  // Show/hide next and submit buttons
-  if (currentPage === quizData.length - 1) {
-    nextBtn.style.display = "none";
-    submitBtn.style.display = "inline-block";
-  } else {
-    nextBtn.style.display = "inline-block";
-    submitBtn.style.display = "none";
-  }
+  return scores;
+}
 
-  // Enable/disable next button based on current page completion
-  const startIndex = currentPage * 10;
-  const endIndex = startIndex + 10;
-  let allAnswered = true;
-
-  for (let i = startIndex; i < endIndex; i++) {
-    if (!answers.hasOwnProperty(i)) {
-      allAnswered = false;
-      break;
+function getTopCategory(scores) {
+  let bestCategory = null;
+  let bestScore = -Infinity;
+  for (const [cat, score] of Object.entries(scores)) {
+    if (score > bestScore) {
+      bestScore = score;
+      bestCategory = cat;
     }
   }
-
-  // Allow navigation even if not all questions are answered (like the original quiz)
-  nextBtn.disabled = false;
-  submitBtn.disabled = false;
+  return bestCategory;
 }
 
-// Update page indicator
-function updatePageIndicator() {
-  const pageIndicator = document.getElementById("pageIndicator");
-  pageIndicator.textContent = `Page ${currentPage + 1} of ${quizData.length}`;
-}
+document.addEventListener("DOMContentLoaded", () => {
+  const form = document.getElementById("quiz-form");
+  if (!form) return;
 
-// Next page
-function nextPage() {
-  if (currentPage < quizData.length - 1) {
-    currentPage++;
-    renderQuestions();
-    updateProgress();
-    updateNavigation();
-    updatePageIndicator();
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  }
-}
+  form.addEventListener("submit", (event) => {
+    event.preventDefault();
 
-// Previous page
-function prevPage() {
-  if (currentPage > 0) {
-    currentPage--;
-    renderQuestions();
-    updateProgress();
-    updateNavigation();
-    updatePageIndicator();
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  }
-}
+    const formData = {};
+    for (let i = 1; i <= 12; i += 1) {
+      const name = `q${i}`;
+      const val = getRadioValue(name);
+      formData[name] = val;
+    }
 
-// Submit quiz
-function submitQuiz() {
-  const totalQuestions = 50;
-  const answeredQuestions = Object.keys(answers).length;
+    // make sure all questions answered
+    const missing = Object.entries(formData)
+      .filter(([, v]) => v === null)
+      .map(([k]) => k);
 
-  if (answeredQuestions < totalQuestions) {
-    alert(
-      `Please answer all questions before submitting. You have answered ${answeredQuestions} out of ${totalQuestions} questions.`
-    );
-    return;
-  }
+    if (missing.length > 0) {
+      alert("Please answer all questions before submitting the quiz.");
+      return;
+    }
 
-  // Calculate results
-  calculateResults();
-}
+    const scores = calculateCategoryScores(formData);
+    const topCategory = getTopCategory(scores);
 
-// Calculate quiz results
-function calculateResults() {
-  // For now, just show a simple completion message
-  // In a full implementation, this would calculate scores for each category
-  // (directive, social, methodical, objective, innovative)
+    // SAVE RESULT FOR RESULTS PAGE
+    try {
+      localStorage.setItem("pathfinderTopCategory", topCategory);
+      localStorage.setItem("pathfinderScores", JSON.stringify(scores));
+    } catch (e) {
+      console.warn("Could not save quiz results to localStorage", e);
+    }
 
-  const totalScore = Object.values(answers).reduce(
-    (sum, value) => sum + value,
-    0
-  );
-  const avgScore = (totalScore / 50).toFixed(2);
-
-  alert(
-    `Quiz completed!\n\nYou answered all 50 questions.\nYour average interest level: ${avgScore}/5.0\n\nResults calculation would be implemented here to show your career preferences across the five categories: directive, social, methodical, objective, and innovative work.`
-  );
-
-  // Optionally, redirect to a results page
-  // window.location.href = 'quiz-results.html';
-}
-
-// Delete all answers
-function deleteAllAnswers() {
-  if (
-    confirm(
-      "Are you sure you want to delete all your answers? This action cannot be undone."
-    )
-  ) {
-    answers = {};
-    localStorage.removeItem("careerQuizAnswers");
-    renderQuestions();
-    updateProgress();
-    updateNavigation();
-  }
-}
-
-// Initialize quiz when page loads
-document.addEventListener("DOMContentLoaded", initQuiz);
+    // GO TO RESULTS PAGE
+    window.location.href = "quizResults.html";
+  });
+});

@@ -142,3 +142,69 @@ function clearSearch() {
     });
   }
 }
+export const bcitPrograms = {
+  "T": {
+    name: "Tech Programs",
+    programs: [
+      {
+        title: "CST – Computer Systems Technology",
+        url: "https://www.bcit.ca/programs/computer-systems-technology-diploma-full-time-5500dipma/",
+        advisor: "cst@bcit.ca",
+        roadmap: "/roadmaps/cst.html"
+      },
+      {
+        title: "CIT – Computer Information Technology",
+        url: "https://www.bcit.ca/programs/computer-information-technology-diploma-full-time-5510dipma/",
+        advisor: "cit@bcit.ca",
+        roadmap: "/roadmaps/cit.html"
+      },
+      {
+        title: "Cybersecurity",
+        url: "https://www.bcit.ca/programs/cybersecurity/",
+        advisor: "cyber@bcit.ca",
+        roadmap: "/roadmaps/cyber.html"
+      }
+    ]
+  },
+
+  "H": {
+    name: "Health Programs",
+    programs: [
+      {
+        title: "Nursing",
+        url: "https://www.bcit.ca/programs/nursing/",
+        advisor: "nursing@bcit.ca"
+      },
+      {
+        title: "Medical Laboratory Science",
+        url: "https://www.bcit.ca/programs/medical-laboratory-science/",
+        advisor: "medlab@bcit.ca"
+      }
+    ]
+  },
+
+  "E": {
+    name: "Engineering & Trades",
+    programs: [
+      { title: "Electrical", advisor: "electrical@bcit.ca" },
+      { title: "Welding", advisor: "welding@bcit.ca" },
+      { title: "HVAC", advisor: "hvac@bcit.ca" }
+    ]
+  },
+
+  "C": {
+    name: "Creative Programs",
+    programs: [
+      { title: "Graphic Design", advisor: "design@bcit.ca" },
+      { title: "UX/UI", advisor: "uxui@bcit.ca" }
+    ]
+  },
+
+  "B": {
+    name: "Business Programs",
+    programs: [
+      { title: "Business Administration", advisor: "business@bcit.ca" },
+      { title: "Marketing", advisor: "marketing@bcit.ca" }
+    ]
+  }
+};
