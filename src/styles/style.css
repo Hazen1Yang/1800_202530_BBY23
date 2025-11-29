@@ -3,7 +3,8 @@
 
 :root {
   --primary-color: #eef7ff;
-  --secondary-color: #7b68ee;
+  --extra-color: #4a90e2;
+  --secondary-color: #764ba2;
   --accent-color: #ff6b6b;
   --dark-blue: #2c3e50;
   --light-bg: #f8f9fa;
@@ -24,7 +25,8 @@
   margin: 0;
 }
 html {
-  scroll-behavior: smooth;  
+  scroll-behavior: smooth;
+  scroll-behavior: smooth;
   height: 100%;
 }
 body {
@@ -49,31 +51,27 @@ main,
 
 /* Typographic scale that adapts */
 h1 {
-  color: black;
+  color: var(--text-dark);
   text-align: center;
   font-weight: 700;
-  font-size: clamp(2.5rem, 6vw, 4rem);
+  font-size: clamp(1.5rem, vw, 4rem);
   padding: clamp(1rem, 4vw, 2rem);
-  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
 }
 h2 {
+  color: var(--extra-color);
   font-weight: 600;
   font-size: clamp(1.4rem, 3.2vw, 2rem);
   padding: 1rem 0.5rem;
 }
 h3,
 h4 {
-  color: black;
+  color: var(--text-dark);
 }
 
 /* Navigation / header */
 nav,
 header {
-  background: linear-gradient(
-    135deg,
-    var(--primary-color) 0%,
-    var(--secondary-color) 100%
-  );
+  background: var(--secondary-color);
   color: var(--white);
   padding: clamp(0.75rem, 2vw, 1.5rem);
   box-shadow: 0 2px 10px var(--shadow);
@@ -140,7 +138,7 @@ aside {
   flex-direction: column;
 }
 
-/* Responsive images on the index page (exclude the BCIT figure) */
+/* Responsive images on the index page */
 .mobile-img img {
   display: inline-block;
   width: clamp(80px, 18vw, 160px);
@@ -165,11 +163,7 @@ aside {
   padding: clamp(1rem, 3vw, 2rem);
   margin: 1.5rem 0;
   box-shadow: 0 4px 15px var(--shadow);
-  background: linear-gradient(
-    135deg,
-    var(--primary-color) 0%,
-    var(--secondary-color) 100%
-  );
+  background: var(--secondary-color);
 }
 
 #middle img {
@@ -197,11 +191,6 @@ aside {
   box-shadow: 0 -4px 20px var(--shadow);
 }
 
-.row {
-  margin: 1.5rem 0;
-  background: var(--light-bg);
-  border-radius: 10px;
-}
 
 #bottom img {
   padding: 1rem;
@@ -251,7 +240,7 @@ aside {
   display: block;
 }
 figcaption {
-  background: var(--primary-color);
+  background: var(--extra-color);
   color: var(--white);
   padding: 1rem;
   font-size: clamp(1rem, 2vw, 1.2rem);
@@ -272,7 +261,7 @@ site-footer {
   position: static;
   margin-top: auto;
   width: 100%;
-  background: #6f68a5ff;
+  background: var(--secondary-color);
   color: var(--white);
   text-align: center;
   padding: 0.75rem;
@@ -307,7 +296,7 @@ textarea {
   font-weight: 600;
   font-size: 1rem;
   background: rgba(8, 12, 20, 0.45);
-  color: #fff;
+  color: var(--white);
   box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
   -webkit-backdrop-filter: blur(6px);
   backdrop-filter: blur(6px);

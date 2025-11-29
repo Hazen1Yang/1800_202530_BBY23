@@ -5,13 +5,10 @@
   --brand: #cdd0ef;
   --brand-strong: #413c58;
   --accent-blue: #3b82f6;
-
-  --card: #fff;
+  --card: var(--white);
   --radius: 28px;
-
   --shadow-1: 0 12px 24px rgba(0, 0, 0, 0.08),
     0 24px 48px rgba(135, 142, 216, 0.18), 0 0 6px rgba(135, 142, 216, 0.12);
-
   --shadow-2: 0 6px 12px rgba(135, 142, 216, 0.25),
     0 2px 6px rgba(0, 0, 0, 0.08);
 }
@@ -93,7 +90,7 @@ input {
   border-radius: 12px;
   padding: 12px 14px;
   font-size: 16px;
-  background: #fff;
+  background: var(--white);
   outline: none;
   transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
@@ -130,7 +127,7 @@ input:focus {
 
 .btn.submit {
   background: var(--accent-blue);
-  color: #fff;
+  color: var(--white);
   border: 0;
   padding: 12px 22px;
   border-radius: 12px;
