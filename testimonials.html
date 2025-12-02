@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Testimonials — Pathfinder</title>
+
+  <!-- Use src/styles so the stylesheet is found when this HTML is requested from project root -->
+  <link rel="stylesheet" href="src/styles/story-cards.css" />
+  <link rel="stylesheet" href="src/styles/testimonials.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <h1 class="site-title">Pathfinder</h1>
+      <nav class="site-nav" aria-label="Main navigation">
+        <a href="index.html">Home</a>
+        <a href="features.html">Features</a>
+        <a href="quiz.html">Quiz</a>
+        <a href="testimonials.html" aria-current="page">Testimonials</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <h2>What Students Say</h2>
+      <p class="lead">Real feedback from real users — see how Pathfinder helped students find direction and confidence.</p>
+    </section>
+
+    <!-- Testimonials grid -->
+    <section class="testimonials-grid" aria-labelledby="testimonials-heading">
+      <h3 id="testimonials-heading" class="visually-hidden">Student testimonials</h3>
+
+      <div id="testimonialsList" class="cards">
+        <article class="main-card">
+          <div class="card-media"><img src="public/images/students.png" alt="Student" /></div>
+          <h2>“Scary accurate!”</h2>
+          <p class="card-text">“Pathfinder helped me finally understand what I want to do after school. The quiz was scary accurate!” — A. Student</p>
+        </article>
+
+        <article class="main-card">
+          <div class="card-media"><img src="public/images/students-2.png" alt="Student group" /></div>
+          <h2>“Like a career coach”</h2>
+          <p class="card-text">“It’s like having a career coach in your pocket.” — J. Learner</p>
+        </article>
+
+        <article class="main-card">
+          <div class="card-media"><img src="public/images/students-3.png" alt="Students" /></div>
+          <h2>“I use it daily”</h2>
+          <p class="card-text">“Super clean UI — I actually use it daily.” — M. Grad</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- Add a testimonial (client-side only) -->
+    <section class="submit-testimonial" aria-labelledby="submit-heading">
+      <h2 id="submit-heading">Share your experience</h2>
+      <form id="testimonialForm" class="testimonial-form" novalidate>
+        <label for="author">Your name</label>
+        <input id="author" name="author" type="text" placeholder="e.g., Sam Student" required />
+
+        <label for="quote">Your quote</label>
+        <textarea id="quote" name="quote" rows="3" placeholder="Share a short sentence about Pathfinder" required></textarea>
+
+        <button type="submit" class="btn-primary">Submit testimonial</button>
+        <div id="formMessage" role="status" aria-live="polite" class="form-message"></div>
+      </form>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>&copy; <span id="year"></span> Pathfinder — Built with BCIT students</p>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      const testimonialsKey = 'pathfinder_testimonials_v1';
+      const testimonialsList = document.getElementById('testimonialsList');
+      const form = document.getElementById('testimonialForm');
+      const authorInput = document.getElementById('author');
+      const quoteInput = document.getElementById('quote');
+      const messageEl = document.getElementById('formMessage');
+      const yearEl = document.getElementById('year');
+
+      yearEl.textContent = new Date().getFullYear();
+
+      function loadSaved() {
+        try {
+          const raw = localStorage.getItem(testimonialsKey);
+          if (!raw) return;
+          const items = JSON.parse(raw);
+          items.forEach(item => appendTestimonial(item, false));
+        } catch (e) {
+          console.warn('Failed to load testimonials', e);
+        }
+      }
+
+      function saveItem(item) {
+        try {
+          const raw = localStorage.getItem(testimonialsKey);
+          const items = raw ? JSON.parse(raw) : [];
+          items.unshift(item);
+          localStorage.setItem(testimonialsKey, JSON.stringify(items.slice(0, 20)));
+        } catch (e) {
+          console.warn('Failed to save testimonial', e);
+        }
+      }
+
+      function sanitize(text) {
+        const div = document.createElement('div');
+        div.textContent = text;
+        return div.innerHTML;
+      }
+
+      function appendTestimonial(item, scrollIntoView = true) {
+        const article = document.createElement('article');
+        article.className = 'main-card';
+
+        const media = document.createElement('div');
+        media.className = 'card-media';
+        const img = document.createElement('img');
+        img.src = item.image || 'public/images/students.png';
+        img.alt = item.alt || 'Student';
+        media.appendChild(img);
+
+        const h2 = document.createElement('h2');
+        h2.textContent = item.title || (item.quote.length > 40 ? item.quote.slice(0, 37) + '...' : item.quote);
+
+        const p = document.createElement('p');
+        p.className = 'card-text';
+        p.innerHTML = sanitize('“' + item.quote + '”') + (item.author ? ' — ' + sanitize(item.author) : '');
+
+        article.appendChild(media);
+        article.appendChild(h2);
+        article.appendChild(p);
+
+        testimonialsList.insertBefore(article, testimonialsList.firstChild);
+
+        if (scrollIntoView) {
+          article.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      }
+
+      form.addEventListener('submit', function (ev) {
+        ev.preventDefault();
+        const author = authorInput.value.trim();
+        const quote = quoteInput.value.trim();
+
+        if (!quote) {
+          messageEl.textContent = 'Please enter a short quote.';
+          messageEl.className = 'form-message error';
+          return;
+        }
+
+        const item = {
+          author: author || 'Anonymous',
+          quote: quote,
+          image: 'public/images/students.png',
+          alt: 'Student photo',
+          title: quote.length > 40 ? quote.slice(0, 37) + '...' : quote
+        };
+
+        appendTestimonial(item);
+        saveItem(item);
+
+        form.reset();
+        authorInput.focus();
+        messageEl.textContent = 'Thanks — your testimonial was added locally.';
+        messageEl.className = 'form-message success';
+        setTimeout(() => { messageEl.textContent = ''; messageEl.className = 'form-message'; }, 4000);
+      });
+
+      loadSaved();
+    })();
+  </script>
+</body>
+</html>

@@ -433,3 +433,466 @@ site-navbar {
 main {
   padding-top: 70px; /* adjust based on your navbar height */
 }
+/* Container and grid */
+.story-section {
+  padding: 1.25rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Grid: responsive columns, force equal-height rows */
+.cards {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  grid-auto-rows: 1fr; /* critical: every row's tracks are equal height */
+  align-items: stretch;
+}
+
+/* Card: stretch to fill the grid row so all cards in a row are same height */
+.main-card {
+  background: #fff;
+  border-radius: 10px;
+  padding: 1rem;
+  box-shadow: 0 6px 18px rgba(35, 35, 35, 0.06);
+  border: 1px solid rgba(0,0,0,0.04);
+
+  /* make card a column flex so inner content can be spaced and CTA pushed to bottom */
+  display: flex;
+  flex-direction: column;
+  height: 100%; /* ensures it fills the grid cell height set by grid-auto-rows */
+}
+
+/* Media (image) box: same fixed box for every card */
+.card-media {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 0.6rem;
+}
+
+/* Force identical image box and preserve aspect with object-fit */
+.card-media img {
+  width: 120px;
+  height: 120px;
+  object-fit: contain; /* use cover to fill/crop instead */
+  border-radius: 8px;
+  background: #f8fafc;
+  padding: 8px;
+  display: block;
+}
+
+/* Headings and text */
+.main-card h2 {
+  margin: 0.2rem 0 0.45rem;
+  font-size: 1.12rem;
+  color: #08344a;
+}
+
+.card-text {
+  color: #334155;
+  font-size: 0.98rem;
+  line-height: 1.45;
+  margin-bottom: 0.7rem;
+}
+
+/* Lists inside cards */
+.card-list {
+  padding-left: 1.15rem;
+  margin: 0 0 0.7rem 0;
+  color: #334155;
+}
+.card-list li { margin: 0.3rem 0; }
+
+/* Push the CTA to the bottom so all cards appear the same height visually */
+.card-cta {
+  margin-top: auto;
+  display: inline-block;
+  color: #0366d6;
+  text-decoration: none;
+  font-weight: 600;
+  padding: 0.35rem 0;
+}
+.card-cta:hover, .card-cta:focus { text-decoration: underline; }
+
+/* Blockquote for testimonials */
+.main-card blockquote {
+  margin: 0.4rem 0;
+  padding-left: 0.6rem;
+  border-left: 3px solid rgba(3,102,214,0.12);
+  color: #0f172a;
+  font-style: italic;
+  font-size: 0.98rem;
+}
+
+/* Focus outlines for accessibility */
+.main-card a:focus,
+.main-card button:focus {
+  outline: 3px solid rgba(14, 165, 233, 0.18);
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+
+/* Slightly larger spacing on wide screens */
+@media (min-width: 900px) {
+  .cards { gap: 1.5rem; }
+}
+
+/* Smaller image box on very small screens to keep card balanced */
+@media (max-width: 420px) {
+  .card-media img {
+    width: 88px;
+    height: 88px;
+    padding: 6px;
+  }
+}
+/* Consolidated, improved site stylesheet
+   - Place at src/styles/style.css (or merge into your main stylesheet)
+   - Use <link rel="preconnect"> + <link href="https://fonts.googleapis.com/..." rel="stylesheet"> in HTML head instead of @import
+*/
+
+/* ---------------------------
+   Root variables / theme
+   --------------------------- */
+:root{
+  /* Core palette */
+  --bg: #f6f8fa;
+  --surface: #ffffff;
+  --muted: #6b7280;
+  --text: #0f172a;
+  --text-soft: #4b5563;
+  --primary: #4a90e2;      /* action color */
+  --accent: #764ba2;       /* brand secondary */
+  --danger: #ff6b6b;
+  --success: #16a34a;
+
+  /* UI */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --shadow-sm: 0 6px 18px rgba(2,6,23,0.06);
+  --shadow-md: 0 12px 34px rgba(2,6,23,0.08);
+
+  --nav-height: 64px;
+  --container-width: 1100px;
+
+  /* Motion */
+  --fast: 160ms;
+  --med: 280ms;
+}
+
+/* ---------------------------
+   Lightweight reset / base
+   --------------------------- */
+*,
+*::before,
+*::after { box-sizing: border-box; }
+
+html,body{ height:100%; }
+html{ font-size:16px; -webkit-text-size-adjust:100%; -ms-text-size-adjust:100%; }
+body{
+  margin:0;
+  min-height:100%;
+  background: var(--bg);
+  color: var(--text);
+  font-family: "Poppins", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  line-height:1.45;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+}
+
+/* ---------------------------
+   Container & layout helpers
+   --------------------------- */
+.container{
+  max-width: var(--container-width);
+  margin: 0 auto;
+  padding: 1rem;
+  width: 100%;
+}
+
+/* Simple responsive column helper */
+.row { display: flex; flex-wrap: wrap; gap: 1rem; }
+.col { flex: 1 1 0; }
+
+/* Visually hidden utility */
+.visually-hidden{
+  position:absolute!important;
+  height:1px; width:1px;
+  overflow:hidden; clip:rect(1px,1px,1px,1px);
+  white-space:nowrap;
+}
+
+/* Disable animations for users who prefer reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; animation: none !important; scroll-behavior: auto !important; }
+}
+
+/* ---------------------------
+   Header / Navbar (improved)
+   --------------------------- */
+.site-header{
+  position: sticky;
+  top: 0;
+  z-index: 1200;
+  background: linear-gradient(180deg, rgba(0,0,0,0.03), transparent), var(--accent);
+  color: #fff;
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  box-shadow: var(--shadow-sm);
+}
+
+.site-header .container{
+  display:flex;
+  align-items:center;
+  gap:1rem;
+  height: var(--nav-height);
+  padding: 0 0.75rem;
+}
+
+/* Brand */
+.site-brand{
+  display:flex;
+  gap:0.75rem;
+  align-items:center;
+  text-decoration:none;
+  color:inherit;
+}
+.site-brand img{ width: clamp(36px, 5.2vw, 56px); height:auto; display:block; }
+.brand-text{ font-weight:700; font-size: clamp(1rem, 2.4vw, 1.15rem); line-height:1; }
+
+/* Primary nav */
+.site-nav{
+  margin-left:auto;
+  display:flex;
+  gap:0.45rem;
+  align-items:center;
+}
+
+/* Link style: accessible and compact */
+.site-nav a{
+  color: inherit;
+  text-decoration: none;
+  padding: 0.45rem 0.7rem;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 0.98rem;
+  display:inline-flex;
+  align-items:center;
+  gap:0.6rem;
+  transition: transform var(--fast) ease, background var(--fast) ease, box-shadow var(--fast) ease;
+}
+
+/* Hover/focus */
+.site-nav a:hover,
+.site-nav a:focus{
+  background: rgba(255,255,255,0.08);
+  transform: translateY(-3px);
+  outline: none;
+  box-shadow: var(--shadow-sm);
+}
+
+/* CTA style */
+.nav-cta{
+  background: linear-gradient(90deg,var(--primary), #0366d6);
+  color: #fff;
+  padding: 0.45rem 0.9rem;
+  border-radius: 999px;
+  box-shadow: 0 6px 18px rgba(3,102,214,0.12);
+  font-weight:700;
+}
+
+/* Mobile toggle */
+.nav-toggle{
+  display:none;
+  margin-left:0.5rem;
+  background:transparent;
+  border:0;
+  color:inherit;
+  padding:0.35rem;
+  border-radius:8px;
+  cursor:pointer;
+}
+.nav-toggle:focus{ outline:3px solid rgba(255,255,255,0.12); outline-offset:2px; }
+
+/* Hamburger bars */
+.hamburger{
+  width:20px; height:2px;
+  background: currentColor;
+  display:inline-block;
+  position:relative;
+  transition: transform var(--fast) ease;
+}
+.hamburger::before,
+.hamburger::after{
+  content:"";
+  width:20px; height:2px; background:currentColor;
+  position:absolute; left:0;
+  transition: transform var(--fast) ease, opacity var(--fast) ease;
+}
+.hamburger::before{ top:-6px; }
+.hamburger::after{ top:6px; }
+
+/* ---------------------------
+   Mobile responsive behavior
+   --------------------------- */
+@media (max-width: 880px) {
+  .site-nav{
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: var(--nav-height);
+    background: linear-gradient(180deg, rgba(0,0,0,0.02), transparent), var(--accent);
+    flex-direction: column;
+    gap: 0.35rem;
+    padding: 0.6rem;
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition: max-height 320ms ease, opacity 220ms ease;
+    border-bottom-left-radius: 12px;
+    border-bottom-right-radius: 12px;
+  }
+
+  .site-nav a{
+    display:block;
+    padding: 0.9rem 1rem;
+    margin: 0.15rem 0;
+  }
+
+  .nav-toggle{ display:inline-flex; align-items:center; }
+
+  .site-nav[aria-expanded="true"]{
+    max-height: 480px; /* enough for typical nav */
+    opacity: 1;
+  }
+
+  /* transform hamburger into X when open (toggle handled by JS adding .is-open on header) */
+  .site-header.is-open .hamburger{ transform: rotate(45deg); }
+  .site-header.is-open .hamburger::before{ transform: rotate(90deg) translateX(0); top:0; }
+  .site-header.is-open .hamburger::after{ opacity: 0; }
+}
+
+/* ---------------------------
+   Buttons / Controls improvements
+   --------------------------- */
+.btn{
+  display:inline-flex;
+  align-items:center;
+  gap:.5rem;
+  padding: .55rem .8rem;
+  border-radius: 10px;
+  border: 0;
+  cursor:pointer;
+  font-weight: 700;
+  font-size: .95rem;
+  transition: transform var(--fast) ease, box-shadow var(--fast) ease, background var(--fast) ease;
+}
+
+.btn:focus{ outline: 3px solid rgba(74,144,226,0.14); outline-offset: 3px; }
+
+.btn-primary{
+  background: var(--primary);
+  color:#fff;
+  box-shadow: 0 8px 22px rgba(74,144,226,0.12);
+}
+.btn-primary:hover{ transform: translateY(-3px); }
+
+/* utility: ghost / secondary */
+.btn-ghost{
+  background:transparent;
+  border:1px solid rgba(15,23,42,0.06);
+  color:var(--text);
+}
+
+/* form inputs */
+input[type="text"], input[type="email"], input[type="date"], textarea, select {
+  width:100%;
+  padding: .6rem .7rem;
+  border-radius: 8px;
+  border: 1px solid #e6e9ee;
+  background: #fff;
+  font-size: .95rem;
+  color: var(--text);
+  box-shadow: inset 0 1px 0 rgba(16,24,40,0.02);
+}
+input:focus, textarea:focus, select:focus {
+  border-color: var(--primary);
+  box-shadow: 0 6px 18px rgba(74,144,226,0.08);
+  outline: none;
+}
+
+/* ---------------------------
+   Cards / grids / visuals
+   --------------------------- */
+.cards {
+  display:grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(260px,1fr));
+  align-items:start;
+  grid-auto-rows: 1fr;
+}
+
+.main-card{
+  background: var(--surface);
+  border-radius: var(--radius-md);
+  padding: 1.05rem;
+  display:flex;
+  flex-direction:column;
+  gap: .6rem;
+  box-shadow: var(--shadow-sm);
+  border: 1px solid rgba(2,6,23,0.03);
+  min-height: 100%;
+}
+
+/* card media */
+.card-media img{
+  width: 120px; height: 120px;
+  object-fit: contain;
+  border-radius: 8px;
+  background: #f8fafc;
+  padding: 8px;
+  display:block;
+  margin: 0 auto;
+}
+
+/* headings, text */
+.main-card h2{ margin: 0; color: var(--text); font-size: 1.05rem; }
+.card-text{ color: var(--text-soft); line-height:1.4; font-size: .95rem; }
+
+/* testimonials blockquote */
+blockquote{ margin: 0; padding-left: .6rem; border-left: 3px solid rgba(74,144,226,0.12); font-style: italic; color: var(--text); }
+
+/* ---------------------------
+   Accessibility & performance tips embedded
+   --------------------------- */
+/* Prefer transform/opacity for animations to avoid layout thrashing */
+.smooth-transform{ transition: transform var(--med) ease, opacity var(--med) ease; }
+
+/* Image utilities to improve LCP and give stable layout */
+.responsive-img{ width:100%; height:auto; display:block; max-width:100%; }
+
+/* Minor helpers */
+.text-center{ text-align:center; }
+.muted{ color: var(--muted); }
+
+/* ---------------------------
+   Footer
+   --------------------------- */
+.site-footer{
+  background: linear-gradient(180deg, rgba(0,0,0,0.04), transparent), var(--accent);
+  color: #fff;
+  padding: .9rem 0;
+  text-align:center;
+  margin-top: auto;
+}
+
+/* ---------------------------
+   Small responsive tweaks
+   --------------------------- */
+@media (max-width: 520px){
+  .container{ padding: .6rem; }
+  .brand-text{ font-size: 1rem; }
+  .main-card{ padding: .8rem; }
+  .card-media img{ width: 88px; height: 88px; }
+  .site-nav a{ font-size: .95rem; padding: .6rem .8rem; }
+}
