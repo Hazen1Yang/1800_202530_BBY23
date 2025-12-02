@@ -48,7 +48,7 @@ export async function logoutUser() {
 
 export function checkAuthState() {
   onAuthStateChanged(auth, (user) => {
-    if (window.location.pathname.endsWith("app_goals.html")) {
+    if (window.location.pathname.endsWith("main.html")) {
       if (user) {
         const displayName = user.displayName || user.email;
         document.getElementById(
