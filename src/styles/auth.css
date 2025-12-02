@@ -1,17 +1,4 @@
-:root {
-  --bg: #dbdbdb;
-  --ink: #141518;
-  --muted: #6b7280;
-  --brand: #cdd0ef;
-  --brand-strong: #413c58;
-  --accent-blue: #3b82f6;
-  --card: var(--white);
-  --radius: 28px;
-  --shadow-1: 0 12px 24px rgba(0, 0, 0, 0.08),
-    0 24px 48px rgba(135, 142, 216, 0.18), 0 0 6px rgba(135, 142, 216, 0.12);
-  --shadow-2: 0 6px 12px rgba(135, 142, 216, 0.25),
-    0 2px 6px rgba(0, 0, 0, 0.08);
-}
+/* Auth page styles - uses global color variables from style.css */
 
 /* Reset */
 * {

@@ -4,19 +4,8 @@
      <link rel="preconnect" href="https://fonts.googleapis.com">
      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
      <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+   Uses global color variables from style.css
 */
-
-/* ---- Lightweight defaults / reuse your existing variables ---- */
-:root {
-  --nav-bg: var(--secondary-color, #764ba2);
-  --nav-contrast: rgba(255,255,255,0.96);
-  --nav-accent: var(--extra-color, #4a90e2);
-  --nav-height: 64px;
-  --nav-gap: 0.6rem;
-  --radius-sm: 8px;
-  --trans-fast: 160ms;
-  --shadow-sm: 0 6px 18px rgba(0,0,0,0.08);
-}
 
 /* Container */
 .site-header {

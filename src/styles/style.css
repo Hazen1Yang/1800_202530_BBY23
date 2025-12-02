@@ -2,22 +2,74 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap");
 
 :root {
-  --primary-color: #eef7ff;
-  --extra-color: #4a90e2;
-  --secondary-color: #764ba2;
-  --accent-color: #ff6b6b;
-  --dark-blue: #2c3e50;
-  --light-bg: #f8f9fa;
+  /* Core color palette */
+  --primary: #4a90e2;           /* Primary action color (blue) */
+  --secondary: #764ba2;         /* Secondary/brand color (purple) */
+  --accent: #764ba2;            /* Accent color (same as secondary) */
+  --danger: #ff6b6b;            /* Error/danger color (red) */
+  --success: #27ae60;           /* Success color (green) */
+  
+  /* Background colors */
+  --bg: #f6f8fa;                /* Main background */
+  --surface: #ffffff;           /* Card/surface background */
+  --light-bg: #f8f9fa;          /* Light background variant */
+  --primary-color: #eef7ff;     /* Primary background tint */
+  
+  /* Text colors */
+  --text: #0f172a;              /* Primary text */
+  --text-dark: #333333;         /* Dark text variant */
+  --text-light: #666666;        /* Light text variant */
+  --text-soft: #4b5563;         /* Soft text variant */
+  --muted: #6b7280;             /* Muted/disabled text */
+  --ink: #141518;               /* Darkest text */
+  
+  /* Semantic colors */
   --white: #ffffff;
-  --text-dark: #333333;
-  --text-light: #666666;
-  --success: #27ae60;
-  --shadow: rgba(0, 0, 0, 0.1);
+  --brand: #cdd0ef;             /* Light brand color */
+  --brand-strong: #413c58;      /* Strong brand color */
+  --accent-blue: #3b82f6;       /* Accent blue variant */
+  
+  /* Legacy named colors (for compatibility) */
+  --extra-color: #4a90e2;       /* Alias for --primary */
+  --secondary-color: #764ba2;   /* Alias for --secondary */
+  --accent-color: #ff6b6b;      /* Alias for --danger */
+  --dark-blue: #2c3e50;
   --yale-blue: #134074ff;
   --berkeley-blue: #13315cff;
   --oxford-blue: #0b2545ff;
   --powder-blue: #8da9c4ff;
   --mint-cream: #eef4edff;
+  
+  /* UI variables */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius: 28px;               /* Large radius for cards */
+  --shadow: rgba(0, 0, 0, 0.1);
+  --shadow-sm: 0 6px 18px rgba(2, 6, 23, 0.06);
+  --shadow-md: 0 12px 34px rgba(2, 6, 23, 0.08);
+  --shadow-1: 0 12px 24px rgba(0, 0, 0, 0.08), 0 24px 48px rgba(135, 142, 216, 0.18), 0 0 6px rgba(135, 142, 216, 0.12);
+  --shadow-2: 0 6px 12px rgba(135, 142, 216, 0.25), 0 2px 6px rgba(0, 0, 0, 0.08);
+  
+  /* Layout */
+  --nav-height: 64px;
+  --container-width: 1100px;
+  --gap: 1rem;
+  
+  /* Navigation colors */
+  --nav-bg: var(--secondary);
+  --nav-contrast: rgba(255, 255, 255, 0.96);
+  --nav-accent: var(--primary);
+  
+  /* Specific UI elements */
+  --topbar-bg: #e6e6e6;
+  --pill-bg: #e6e6e6;
+  --bottombar-bg: #3b3b3b;
+  --card: var(--white);
+  
+  /* Transitions */
+  --fast: 160ms;
+  --med: 280ms;
+  --trans-fast: 160ms;
 }
 
 * {
@@ -550,35 +602,6 @@ main {
    - Place at src/styles/style.css (or merge into your main stylesheet)
    - Use <link rel="preconnect"> + <link href="https://fonts.googleapis.com/..." rel="stylesheet"> in HTML head instead of @import
 */
-
-/* ---------------------------
-   Root variables / theme
-   --------------------------- */
-:root{
-  /* Core palette */
-  --bg: #f6f8fa;
-  --surface: #ffffff;
-  --muted: #6b7280;
-  --text: #0f172a;
-  --text-soft: #4b5563;
-  --primary: #4a90e2;      /* action color */
-  --accent: #764ba2;       /* brand secondary */
-  --danger: #ff6b6b;
-  --success: #16a34a;
-
-  /* UI */
-  --radius-sm: 8px;
-  --radius-md: 12px;
-  --shadow-sm: 0 6px 18px rgba(2,6,23,0.06);
-  --shadow-md: 0 12px 34px rgba(2,6,23,0.08);
-
-  --nav-height: 64px;
-  --container-width: 1100px;
-
-  /* Motion */
-  --fast: 160ms;
-  --med: 280ms;
-}
 
 /* ---------------------------
    Lightweight reset / base

@@ -1,12 +1,4 @@
-/* Base and layout */
-:root {
-  --topbar-bg: #e6e6e6;
-  --pill-bg: #e6e6e6;
-  --bottombar-bg: #3b3b3b;
-  --accent: #000;
-  --primary-color: #4a90e2;
-  --secondary-color: #7b68ee;
-}
+/* Base and layout - uses global color variables from style.css */
 
 * {
   box-sizing: border-box;

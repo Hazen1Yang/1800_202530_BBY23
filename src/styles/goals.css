@@ -1,12 +1,4 @@
-/* Goals page styles */
-:root {
-  --bg: #f6f8fa;
-  --card: #ffffff;
-  --accent: #2b8ef9;
-  --muted: #6b7280;
-  --radius: 8px;
-  --gap: 1rem;
-}
+/* Goals page styles - uses global color variables from style.css */
 
 html, body {
   height: 100%;

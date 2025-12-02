@@ -3,20 +3,13 @@
    Include after story-cards.css so it can override if needed:
      <link rel="stylesheet" href="src/styles/story-cards.css" />
      <link rel="stylesheet" href="src/styles/testimonials.css" />
+   Uses global color variables from style.css
 */
-
-:root{
-  --container-padding: 1rem;
-  --muted: #6b7280;
-  --accent: #0366d6;
-  --success: #065f46;
-  --danger: #b91c1c;
-}
 
 .container {
   max-width: 1100px;
   margin: 0 auto;
-  padding: var(--container-padding);
+  padding: 1rem;
 }
 
 /* Header / Footer basics */
