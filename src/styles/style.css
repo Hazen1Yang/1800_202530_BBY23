@@ -5,7 +5,7 @@
   /* Core color palette */
   --primary: #4a90e2;           /* Primary action color (blue) */
   --secondary: #764ba2;         /* Secondary/brand color (purple) */
-  --accent: #764ba2;            /* Accent color (same as secondary) */
+  --accent: var(--secondary);   /* Accent color (same as secondary) */
   --danger: #ff6b6b;            /* Error/danger color (red) */
   --success: #27ae60;           /* Success color (green) */
   
@@ -53,6 +53,7 @@
   /* Layout */
   --nav-height: 64px;
   --container-width: 1100px;
+  --container-padding: 1rem;
   --gap: 1rem;
   
   /* Navigation colors */
