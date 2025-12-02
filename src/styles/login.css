@@ -84,7 +84,7 @@
   border-radius: 10px;
   font-weight: 700;
   background: linear-gradient(90deg,var(--primary,#4a90e2), #0366d6);
-  color: #fff;
+  color: var(--white);
   border: none;
   cursor: pointer;
   box-shadow: 0 10px 30px rgba(3,102,214,0.12);

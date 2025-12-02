@@ -14,7 +14,7 @@
   text-align: center;
   margin-bottom: 40px;
   padding: 30px 20px;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
   border-radius: 10px;
   color: white;
 }
@@ -53,7 +53,7 @@
 
 .search-box input:focus {
   outline: none;
-  border-color: #667eea;
+  border-color: var(--primary);
   box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
 }
 
@@ -68,9 +68,9 @@
   padding: 10px 20px;
   font-size: 14px;
   font-weight: 600;
-  border: 2px solid #667eea;
+  border: 2px solid var(--primary);
   background: white;
-  color: #667eea;
+  color: var(--primary);
   border-radius: 25px;
   cursor: pointer;
   transition: all 0.3s;
@@ -82,7 +82,7 @@
 }
 
 .filter-btn.active {
-  background: #667eea;
+  background: var(--primary);
   color: white;
   box-shadow: 0 4px 8px rgba(102, 126, 234, 0.3);
 }
@@ -94,15 +94,15 @@
 
 .category-title {
   font-size: 28px;
-  color: #333;
+  color: var(--text-dark);
   margin-bottom: 15px;
-  border-bottom: 3px solid #667eea;
+  border-bottom: 3px solid var(--primary);
   padding-bottom: 10px;
 }
 
 .category-description {
   font-size: 16px;
-  color: #666;
+  color: var(--text-light);
   margin-bottom: 25px;
   line-height: 1.6;
 }
@@ -126,7 +126,7 @@
 }
 
 .program-card:hover {
-  border-color: #667eea;
+  border-color: var(--primary);
   box-shadow: 0 6px 20px rgba(102, 126, 234, 0.15);
   transform: translateY(-3px);
 }
@@ -138,20 +138,20 @@
 }
 
 .program-name a {
-  color: #333;
+  color: var(--text-dark);
   text-decoration: none;
   font-weight: 600;
   transition: color 0.3s;
 }
 
 .program-name a:hover {
-  color: #667eea;
+  color: var(--primary);
   text-decoration: underline;
 }
 
 .program-area {
   font-size: 14px;
-  color: #667eea;
+  color: var(--primary);
   font-weight: 600;
   margin-bottom: 10px;
   text-transform: uppercase;
@@ -160,7 +160,7 @@
 
 .program-description {
   font-size: 14px;
-  color: #666;
+  color: var(--text-light);
   line-height: 1.5;
   margin: 0;
   flex-grow: 1;
@@ -176,7 +176,7 @@
 
 .resources-section h2 {
   font-size: 28px;
-  color: #333;
+  color: var(--text-dark);
   margin-bottom: 25px;
   text-align: center;
 }
@@ -204,13 +204,13 @@
 
 .resource-card h3 {
   font-size: 20px;
-  color: #333;
+  color: var(--text-dark);
   margin-bottom: 10px;
 }
 
 .resource-card p {
   font-size: 14px;
-  color: #666;
+  color: var(--text-light);
   margin-bottom: 20px;
   line-height: 1.6;
 }
@@ -237,7 +237,7 @@
 }
 
 .btn-primary {
-  background: #667eea;
+  background: var(--primary);
   color: white;
   box-shadow: 0 4px 6px rgba(102, 126, 234, 0.3);
 }
@@ -250,8 +250,8 @@
 
 .btn-secondary {
   background: white;
-  color: #667eea;
-  border: 2px solid #667eea;
+  color: var(--primary);
+  border: 2px solid var(--primary);
 }
 
 .btn-secondary:hover {

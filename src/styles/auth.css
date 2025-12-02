@@ -130,7 +130,7 @@ input:focus {
 
 /* Error text */
 .error {
-  color: #b00020;
+  color: var(--danger);
   min-height: 1em;
   font-size: 13px;
 }

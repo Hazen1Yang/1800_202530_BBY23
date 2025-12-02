@@ -93,7 +93,7 @@
 
 .advisor-email {
   font-size: 0.85rem;
-  color: #555;
+  color: var(--text-soft);
 }
 
 .next-steps {
@@ -203,7 +203,7 @@
 
 .advisor-email {
   font-size: 0.85rem;
-  color: #555;
+  color: var(--text-soft);
 }
 
 .next-steps {
@@ -224,5 +224,5 @@
 .score-summary {
   margin: 0.6rem 0 1rem;
   font-size: 0.9rem;
-  color: #444;
+  color: var(--text-dark);
 }
