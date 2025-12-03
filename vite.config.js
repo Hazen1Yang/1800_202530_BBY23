@@ -7,7 +7,6 @@ import viteCompression from "vite-plugin-compression";
 export default defineConfig({
   build: {
     minify: 'terser',
-    cssMinify: true,
     rollupOptions: {
       input: {
         index: resolve(__dirname, "index.html"),
