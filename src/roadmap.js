@@ -96,12 +96,3 @@ document.addEventListener("DOMContentLoaded", () => {
   // Later we could also customize steps based on track
   // e.g., highlight tech links more if categoryCode === 'T'
 });
-.track-blurb {
-  margin-top: 0.25rem;
-}
-
-.score-line {
-  margin-top: 0.15rem;
-  font-size: 0.85rem;
-  color: #6b7280;
-}
