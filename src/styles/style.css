@@ -36,18 +36,15 @@
 /* =========================================
    3. BASE & RESET
    ========================================= */
-* {
+*,
+*::before,
+*::after { 
   box-sizing: border-box;
   margin: 0;
 }
 
-*,
-*::before,
-*::after { box-sizing: border-box; }
-
 html {
   scroll-behavior: smooth;
-  scroll-behavior: smooth; /* Duplicate kept per instruction */
   height: 100%;
   font-size: 16px; 
   -webkit-text-size-adjust: 100%; 
@@ -55,7 +52,6 @@ html {
 }
 
 body {
-  /* Original Body Style */
   display: flex;
   flex-direction: column;
   min-height: 100vh;
@@ -66,13 +62,7 @@ body {
   line-height: 1.6;
   background-color: var(--primary-color);
   background-attachment: fixed;
-  
-  /* New Body Style Merged properties */
   margin: 0;
-  background: var(--bg); /* This will override primary-color above */
-  color: var(--text);    /* This will override text-dark above */
-  font-family: "Poppins", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-  line-height: 1.45;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -359,8 +349,6 @@ site-navbar {
     border-bottom-left-radius: 12px;
     border-bottom-right-radius: 12px;
   }
-}
-
 
   .site-nav a {
     display:block;
@@ -384,9 +372,7 @@ site-navbar {
 /* =========================================
    7. BUTTONS & FORMS
    ========================================= */
-//* =========================================
-   BUTTONS
-========================================= */
+/* BUTTONS */
 .btn {
   display: inline-flex;
   align-items: center;
@@ -728,8 +714,6 @@ figcaption:hover {
 
 .muted {
   color: var(--text-light);
-  /* New */
-  color: var(--muted);
 }
 
 .left {
@@ -860,79 +844,5 @@ figcaption:hover {
   border-radius: 12px;
   font-weight: 600;
   box-shadow: 0 3px 10px rgba(0,0,0,0.15);
-}
-.site-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 1rem 1.4rem;
-  background: white;
-  border-bottom: 1px solid #eee;
-}
-
-.site-nav ul {
-  display: flex;
-  gap: 1rem;
-  list-style: none;
-}
-
-.site-nav a {
-  text-decoration: none;
-  font-weight: 600;
-  color: #333;
-}
-
-.nav-toggle {
-  display: none;
-  background: none;
-  font-size: 1.8rem;
-  border: none;
-}
-
-@media (max-width: 720px) {
-  .nav-toggle {
-    display: block;
-  }
-  .site-nav {
-    display: none;
-  }
-  .site-header.is-open .site-nav {
-    display: block;
-  }
-}
-.pf-navbar {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0.9rem 1.4rem;
-  background: #ffffff;
-  border-bottom: 1px solid #e5e7eb;
-  position: sticky;
-  top: 0;
-  z-index: 999;
-}
-
-.pf-logo {
-  width: 48px;
-  height: auto;
-}
-
-.pf-nav ul {
-  list-style: none;
-  display: flex;
-  gap: 1.2rem;
-  margin: 0;
-  padding: 0;
-}
-
-.pf-nav a {
-  text-decoration: none;
-  color: #333;
-  font-weight: 600;
-  transition: color 0.2s ease;
-}
-
-.pf-nav a:hover {
-  color: #764ba2;
 }
 
