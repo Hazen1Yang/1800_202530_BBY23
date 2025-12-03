@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pathfinder – Careers</title>
+
+  <link rel="icon" href="public/images/logo.png" type="image/png" />
+
+  <!-- MAIN GLOBAL STYLES -->
+  <link rel="stylesheet" href="src/styles/style.css" />
+  <link rel="stylesheet" href="src/styles/careers.css" />
+
+  <!-- NAVBAR COMPONENT (REQUIRED FOR <site-navbar>) -->
+  <script type="module" src="src/components/site-navbar.js"></script>
+
+  <!-- CAREERS PAGE SCRIPT -->
+  <script type="module" src="src/careers.js"></script>
+</head>
+
+<body>
+  <!-- NAVBAR -->
+  <site-navbar></site-navbar>
+
+  <!-- HERO SECTION -->
+  <section class="career-hero">
+    <h1>Explore Careers in Canada</h1>
+    <p class="career-subtitle">Search careers and explore real salary, NOC, skills, and outlook.</p>
+
+    <input 
+      id="careerSearch" 
+      placeholder="Search careers…" 
+      class="career-search"
+    />
+  </section>
+
+  <!-- CAREER GRID -->
+  <div id="careerGrid" class="career-grid"></div>
+
+  <!-- CAREER MODAL -->
+  <div id="careerModal" class="career-modal hidden">
+    <div class="career-modal-content">
+      <button class="close-modal" id="closeModal">×</button>
+      <div id="modalBody"></div>
+    </div>
+  </div>
+
+</body>
+</html>

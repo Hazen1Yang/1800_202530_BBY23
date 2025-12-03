@@ -1,0 +1,105 @@
+/* HERO */
+.career-hero {
+  text-align: center;
+  padding: 3rem 1rem 2rem;
+  background: var(--light-bg);
+}
+
+.career-hero h1 {
+  color: var(--primary-color);
+  font-size: clamp(2rem, 5vw, 3rem);
+  margin-bottom: 0.4rem;
+}
+
+.career-subtitle {
+  color: var(--text-light);
+  margin-bottom: 1.2rem;
+}
+
+.career-search {
+  width: min(420px, 90%);
+  padding: 0.8rem 1rem;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+}
+
+/* GRID */
+.career-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.4rem;
+  padding: 2rem 1.4rem;
+}
+
+.career-card {
+  background: var(--white);
+  padding: 1.4rem;
+  border-radius: 14px;
+  box-shadow: var(--shadow);
+  border-left: 6px solid var(--extra-color);
+  transition: transform .2s, box-shadow .2s;
+}
+
+.career-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 26px rgba(0,0,0,0.08);
+}
+
+.career-card h3 {
+  margin-top: 0;
+  margin-bottom: 0.6rem;
+}
+
+.career-card p {
+  margin: 0.25rem 0;
+}
+
+.view-btn {
+  margin-top: 1rem;
+  background: var(--secondary-color);
+  color: white;
+  border: none;
+  padding: 0.6rem 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.view-btn:hover {
+  background: var(--accent-color);
+}
+
+/* MODAL */
+.career-modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.55);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+}
+
+.hidden {
+  display: none;
+}
+
+.career-modal-content {
+  background: var(--white);
+  width: min(600px, 90%);
+  padding: 2rem;
+  border-radius: 14px;
+  position: relative;
+  box-shadow: var(--shadow);
+}
+
+.close-modal {
+  position: absolute;
+  top: 12px;
+  right: 14px;
+  background: none;
+  border: none;
+  font-size: 2rem;
+  cursor: pointer;
+}

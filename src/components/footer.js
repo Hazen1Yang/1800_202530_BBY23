@@ -2,15 +2,15 @@ class SiteFooter extends HTMLElement {
   connectedCallback() {
     this.innerHTML = `
       <!-- Bottom Navigation Bar -->
-      <nav class="bottombar">
+      <nav class="bottombar" role="navigation" aria-label="Bottom navigation">
         <img
           src="https://www.svgrepo.com/show/343466/news-feed.svg"
           class="icon left-icon"
           alt="news"
         />
 
-        <div class="home-pill">
-          <a href="index.html">
+        <div class="home-pill" aria-hidden="false">
+          <a href="index.html" aria-label="Home">
             <img
               class="home-button"
               src="https://www.svgrepo.com/show/521703/home.svg"
@@ -27,7 +27,7 @@ class SiteFooter extends HTMLElement {
       </nav>
 
       <!-- Real Page Footer -->
-      <footer class="page-footer">
+      <footer class="page-footer" role="contentinfo" style="padding:1rem;text-align:center;">
         <h3 class="footer-title">Pathfinder</h3>
         <p class="footer-team">Created by Hazen, Matthew & Melina</p>
       </footer>
@@ -35,4 +35,4 @@ class SiteFooter extends HTMLElement {
   }
 }
 
-customElements.define("site-footer", SiteFooter);
+customElements.define('site-footer', SiteFooter);

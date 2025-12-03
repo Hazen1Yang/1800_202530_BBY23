@@ -1,0 +1,55 @@
+[
+  {
+    "id": "software-developer",
+    "title": "Software Developer",
+    "noc": "21232",
+    "salary_bc_low": 28,
+    "salary_bc_high": 62,
+    "outlook_bc": "Good",
+    "skills": [
+      "JavaScript", "Databases", "Testing", "Version Control"
+    ],
+    "education": "Diploma or Bachelor's in Computer Science or related field.",
+    "duties": [
+      "Write and modify software code",
+      "Test and maintain applications",
+      "Collaborate with technical teams"
+    ],
+    "link_workbc": "https://www.workbc.ca/career-profiles/software-developer",
+    "link_jobbank": "https://www.jobbank.gc.ca/marketreport/summary-occupation/2173/ca"
+  },
+  {
+    "id": "web-developer",
+    "title": "Web Developer",
+    "noc": "21234",
+    "salary_bc_low": 24,
+    "salary_bc_high": 48,
+    "outlook_bc": "Good",
+    "skills": ["HTML/CSS", "JavaScript", "React", "Responsive Design"],
+    "education": "Diploma in web development or computer science.",
+    "duties": [
+      "Develop websites",
+      "Optimize performance",
+      "Maintain and update web content"
+    ],
+    "link_workbc": "https://www.workbc.ca/career-profiles/web-designer-and-developer",
+    "link_jobbank": "https://www.jobbank.gc.ca/marketreport/summary-occupation/2175/ca"
+  },
+  {
+    "id": "it-support",
+    "title": "IT Support Technician",
+    "noc": "22220",
+    "salary_bc_low": 22,
+    "salary_bc_high": 38,
+    "outlook_bc": "Good",
+    "skills": ["Troubleshooting", "Customer Support", "Networking"],
+    "education": "Diploma or certificate in IT.",
+    "duties": [
+      "Answer technical support tickets",
+      "Maintain hardware/software",
+      "Provide customer assistance"
+    ],
+    "link_workbc": "https://www.workbc.ca/career-profiles/user-support-technician",
+    "link_jobbank": "https://www.jobbank.gc.ca/marketreport/summary-occupation/2282/ca"
+  }
+]

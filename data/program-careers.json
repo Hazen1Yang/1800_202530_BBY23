@@ -1,0 +1,29 @@
+{
+  "computer-systems-technology-cst": [
+    "software-developer",
+    "web-developer",
+    "it-support",
+    "systems-analyst",
+    "database-analyst"
+  ],
+  "computer-information-technology-cit": [
+    "it-support",
+    "network-administrator",
+    "systems-analyst"
+  ],
+  "digital-design-development": [
+    "web-developer",
+    "ui-ux-designer",
+    "front-end-developer"
+  ],
+  "business-administration": [
+    "administrative-assistant",
+    "marketing-specialist",
+    "business-analyst"
+  ],
+  "marketing-management": [
+    "marketing-specialist",
+    "digital-marketer",
+    "social-media-manager"
+  ]
+}

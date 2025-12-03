@@ -1,49 +1,49 @@
 /* ============================
-   ROADMAP PAGE (BRAND THEME)
+   ROADMAP PAGE (SAFE VERSION)
    ============================ */
 
 /* PAGE LAYOUT */
 .roadmap-page {
   max-width: 980px;
-  margin: 0 auto;
+  margin: 120px auto 0; /* keeps navbar clean */
   padding: 1.75rem 1.25rem 3rem;
 }
 
 /* HERO / INTRO */
-.roadmap-hero {
+.roadmap-page .roadmap-hero {
   text-align: left;
   margin-bottom: 2rem;
 }
 
-.roadmap-hero h1 {
+.roadmap-page .roadmap-hero h1 {
   font-size: 2rem;
   margin-bottom: 0.5rem;
 }
 
-.roadmap-hero p {
+.roadmap-page .roadmap-hero p {
   margin-bottom: 0.4rem;
   line-height: 1.6;
 }
 
-.roadmap-hero a {
+.roadmap-page .roadmap-hero a {
   text-decoration: underline;
 }
 
-.roadmap-subtitle {
+.roadmap-page .roadmap-subtitle {
   font-size: 0.95rem;
   color: var(--text-light);
   margin-top: 0.35rem;
 }
 
 /* SUMMARY CARDS */
-.roadmap-summary {
+.roadmap-page .roadmap-summary {
   display: grid;
   grid-template-columns: minmax(0, 1fr);
   gap: 1rem;
   margin-bottom: 2.2rem;
 }
 
-.roadmap-card {
+.roadmap-page .roadmap-card {
   background: var(--white);
   border-radius: 14px;
   padding: 1.1rem 1.2rem 1rem;
@@ -53,7 +53,7 @@
   overflow: hidden;
 }
 
-.roadmap-card::before {
+.roadmap-page .roadmap-card::before {
   content: "";
   position: absolute;
   inset: 0;
@@ -65,33 +65,33 @@
   pointer-events: none;
 }
 
-.roadmap-card h2 {
+.roadmap-page .roadmap-card h2 {
   margin: 0 0 0.4rem;
   font-size: 1.15rem;
 }
 
-.roadmap-card p {
+.roadmap-page .roadmap-card p {
   margin-bottom: 0.6rem;
 }
 
-.roadmap-card ul {
+.roadmap-page .roadmap-card ul {
   padding-left: 1.2rem;
   margin-top: 0.2rem;
 }
 
 /* TIMELINE LAYOUT */
-.roadmap-steps {
+.roadmap-page .roadmap-steps {
   margin-bottom: 2.4rem;
   position: relative;
 }
 
-.roadmap-steps > h2 {
+.roadmap-page .roadmap-steps > h2 {
   font-size: 1.45rem;
   margin-bottom: 1.2rem;
 }
 
 /* Vertical timeline line */
-.roadmap-steps::before {
+.roadmap-page .roadmap-steps::before {
   content: "";
   position: absolute;
   left: 18px;
@@ -108,7 +108,7 @@
 }
 
 /* EACH STEP */
-.roadmap-step {
+.roadmap-page .roadmap-step {
   background: var(--white);
   border-radius: 14px;
   padding: 0.95rem 1.1rem 1.1rem;
@@ -118,8 +118,7 @@
   position: relative;
 }
 
-/* connector dot */
-.roadmap-step::before {
+.roadmap-page .roadmap-step::before {
   content: "";
   position: absolute;
   left: -16px;
@@ -131,14 +130,14 @@
   box-shadow: 0 0 0 4px rgba(122, 97, 177, 0.45);
 }
 
-.step-header {
+.roadmap-page .step-header {
   display: flex;
   align-items: center;
   gap: 0.7rem;
   margin-bottom: 0.35rem;
 }
 
-.step-number {
+.roadmap-page .step-number {
   width: 30px;
   height: 30px;
   border-radius: 999px;
@@ -152,33 +151,33 @@
   flex-shrink: 0;
 }
 
-.step-header h3 {
+.roadmap-page .step-header h3 {
   margin: 0;
   font-size: 1.05rem;
 }
 
-.roadmap-step p {
+.roadmap-page .roadmap-step p {
   margin: 0.35rem 0 0.5rem;
   line-height: 1.5;
 }
 
-.roadmap-step ul {
+.roadmap-page .roadmap-step ul {
   padding-left: 1.2rem;
   margin: 0.1rem 0 0.6rem;
 }
 
-.roadmap-step li {
+.roadmap-page .roadmap-step li {
   margin-bottom: 0.3rem;
 }
 
-.tip {
+.roadmap-page .tip {
   font-size: 0.9rem;
   color: var(--text-light);
   font-style: italic;
 }
 
 /* STEP LINKS */
-.step-links {
+.roadmap-page .step-links {
   display: flex;
   flex-wrap: wrap;
   gap: 0.5rem;
@@ -186,7 +185,7 @@
 }
 
 /* FOOTER SECTION */
-.roadmap-footer-section {
+.roadmap-page .roadmap-footer-section {
   margin-top: 2rem;
   padding: 1.3rem 1.2rem 1.1rem;
   border-radius: 16px;
@@ -194,16 +193,16 @@
   background: linear-gradient(to right, var(--light-bg), var(--white));
 }
 
-.roadmap-footer-section h2 {
+.roadmap-page .roadmap-footer-section h2 {
   margin: 0 0 0.45rem;
   font-size: 1.2rem;
 }
 
-.roadmap-footer-section p {
+.roadmap-page .roadmap-footer-section p {
   margin-bottom: 0.7rem;
 }
 
-.roadmap-footer-actions {
+.roadmap-page .roadmap-footer-actions {
   display: flex;
   flex-wrap: wrap;
   gap: 0.6rem;
@@ -227,11 +226,11 @@
 }
 
 /* JS-added lines */
-.track-blurb {
+.roadmap-page .track-blurb {
   margin-top: 0.25rem;
 }
 
-.score-line {
+.roadmap-page .score-line {
   margin-top: 0.15rem;
   font-size: 0.85rem;
   color: var(--text-light);
@@ -239,11 +238,11 @@
 
 /* RESPONSIVE */
 @media (min-width: 720px) {
-  .roadmap-summary {
+  .roadmap-page .roadmap-summary {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
-  .roadmap-steps {
+  .roadmap-page .roadmap-steps {
     padding-left: 0.3rem;
   }
 }
@@ -252,7 +251,7 @@
    BRAND SIGNATURE — END FLOURISH
    ============================================ */
 
-.roadmap-end {
+.roadmap-page .roadmap-end {
   margin-top: 3rem;
   display: flex;
   align-items: center;
@@ -260,7 +259,7 @@
   opacity: 0.9;
 }
 
-.roadmap-end-line {
+.roadmap-page .roadmap-end-line {
   width: 70%;
   height: 3px;
   border-radius: 999px;
@@ -274,8 +273,7 @@
   overflow: hidden;
 }
 
-/* bright glowing orb animation */
-.roadmap-end-line::after {
+.roadmap-page .roadmap-end-line::after {
   content: "";
   position: absolute;
   top: -5px;
