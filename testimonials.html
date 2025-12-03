@@ -8,22 +8,16 @@
   <!-- Use src/styles so the stylesheet is found when this HTML is requested from project root -->
   <link rel="stylesheet" href="src/styles/story-cards.css" />
   <link rel="stylesheet" href="src/styles/testimonials.css" />
+
+
+  <script type="module" src="src/components/site-navbar.js"></script>
+  <script type="module" src="src/components/navbar.js"></script>
 </head>
 <body>
-  <header class="site-header">
-    <div class="container">
-      <h1 class="site-title">Pathfinder</h1>
-      <nav class="site-nav" aria-label="Main navigation">
-        <a href="index.html">Home</a>
-        <a href="features.html">Features</a>
-        <a href="quiz.html">Quiz</a>
-        <a href="testimonials.html" aria-current="page">Testimonials</a>
-        <a href="contact.html">Contact</a>
-      </nav>
-    </div>
-  </header>
-
+ 
+  <site-navbar></site-navbar>
   <main class="container">
+    
     <section class="hero">
       <h2>What Students Say</h2>
       <p class="lead">Real feedback from real users — see how Pathfinder helped students find direction and confidence.</p>
