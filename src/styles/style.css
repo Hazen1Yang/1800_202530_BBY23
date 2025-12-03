@@ -273,8 +273,6 @@ header ul {
     border-bottom-right-radius: 12px;
   }
 
-<<<<<<< HEAD
-=======
   .site-nav a {
     display:block;
     padding: 0.9rem 1rem;
@@ -289,22 +287,14 @@ header ul {
   }
 
   /* transform hamburger into X when open (toggle handled by JS adding .is-open on header) */
->>>>>>> 8f2ffae7e4392e431195000d1a8647f326464c9b
   .site-header.is-open .hamburger { transform: rotate(45deg); }
   .site-header.is-open .hamburger::before { transform: rotate(90deg) translateX(0); top:0; }
   .site-header.is-open .hamburger::after { opacity: 0; }
 }
 
-
 /* =========================================
    7. BUTTONS
    ========================================= */
-<<<<<<< HEAD
-=======
-/* =========================================
-   BUTTONS
-   ========================================= */
->>>>>>> 8f2ffae7e4392e431195000d1a8647f326464c9b
 .btn {
   display: inline-flex;
   align-items: center;
@@ -779,7 +769,6 @@ site-navbar {
   z-index: 2000;
 }
 
-<<<<<<< HEAD
 /* NAVBAR CONTAINER */
 .site-header {
   display: flex;
@@ -815,7 +804,8 @@ site-navbar {
 
 .site-nav a:hover {
   color: #6E4E9E;
-=======
+}
+
 /* Hero button style */
 #indexAuthBtn {
   background: rgba(255, 255, 255, 0.85);
@@ -824,7 +814,6 @@ site-navbar {
   border-radius: 12px;
   font-weight: 600;
   box-shadow: 0 3px 10px rgba(0,0,0,0.15);
->>>>>>> 8f2ffae7e4392e431195000d1a8647f326464c9b
 }
 
 /* HAMBURGER */

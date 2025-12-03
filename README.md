@@ -33,13 +33,22 @@ PathFinder is a client-side web application (HTML/CSS/JavaScript) created for th
 npm install
 ```
 
-2. Start the dev server:
+2. Set up Firebase configuration:
+
+   - Copy `.env.example` to `.env`:
+     ```powershell
+     cp .env.example .env
+     ```
+   - Edit `.env` and add your Firebase project credentials
+   - Get these values from your Firebase project settings at https://console.firebase.google.com/
+
+3. Start the dev server:
 
 ```powershell
 npm run dev
 ```
 
-3. Open the app in your browser at `http://localhost:3000` or `http://localhost:5173`
+4. Open the app in your browser at `http://localhost:3000` or `http://localhost:5173`
 
 Notes:
 
