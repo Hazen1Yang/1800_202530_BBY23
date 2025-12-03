@@ -94,6 +94,10 @@
   display: none;
 }
 
+.hidden {
+  display: none;
+}
+
 .quiz-result-card {
   background: #ffffff;
   border-radius: 12px;

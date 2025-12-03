@@ -1,0 +1,296 @@
+/* ============================
+   ROADMAP PAGE (BRAND THEME)
+   ============================ */
+
+/* PAGE LAYOUT */
+.roadmap-page {
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 1.75rem 1.25rem 3rem;
+}
+
+/* HERO / INTRO */
+.roadmap-hero {
+  text-align: left;
+  margin-bottom: 2rem;
+}
+
+.roadmap-hero h1 {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+.roadmap-hero p {
+  margin-bottom: 0.4rem;
+  line-height: 1.6;
+}
+
+.roadmap-hero a {
+  text-decoration: underline;
+}
+
+.roadmap-subtitle {
+  font-size: 0.95rem;
+  color: var(--text-light);
+  margin-top: 0.35rem;
+}
+
+/* SUMMARY CARDS */
+.roadmap-summary {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 1rem;
+  margin-bottom: 2.2rem;
+}
+
+.roadmap-card {
+  background: var(--white);
+  border-radius: 14px;
+  padding: 1.1rem 1.2rem 1rem;
+  border: 1px solid #e2e8f0;
+  box-shadow: var(--shadow);
+  position: relative;
+  overflow: hidden;
+}
+
+.roadmap-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    circle at top left,
+    rgba(122, 97, 177, 0.14),
+    transparent 60%
+  );
+  pointer-events: none;
+}
+
+.roadmap-card h2 {
+  margin: 0 0 0.4rem;
+  font-size: 1.15rem;
+}
+
+.roadmap-card p {
+  margin-bottom: 0.6rem;
+}
+
+.roadmap-card ul {
+  padding-left: 1.2rem;
+  margin-top: 0.2rem;
+}
+
+/* TIMELINE LAYOUT */
+.roadmap-steps {
+  margin-bottom: 2.4rem;
+  position: relative;
+}
+
+.roadmap-steps > h2 {
+  font-size: 1.45rem;
+  margin-bottom: 1.2rem;
+}
+
+/* Vertical timeline line */
+.roadmap-steps::before {
+  content: "";
+  position: absolute;
+  left: 18px;
+  top: 2.5rem;
+  bottom: 0.5rem;
+  width: 3px;
+  border-radius: 999px;
+  background: linear-gradient(
+    to bottom,
+    var(--extra-color),
+    var(--secondary-color)
+  );
+  opacity: 0.9;
+}
+
+/* EACH STEP */
+.roadmap-step {
+  background: var(--white);
+  border-radius: 14px;
+  padding: 0.95rem 1.1rem 1.1rem;
+  border: 1px solid #e2e8f0;
+  box-shadow: var(--shadow);
+  margin: 0 0 1rem 1.8rem;
+  position: relative;
+}
+
+/* connector dot */
+.roadmap-step::before {
+  content: "";
+  position: absolute;
+  left: -16px;
+  top: 20px;
+  width: 11px;
+  height: 11px;
+  border-radius: 999px;
+  background: var(--primary-color);
+  box-shadow: 0 0 0 4px rgba(122, 97, 177, 0.45);
+}
+
+.step-header {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  margin-bottom: 0.35rem;
+}
+
+.step-number {
+  width: 30px;
+  height: 30px;
+  border-radius: 999px;
+  background: var(--primary-color);
+  color: var(--white);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  font-size: 0.95rem;
+  flex-shrink: 0;
+}
+
+.step-header h3 {
+  margin: 0;
+  font-size: 1.05rem;
+}
+
+.roadmap-step p {
+  margin: 0.35rem 0 0.5rem;
+  line-height: 1.5;
+}
+
+.roadmap-step ul {
+  padding-left: 1.2rem;
+  margin: 0.1rem 0 0.6rem;
+}
+
+.roadmap-step li {
+  margin-bottom: 0.3rem;
+}
+
+.tip {
+  font-size: 0.9rem;
+  color: var(--text-light);
+  font-style: italic;
+}
+
+/* STEP LINKS */
+.step-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 0.6rem;
+}
+
+/* FOOTER SECTION */
+.roadmap-footer-section {
+  margin-top: 2rem;
+  padding: 1.3rem 1.2rem 1.1rem;
+  border-radius: 16px;
+  border: 1px solid var(--extra-color);
+  background: linear-gradient(to right, var(--light-bg), var(--white));
+}
+
+.roadmap-footer-section h2 {
+  margin: 0 0 0.45rem;
+  font-size: 1.2rem;
+}
+
+.roadmap-footer-section p {
+  margin-bottom: 0.7rem;
+}
+
+.roadmap-footer-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
+
+/* BUTTONS */
+.roadmap-page .btn {
+  padding: 0.6rem 1.2rem;
+  border-radius: 999px;
+  font-size: 0.95rem;
+}
+
+.roadmap-page .btn.secondary {
+  background: var(--light-bg);
+  border: 1px solid var(--extra-color);
+  color: var(--text-dark);
+}
+
+.roadmap-page .btn.secondary:hover {
+  background: #e5d6f5;
+}
+
+/* JS-added lines */
+.track-blurb {
+  margin-top: 0.25rem;
+}
+
+.score-line {
+  margin-top: 0.15rem;
+  font-size: 0.85rem;
+  color: var(--text-light);
+}
+
+/* RESPONSIVE */
+@media (min-width: 720px) {
+  .roadmap-summary {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .roadmap-steps {
+    padding-left: 0.3rem;
+  }
+}
+
+/* ============================================
+   BRAND SIGNATURE — END FLOURISH
+   ============================================ */
+
+.roadmap-end {
+  margin-top: 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0.9;
+}
+
+.roadmap-end-line {
+  width: 70%;
+  height: 3px;
+  border-radius: 999px;
+  background: linear-gradient(
+    to right,
+    var(--secondary-color),
+    var(--extra-color),
+    var(--primary-color)
+  );
+  position: relative;
+  overflow: hidden;
+}
+
+/* bright glowing orb animation */
+.roadmap-end-line::after {
+  content: "";
+  position: absolute;
+  top: -5px;
+  width: 13px;
+  height: 13px;
+  border-radius: 999px;
+  background: var(--accent-color);
+  box-shadow: 0 0 12px var(--accent-color), 0 0 18px var(--accent-color);
+  animation: roadmapGlow 3.8s infinite ease-in-out;
+}
+
+@keyframes roadmapGlow {
+  0% { left: -5%; opacity: 0.35; }
+  20% { opacity: 1; }
+  50% { left: 50%; opacity: 1; }
+  80% { opacity: 1; }
+  100% { left: 105%; opacity: 0.35; }
+}

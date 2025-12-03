@@ -1,0 +1,106 @@
+/* Login / Signup page styles
+   Save as src/styles/login.css and include on login.html:
+   <link rel="stylesheet" href="src/styles/login.css" />
+*/
+
+/* Page layout */
+.auth-hero {
+  min-height: calc(100vh - 120px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem 1rem;
+  background: linear-gradient(180deg, rgba(118,75,162,0.06), rgba(74,144,226,0.02));
+}
+
+/* Card */
+.auth-card {
+  width: 100%;
+  max-width: 420px;
+  background: #fff;
+  border-radius: 12px;
+  padding: 1.25rem;
+  box-shadow: 0 10px 30px rgba(2,6,23,0.08);
+  border: 1px solid rgba(2,6,23,0.04);
+}
+
+/* Hide/Show helper */
+.d-none { display: none !important; }
+
+/* Branding inside card */
+.auth-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-bottom: 0.6rem;
+}
+.auth-brand .brand-text {
+  font-weight: 700;
+  font-size: 1.25rem;
+  color: var(--text) /* fallback to global --text if available */;
+}
+
+/* Headings and helper text */
+.auth-card h1 {
+  font-size: 1.4rem;
+  margin-bottom: 0.35rem;
+  color: var(--text);
+}
+.helper {
+  color: var(--muted);
+  margin-bottom: 1rem;
+  font-size: 0.95rem;
+}
+
+/* Form fields */
+.field {
+  display:flex;
+  flex-direction:column;
+  gap: 0.35rem;
+  margin-bottom: 0.85rem;
+}
+.field label { font-size: 0.9rem; color: var(--text); }
+.field input {
+  padding: 0.6rem 0.75rem;
+  border-radius: 8px;
+  border: 1px solid #e6e9ee;
+  background: #fff;
+  font-size: 0.95rem;
+}
+.field input:focus {
+  outline: none;
+  border-color: var(--primary, #4a90e2);
+  box-shadow: 0 8px 26px rgba(74,144,226,0.08);
+}
+
+/* Actions */
+.actions {
+  display:flex;
+  justify-content: center;
+}
+.actions .btn {
+  width: 100%;
+  padding: 0.7rem 0.9rem;
+  border-radius: 10px;
+  font-weight: 700;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 10px 30px rgba(3,102,214,0.12);
+}
+.actions .btn:hover { transform: translateY(-3px); }
+
+/* Meta links */
+.meta {
+  margin-top: 0.8rem;
+  font-size: 0.95rem;
+  text-align: center;
+}
+.meta a { color: var(--accent, #764ba2); text-decoration: none; font-weight:700; }
+.meta a:hover { text-decoration: underline; }
+
+/* Small screens tweak */
+@media (max-width: 520px) {
+  .auth-card { padding: 1rem; border-radius: 10px; }
+  .auth-hero { padding: 1.2rem; }
+}
