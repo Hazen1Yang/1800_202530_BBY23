@@ -38,18 +38,15 @@
 /* =========================================
    3. BASE & RESET
    ========================================= */
-* {
+*,
+*::before,
+*::after { 
   box-sizing: border-box;
   margin: 0;
 }
 
-*,
-*::before,
-*::after { box-sizing: border-box; }
-
 html {
   scroll-behavior: smooth;
-  scroll-behavior: smooth; /* Duplicate kept per instruction */
   height: 100%;
   font-size: 16px; 
   -webkit-text-size-adjust: 100%; 
@@ -57,7 +54,6 @@ html {
 }
 
 body {
-  /* Original Body Style */
   display: flex;
   flex-direction: column;
   min-height: 100vh;
@@ -68,13 +64,7 @@ body {
   line-height: 1.6;
   background-color: var(--primary-color);
   background-attachment: fixed;
-  
-  /* New Body Style Merged properties */
   margin: 0;
-  background: var(--bg); /* This will override primary-color above */
-  color: var(--text);    /* This will override text-dark above */
-  font-family: "Poppins", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-  line-height: 1.45;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -283,6 +273,23 @@ header ul {
     border-bottom-right-radius: 12px;
   }
 
+<<<<<<< HEAD
+=======
+  .site-nav a {
+    display:block;
+    padding: 0.9rem 1rem;
+    margin: 0.15rem 0;
+  }
+
+  .nav-toggle { display:inline-flex; align-items:center; }
+
+  .site-nav[aria-expanded="true"] {
+    max-height: 480px; /* enough for typical nav */
+    opacity: 1;
+  }
+
+  /* transform hamburger into X when open (toggle handled by JS adding .is-open on header) */
+>>>>>>> 8f2ffae7e4392e431195000d1a8647f326464c9b
   .site-header.is-open .hamburger { transform: rotate(45deg); }
   .site-header.is-open .hamburger::before { transform: rotate(90deg) translateX(0); top:0; }
   .site-header.is-open .hamburger::after { opacity: 0; }
@@ -292,6 +299,12 @@ header ul {
 /* =========================================
    7. BUTTONS
    ========================================= */
+<<<<<<< HEAD
+=======
+/* =========================================
+   BUTTONS
+   ========================================= */
+>>>>>>> 8f2ffae7e4392e431195000d1a8647f326464c9b
 .btn {
   display: inline-flex;
   align-items: center;
@@ -640,8 +653,6 @@ figcaption:hover {
 
 .muted {
   color: var(--text-light);
-  /* New */
-  color: var(--muted);
 }
 
 .left {
@@ -768,6 +779,7 @@ site-navbar {
   z-index: 2000;
 }
 
+<<<<<<< HEAD
 /* NAVBAR CONTAINER */
 .site-header {
   display: flex;
@@ -803,6 +815,16 @@ site-navbar {
 
 .site-nav a:hover {
   color: #6E4E9E;
+=======
+/* Hero button style */
+#indexAuthBtn {
+  background: rgba(255, 255, 255, 0.85);
+  color: #333;
+  padding: 14px 28px;
+  border-radius: 12px;
+  font-weight: 600;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.15);
+>>>>>>> 8f2ffae7e4392e431195000d1a8647f326464c9b
 }
 
 /* HAMBURGER */

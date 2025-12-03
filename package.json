@@ -8,7 +8,9 @@
     "preview": "vite preview"
   },
   "devDependencies": {
-    "vite": "^7.0.0"
+    "terser": "^5.44.1",
+    "vite": "^7.0.0",
+    "vite-plugin-compression": "^0.5.1"
   },
   "dependencies": {
     "@popperjs/core": "^2.11.8",

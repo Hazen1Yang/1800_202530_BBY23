@@ -1,6 +1,8 @@
 
 import { loginUser, signupUser, authErrorMessage } from "./authentication.js";
 
+import "./styles/auth.css";
+import "./app.js";
 // --- Login and Signup Page ---
 // Handles toggling between Login/Signup views and form submits
 // using plain DOM APIs for simplicity and maintainability.

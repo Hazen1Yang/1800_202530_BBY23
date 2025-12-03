@@ -1,9 +1,8 @@
 import { auth, db } from "./firebaseConfig.js";
-import { setDoc, doc, getDoc, increment, updateDoc } from "firebase/firestore";
-import { TASKS } from "./tasks.js";
-import "./app.js";
+import { doc, getDoc, increment, updateDoc } from "firebase/firestore";
+import { CATEGORY_MAP, TASKS } from "./tasks.js";
 import "./styles/task.css";
-
+import "./app.js";
 const FAKE_DEBUG_MODE = false;
 
 async function loadUserProfile() {
@@ -13,52 +12,43 @@ async function loadUserProfile() {
 
   if (!userSnap.exists()) {
     console.log("User profile missing!");
-    return;
+    return null;
   }
 
   const data = userSnap.data();
   return {
-    path: data.careerInterest,
-    level: data.skillLevel
+    path: data.careerInterest // ex: "software"
   };
 }
 
-
-function getTodaysTasks(path, level) {
-  const availableTasks = TASKS[path]?.[level];
+// 🟢 NEW VERSION — no level
+function getTodaysTasks(path) {
+  const availableTasks = TASKS[path];
 
   if (!availableTasks || availableTasks.length === 0) {
     return ["No tasks found. Please update your survey."];
   }
 
-  // If <= 3 tasks → return all
-  if (availableTasks.length <= 3) {
-    return availableTasks;
-  }
+  if (availableTasks.length <= 3) return availableTasks;
 
-  // Pick 3 random unique tasks
   const chosen = [];
   while (chosen.length < 3) {
-    const randomIndex = Math.floor(Math.random() * availableTasks.length);
-    const task = availableTasks[randomIndex];
-
-    if (!chosen.includes(task)) {
-      chosen.push(task);
-    }
+    const t = availableTasks[Math.floor(Math.random() * availableTasks.length)];
+    if (!chosen.includes(t)) chosen.push(t);
   }
 
   return chosen;
 }
 
-function displayTasks(taskList) {
+function displayTasks(list) {
   const container = document.getElementById("task-container");
   container.innerHTML = "";
 
-  taskList.forEach((task, index) => {
+  list.forEach((task, i) => {
     container.innerHTML += `
       <div class="task-card">
-        <input type="checkbox" id="task-${index}">
-        <label for="task-${index}">${task}</label>
+        <input type="checkbox" id="task-${i}">
+        <label for="task-${i}">${task}</label>
       </div>
     `;
   });
@@ -82,7 +72,15 @@ document.addEventListener("change", (e) => {
 auth.onAuthStateChanged(async (user) => {
   if (!user) return;
 
-  const profile = await loadUserProfile();
-  const tasks = getTodaysTasks(profile.path, profile.level);
+  const profile = FAKE_DEBUG_MODE
+    ? { path: "software" }
+    : await loadUserProfile();
+
+  if (!profile || !profile.path) {
+    displayTasks(["Please complete your quiz and survey first."]);
+    return;
+  }
+
+  const tasks = getTodaysTasks(profile.path);
   displayTasks(tasks);
 });

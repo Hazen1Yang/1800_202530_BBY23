@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Pathfinder Main</title>
+    <!-- Update this with name of the page. -->
+    <title>Pathfinder Tasks</title>
     <meta name="pathfinder-application" content="pathfinder" />
     <meta charset="utf-8" />
     <meta name="author" content="Matthew, Hazen, Vincent, Melina." />
@@ -13,8 +14,12 @@
     />
     <meta name="generator" content="Phoenix Code, VS Code" />
     <meta name="keywords" content="XHTML,CSS,BCIT" />
+    <!-- The little icon that appears beside the tab name. -->
+    <link rel="icon" href="/images/logo.png" type="image/png" />
 
-    <script type="module" src="/src/app.js"></script>
+    <!-- Use a single main script (for here tasksData.js) to import all other JS and CSS 
+         (such as app.js). This makes builds and hosting more reliable. -->
+    <script type="module" src="/src/tasksData.js"></script>
   </head>
 
   <body>
@@ -23,14 +28,11 @@
 
     <!-- Main content area -->
     <main class="container my-4">
-      <h1>PathFinder</h1>
+      <h1>Hello</h1>
       <!-- Your layout or app content goes here -->
-      <h3>
-        Welcome to PathFinder, <span id="name-goes-here">my friend!</span>
-        <span id="quote-goes-here">Join other students like yourself.</span>
-      </h3>
-      <p>Still needs to make it so after logging in it takes you here</p>
-      <div class="extra">Test</div>
+      <div class="text-center">
+        <div id="task-container" class="extra"></div>
+      </div>
     </main>
 
     <!-- Footer -->
