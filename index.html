@@ -21,53 +21,55 @@
   </head>
 
   <body>
-    <site-navbar></site-navbar>
-        <header id="home">
-      <div class="left">
-        <div class="row">
-          <img id="logo" src="public/images/logo2.png" width="10%" alt="Study" />
+      <site-navbar></site-navbar>
+          <header id="home">
+        <div class="left">
+          <div class="row">
+            <img id="logo" src="public/images/logo2.png" width="10%" alt="Study" />
+          </div>
         </div>
-      </div>
-      <nav>
-        <ul>
-          <li><a href="index.html">Home</a></li>
-          <li><a href="quiz.html">Quiz</a></li>
-          <li><a href="programs.html">Programs</a></li>
-          <li><a href="roadmap.html">Roadmap</a></li>
-          <li><a href="profile.html">Profile</a></li>
-          <li><a href="#careers">Careers</a></li>
-          <li><a href="#how">FAQ</a></li>
-          <li><a href="#about">About</a></li>
+        <nav>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="quiz.html">Quiz</a></li>
+            <li><a href="programs.html">Programs</a></li>
+            <li><a href="roadmap.html">Roadmap</a></li>
+            <li><a href="profile.html">Profile</a></li>
+            <li><a href="#careers">Careers</a></li>
+            <li><a href="#how">FAQ</a></li>
+            <li><a href="#about">About</a></li>
 
 
-        </ul>
-      </nav>
-    </header>
+          </ul>
+        </nav>
+      </header>
 
     <aside>
       <!-- INTRO SECTION -->
-      <div id="inbetween">
-        <a href="index.html">
-          <img
-            src="https://www.svgrepo.com/show/530614/map.svg"
-            alt="map"
-            width="200"
-        /></a>
+<div id="inbetween">
+  <a href="index.html">
+    <img
+      src="https://www.svgrepo.com/show/530614/map.svg"
+      alt="map"
+      width="200"
+    />
+  </a>
 
-        <h1 class="animate__animated animate__fadeInUp">
-          Welcome to PathFinder,
-          <span id="name-goes-here">my friend!</span><br />
-          <span id="quote-goes-here">Join other students like yourself.</span>
-        </h1>
+  <h1 class="animate__animated animate__fadeInUp">
+    Welcome to PathFinder,
+    <span id="name-goes-here">my friend!</span><br />
+    <span id="quote-goes-here">Join other students like yourself.</span>
+  </h1>
 
-        <button
-          id="indexAuthBtn"
-          class="btn animate__animated animate__pulse animate__infinite"
-          onclick="window.location.href='login.html'"
-        >
-          Login / Signup
-        </button>
-      </div>
+  <button
+    id="indexAuthBtn"
+    class="btn animate__animated animate__pulse animate__infinite"
+    onclick="window.location.href='login.html'"
+  >
+    Login / Signup
+  </button>
+</div>
+
 
       <!-- FEATURE ICONS -->
       <div class="mobile-img">
@@ -103,18 +105,6 @@
           </p>
         </div>
 
-        <div id="slim">
-          <div class="left">How did it all start?</div>
-          <div class="right">
-            <a
-              href="https://www.figma.com/design/Ro3aqiWxgU1cnalbVlPrXl"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              More Info
-            </a>
-          </div>
-        </div>
 <section class="story-section">
   <div class="cards">
     <!-- The Start -->
@@ -128,7 +118,7 @@
         We started this app to make a difference. Our goal: help people find meaningful careers and feel confident about their future. Pathfinder began as a BCIT project — but it grew fast because students like you needed real guidance.
       </p>
 
-      <a href="start.html" class="card-cta" aria-label="Read more about The Start">Learn more →</a>
+      <a href="https://www.figma.com/design/Ro3aqiWxgU1cnalbVlPrXl" target="_blank" class="card-cta" aria-label="Read more about The Start">Learn more →</a>
     </article>
 
     <!-- Our Goal -->
@@ -142,7 +132,6 @@
         We want to give everyone clarity. A career is a big decision — and most young people feel lost. Pathfinder helps you understand the job market, discover your strengths, and map out a realistic plan.
       </p>
 
-      <a href="goals.html" class="card-cta" aria-label="View our goals">View goals →</a>
     </article>
 
     <!-- How We'll Do It -->
@@ -159,24 +148,7 @@
       <a href="quiz.html" class="card-cta" aria-label="Start the quiz">Start quiz →</a>
     </article>
 
-    <!-- Quick Features -->
-    <article class="main-card" id="quick-features">
-      <div class="card-media" aria-hidden="true">
-        <img src="public/images/features.png" alt="Features" />
-      </div>
 
-      <h2>What You Can Do Inside Pathfinder</h2>
-      <ul class="card-list">
-        <li>✓ Take a personalized career quiz</li>
-        <li>✓ Explore top 2025 in-demand careers</li>
-        <li>✓ Save favourite jobs and programs</li>
-        <li>✓ Track your goals and progress</li>
-        <li>✓ View salary data and job outlook</li>
-        <li>✓ Learn from professionals in the field</li>
-      </ul>
-
-      <a href="features.html" class="card-cta" aria-label="Explore features">Explore features →</a>
-    </article>
 
     <!-- Testimonials -->
     <article class="main-card" id="testimonials">
@@ -193,6 +165,7 @@
 
       <a href="testimonials.html" class="card-cta" aria-label="Read student testimonials">Read more →</a>
     </article>
+    
   </div>
 </section>
         <!-- BCIT IMAGE -->
@@ -209,7 +182,14 @@
           </a>
         </figure>
       </div>
-      <site-footer></site-footer>
+
     </aside>
+    <footer class="footer">
+  <div class="footer-content">
+    <h3 class="footer-title">Pathfinder</h3>
+    <p class="footer-sub">Created by Hazen, Matthew & Melina</p>
+  </div>
+</footer>
+
   </body>
 </html>

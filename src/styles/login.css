@@ -83,7 +83,6 @@
   padding: 0.7rem 0.9rem;
   border-radius: 10px;
   font-weight: 700;
-  background: linear-gradient(90deg,var(--primary,#4a90e2), #0366d6);
   color: #fff;
   border: none;
   cursor: pointer;

@@ -8,17 +8,25 @@
       name="description"
       content="Discover which BCIT program matches your skills, interests, and goals."
     />
+
     <link rel="icon" href="images/logo.png" type="image/png" />
 
-    <!-- Main + quiz styles -->
+    <!-- Styles -->
     <link rel="stylesheet" href="src/styles/style.css" />
     <link rel="stylesheet" href="src/styles/quiz.css" />
-    <script type="module" src="src/quiz.js"></script>
+
+    <!-- Components -->
+<script type="module" src="src/components/site-navbar.js"></script>
+<script type="module" src="src/scripts/navbar.js"></script>
+
+    <script type="module" src="src/components/site-footer.js"></script>
+
     <!-- Quiz logic -->
     <script type="module" src="src/quiz.js"></script>
   </head>
 
   <body>
+    <!-- Reusable navbar component -->
     <site-navbar></site-navbar>
 
     <main class="quiz-page">
@@ -174,11 +182,10 @@
         </form>
       </section>
 
-      <section id="quiz-result" class="quiz-result hidden">
-        <!-- Filled by quiz.js -->
-      </section>
+      <section id="quiz-result" class="quiz-result hidden"></section>
     </main>
 
+    <!-- Reusable footer -->
     <site-footer></site-footer>
   </body>
 </html>

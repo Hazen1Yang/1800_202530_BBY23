@@ -5,8 +5,7 @@
   <title>Pathfinder Authentication</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-<<<<<<< HEAD
-  <!-- Fonts: use link/preconnect (faster than @import) -->
+  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
@@ -15,24 +14,15 @@
   <link rel="stylesheet" href="src/styles/style.css">
   <link rel="stylesheet" href="src/styles/login.css">
 
-  <!-- Login script -->
-  <script type="module" src="src/loginSignup.js" defer></script>
-  <!-- Ensure navbar component is registered on every page -->
+  <!-- Components -->
   <script type="module" src="src/components/navbar.js" defer></script>
-=======
-<<<<<<< HEAD
-  <link rel="stylesheet" href="src/styles/auth.css" />
-  <script type="module" src="/src/app.js"></script>
-=======
-  <!-- Use a single main script (for here tasksData.js) to import all other JS and CSS 
-       (such as app.js and task.css). This makes builds and hosting more reliable. -->
-  <script type="module" src="/src/loginSignup.js"></script>
->>>>>>> eb42a95adffb84e5a19c6a97f973d0ad51c42669
->>>>>>> 434f21357169db0614f8857cb5fb1f2a29d2a37e
+
+  <!-- Main login/signup script -->
+  <script type="module" src="src/loginSignup.js" defer></script>
 </head>
 
 <body>
-  <!-- Persistent site navbar -->
+  <!-- Navbar -->
   <site-navbar></site-navbar>
 
   <main class="auth-hero">
@@ -67,18 +57,17 @@
 
       <div class="meta" style="text-align:center;">
         <span>Don’t have an account?</span>
-        <a id="toSignup" href="signup.html">Sign up</a>
+        <a id="toSignup" href="#">Sign up</a>
       </div>
     </section>
 
-    <!-- SIGNUP VIEW (hidden by default; loginSignup.js can toggle) -->
+    <!-- SIGNUP VIEW -->
     <section id="signupView" class="auth-card d-none" aria-hidden="true">
       <div class="auth-brand">
         <img src="public/images/logo.png" alt="Pathfinder logo" style="width:40px;height:auto;">
         <span class="brand-text">Pathfinder</span>
       </div>
 
-<<<<<<< HEAD
       <h1>Create your account</h1>
       <p class="helper">Start tracking goals, applications, and more.</p>
 
@@ -110,62 +99,11 @@
     </section>
   </main>
 
+  <!-- Footer -->
   <site-footer></site-footer>
 
-  <!-- Ensure the navbar script runs after component is parsed -->
-  <script type="module" src="src/components/navbar.js"></script>
-=======
-      <div class="meta" style="text-align:left;">
-      <a id="toSignup" href="#">Don’t have an account?</a><button type="submit" class="btn submit">Log In</button>
-     </div>
-    </form>
-
-  </section>
-
-  <!-- SIGNUP VIEW -->
-  <section id="signupView" class="auth-card d-none">
-    <div class="auth-brand">
-      <span class="brand-text">Pathfinder</span>
-    </div>
-
-    <h1>Create your account</h1>
-    <p class="helper">Start tracking goals, applications, and more.</p>
-
-    <form id="signupForm" novalidate>
-      <div class="field">
-        <label for="signupName">Full name</label>
-        <input id="signupName" type="text" placeholder="Enter your name" required />
-      </div>
-
-      <div class="field">
-        <label for="signupEmail">Email</label>
-        <input id="signupEmail" type="email" placeholder="you@example.com" required />
-      </div>
-
-      <div class="field">
-        <label for="signupPassword">Password</label>
-        <input id="signupPassword" type="password" placeholder="Create a password" required />
-      </div>
-
-      <div class="meta" style="text-align:left;">
-        <a id="toLogin" href="#">Already have an account?</a><button type="submit" class="btn submit">Create Account</button>
-      </div>
-    </form>
-  </section>
-
-</main>
-
-<site-footer></site-footer>
-<<<<<<< HEAD
-
-<!-- Firebase scripts -->
-<script type="module" src="/src/firebaseConfig.js"></script>
-<script type="module" src="/src/authentication.js"></script>
-<script type="module" src="/src/loginSignup.js"></script>
- <script type="module" src="/src/app.js"></script>
-
-=======
->>>>>>> eb42a95adffb84e5a19c6a97f973d0ad51c42669
->>>>>>> 434f21357169db0614f8857cb5fb1f2a29d2a37e
+  <!-- Firebase scripts -->
+  <script type="module" src="src/firebaseConfig.js"></script>
+  <script type="module" src="src/authentication.js"></script>
 </body>
 </html>

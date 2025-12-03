@@ -1,35 +1,61 @@
+/* =========================================
+   1. IMPORTS & EXTERNAL RESOURCES
+   ========================================= */
 @import url("https://is.gd/D2oZBE");
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap");
 
+/* =========================================
+   2. VARIABLES (:ROOT)
+   ========================================= */
 :root {
-  --primary-color: #eef7ff;
-  --extra-color: #4a90e2;
-  --secondary-color: #764ba2;
-  --accent-color: #ff6b6b;
-  --dark-blue: #2c3e50;
-  --light-bg: #f8f9fa;
+  /* --- Updated Brand Palette (same variable names) --- */
+  --primary-color: #7A61B1;     /* violet */
+  --extra-color: #AE79C8;       /* soft purple */
+  --secondary-color: #6E4E9E;   /* deep purple */
+  --accent-color: #E18855;      /* warm orange */
+
+  --dark-blue: #484079;         /* midnight purple */
+  --light-bg: #F3F6F9;          /* mist */
   --white: #ffffff;
-  --text-dark: #333333;
-  --text-light: #666666;
-  --success: #27ae60;
-  --shadow: rgba(0, 0, 0, 0.1);
-  --yale-blue: #134074ff;
-  --berkeley-blue: #13315cff;
-  --oxford-blue: #0b2545ff;
-  --powder-blue: #8da9c4ff;
-  --mint-cream: #eef4edff;
+  --text-dark: #0f172a;
+  --text-light: #4b5563;
+
+  --success: #16a34a;
+  --shadow: 0 8px 24px rgba(0,0,0,0.08);
+
+  /* --- Layout & Motion --- */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --nav-height: 85px;
+  --container-width: 1100px;
+
+  --fast: 160ms;
+  --med: 280ms;
 }
 
+/* =========================================
+   3. BASE & RESET
+   ========================================= */
 * {
   box-sizing: border-box;
   margin: 0;
 }
+
+*,
+*::before,
+*::after { box-sizing: border-box; }
+
 html {
   scroll-behavior: smooth;
-  scroll-behavior: smooth;
+  scroll-behavior: smooth; /* Duplicate kept per instruction */
   height: 100%;
+  font-size: 16px; 
+  -webkit-text-size-adjust: 100%; 
+  -ms-text-size-adjust: 100%;
 }
+
 body {
+  /* Original Body Style */
   display: flex;
   flex-direction: column;
   min-height: 100vh;
@@ -40,16 +66,34 @@ body {
   line-height: 1.6;
   background-color: var(--primary-color);
   background-attachment: fixed;
+  
+  /* New Body Style Merged properties */
+  margin: 0;
+  background: var(--bg); /* This will override primary-color above */
+  color: var(--text);    /* This will override text-dark above */
+  font-family: "Poppins", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  line-height: 1.45;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-/* Make the main content area grow to push footer down */
-main,
-.container,
-.goals-container {
-  flex: 1 0 auto;
+/* Accessibility focus states */
+a:focus,
+button:focus,
+input:focus,
+textarea:focus {
+  outline: 3px solid rgba(74, 144, 226, 0.18);
+  outline-offset: 2px;
 }
 
-/* Typographic scale that adapts */
+/* Disable animations for users who prefer reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; animation: none !important; scroll-behavior: auto !important; }
+}
+
+/* =========================================
+   4. TYPOGRAPHY
+   ========================================= */
 h1 {
   color: var(--text-dark);
   text-align: center;
@@ -57,23 +101,75 @@ h1 {
   font-size: clamp(1.5rem, vw, 4rem);
   padding: clamp(1rem, 4vw, 2rem);
 }
+
 h2 {
   color: var(--extra-color);
   font-weight: 600;
   font-size: clamp(1.4rem, 3.2vw, 2rem);
   padding: 1rem 0.5rem;
 }
-h3,
-h4 {
+
+h3, h4 {
   color: var(--text-dark);
 }
 
-/* Navigation / header */
+blockquote { 
+  margin: 0; 
+  padding-left: .6rem; 
+  border-left: 3px solid rgba(74,144,226,0.12); 
+  font-style: italic; 
+  color: var(--text); 
+}
+
+/* =========================================
+   5. LAYOUT & CONTAINERS
+   ========================================= */
+/* Make the main content area grow to push footer down */
+main,
+.container,
+.goals-container {
+  flex: 1 0 auto;
+}
+
+main {
+  padding-top: 70px; /* adjust based on your navbar height */
+}
+
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 1rem;
+  /* Updated container properties */
+  max-width: var(--container-width);
+  width: 100%;
+}
+
+aside {
+  flex: 1 0 auto;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Simple responsive column helper */
+.row { display: flex; flex-wrap: wrap; gap: 1rem; }
+.col { flex: 1 1 0; }
+
+.story-section {
+  padding: 1.25rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* =========================================
+   6. HEADER & NAVIGATION
+   ========================================= */
+/* --- Original Header Styles --- */
 nav,
 header {
   background: var(--secondary-color);
   color: var(--white);
-  padding: clamp(0.75rem, 2vw, 1.5rem);
+  /* REVISED: Smaller min/max padding values for a tighter look */
+  padding: clamp(0.5rem, 0.5vw, 0.8rem); 
   box-shadow: 0 2px 10px var(--shadow);
   position: sticky;
   top: 0;
@@ -83,6 +179,7 @@ header {
   align-items: center;
   gap: 1rem;
 }
+
 nav ul,
 header ul {
   list-style: none;
@@ -92,6 +189,7 @@ header ul {
   margin: 0;
   padding: 0;
 }
+
 nav ul li a,
 header ul li a {
   color: var(--white);
@@ -101,21 +199,333 @@ header ul li a {
   border-radius: 6px;
   transition: all 0.2s ease;
 }
+
 nav ul li a:hover,
 header ul li a:hover {
   background: rgba(255, 255, 255, 0.08);
   transform: translateY(-2px);
 }
 
-/* Brand / logo */
+/* --- Brand / Logo --- */
 #logo {
-  width: clamp(36px, 6vw, 60px);
+  width: clamp(50px, 8vw, 75px);
   height: auto;
 }
+
 .brand {
   font-family: "Pacifico", cursive;
   color: var(--white);
   font-size: clamp(1.6rem, 4vw, 2.4rem);
+}
+
+/* --- New / Improved Navbar Classes --- */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 1200;
+  
+  /* Glassmorphism Effect */
+  background: linear-gradient(180deg, rgba(0,0,0,0.03), transparent), var(--accent);
+  color: var(--white);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  
+  box-shadow: var(--shadow-sm);
+  transition: all var(--fast) ease;
+}
+
+.site-brand {
+  display:flex;
+  gap:0.75rem;
+  align-items:center;
+  text-decoration:none;
+  color:inherit;
+}
+
+
+
+.site-brand:hover img {
+    transform: scale(1.05); /* Slight hover effect */
+}
+.brand-text { font-weight:700; font-size: clamp(1rem, 2.4vw, 1.15rem); line-height:1; }
+
+.site-nav {
+  margin-left:auto;
+  display:flex;
+  gap:0.45rem;
+  align-items:center;
+}
+
+.site-nav a {
+  color: inherit;
+  text-decoration: none;
+  padding: 0.45rem 0.7rem;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 0.98rem;
+  display:inline-flex;
+  align-items:center;
+  gap:0.6rem;
+  transition: transform var(--fast) ease, background var(--fast) ease, box-shadow var(--fast) ease;
+}
+
+.site-nav a:hover,
+.site-nav a:focus {
+  background: rgba(255, 255, 255, 0.15); /* Slightly stronger white background on hover */
+  transform: translateY(-2px);
+  outline: none;
+  box-shadow: var(--shadow-sm);
+}
+
+.nav-cta {
+  background: linear-gradient(90deg,var(--primary), #0366d6);
+  color: #fff;
+  padding: 0.45rem 0.9rem;
+  border-radius: 999px;
+  box-shadow: 0 6px 18px rgba(3,102,214,0.12);
+  font-weight:700;
+}
+
+.nav-toggle {
+  display:none;
+  margin-left:0.5rem;
+  background:transparent;
+  border:0;
+  color:inherit;
+  padding:0.35rem;
+  border-radius:8px;
+  cursor:pointer;
+}
+.nav-toggle:focus { outline:3px solid rgba(255,255,255,0.12); outline-offset:2px; }
+
+site-navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  display: block;
+}
+
+/* Hamburger bars */
+.hamburger {
+  width:20px; height:2px;
+  background: currentColor;
+  display:inline-block;
+  position:relative;
+  transition: transform var(--fast) ease;
+}
+.hamburger::before,
+.hamburger::after {
+  content:"";
+  width:20px; height:2px; background:currentColor;
+  position:absolute; left:0;
+  transition: transform var(--fast) ease, opacity var(--fast) ease;
+}
+.hamburger::before { top:-6px; }
+.hamburger::after { top:6px; }
+
+/* --- Mobile Navigation Behavior --- */
+@media (max-width: 880px) {
+  .site-nav {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: var(--nav-height);
+    background: linear-gradient(180deg, rgba(0,0,0,0.02), transparent), var(--accent);
+    flex-direction: column;
+    gap: 0.35rem;
+    padding: 0.6rem;
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition: max-height 320ms ease, opacity 220ms ease;
+    border-bottom-left-radius: 12px;
+    border-bottom-right-radius: 12px;
+  }
+
+  .site-nav a {
+    display:block;
+    padding: 0.9rem 1rem;
+    margin: 0.15rem 0;
+  }
+
+  .nav-toggle { display:inline-flex; align-items:center; }
+
+  .site-nav[aria-expanded="true"] {
+    max-height: 480px; /* enough for typical nav */
+    opacity: 1;
+  }
+
+  /* transform hamburger into X when open (toggle handled by JS adding .is-open on header) */
+  .site-header.is-open .hamburger { transform: rotate(45deg); }
+  .site-header.is-open .hamburger::before { transform: rotate(90deg) translateX(0); top:0; }
+  .site-header.is-open .hamburger::after { opacity: 0; }
+}
+
+/* =========================================
+   7. BUTTONS & FORMS
+   ========================================= */
+/* --- Buttons --- */
+.btn {
+  /* Original properties */
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.6rem 0.95rem;
+  border-radius: 10px;
+  border: 0;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 1rem;
+  background: rgba(8, 12, 20, 0.45);
+  color: var(--white);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
+  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px);
+  
+  /* Duplicate/Merged properties from bottom section */
+  padding: .55rem .8rem;
+  transition: transform var(--fast) ease, box-shadow var(--fast) ease, background var(--fast) ease; /* merged transition */
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+  background: rgba(8, 12, 20, 0.62);
+  color: #fff;
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+  box-shadow: 0 12px 34px rgba(0, 0, 0, 0.35);
+}
+
+.btn:active {
+  transform: translateY(0);
+  background: rgba(8, 12, 20, 0.75);
+}
+
+.btn:focus {
+  outline: 3px solid rgba(74, 144, 226, 0.18);
+  outline-offset: 3px;
+  /* Duplicate/New focus style */
+  outline: 3px solid rgba(74,144,226,0.14); 
+}
+
+.btn[disabled],
+.btn.disabled,
+.btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+  background-color: #cccccc;
+}
+
+.btn-primary {
+  /* Original */
+  background-color: #007bff;
+  color: white;
+  /* New */
+  background: var(--primary);
+  color:#fff;
+  box-shadow: 0 8px 22px rgba(74,144,226,0.12);
+}
+
+.btn-primary:hover {
+  background-color: #0056b3;
+  transform: translateY(-3px);
+}
+
+.btn-secondary {
+  background-color: #6c757d;
+  color: white;
+}
+
+.btn-secondary:hover {
+  background-color: #545b62;
+}
+
+.btn-success {
+  background-color: #28a745;
+  color: white;
+}
+
+.btn-success:hover {
+  background-color: #218838;
+}
+
+.btn-link {
+  background: none;
+  border: none;
+  color: #dc3545;
+  cursor: pointer;
+  font-size: 14px;
+  text-decoration: underline;
+  padding: 10px;
+  text-align: center;
+  margin: 20px 0;
+}
+
+.btn-link:hover {
+  color: #a71d2a;
+}
+
+.btn-ghost {
+  background:transparent;
+  border:1px solid rgba(15,23,42,0.06);
+  color:var(--text);
+}
+
+/* Make the Login/Signup button on index more prominent and responsive */
+#indexAuthBtn {
+  padding: clamp(8px, 1.2vw, 12px) clamp(12px, 2.2vw, 18px);
+  font-size: clamp(14px, 2.2vw, 16px);
+}
+
+/* --- Forms --- */
+.form,
+.goal-form {
+  background: var(--white);
+  padding: 1rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
+}
+
+.input,
+input,
+textarea {
+  width: 100%;
+  padding: 0.6rem;
+  border: 1px solid #e0e0e0;
+  border-radius: 6px;
+  font-size: 1rem;
+}
+
+/* New Input Styles */
+input[type="text"], input[type="email"], input[type="date"], textarea, select {
+  width:100%;
+  padding: .6rem .7rem;
+  border-radius: 8px;
+  border: 1px solid #e6e9ee;
+  background: #fff;
+  font-size: .95rem;
+  color: var(--text);
+  box-shadow: inset 0 1px 0 rgba(16,24,40,0.02);
+}
+
+input:focus, textarea:focus, select:focus {
+  border-color: var(--primary);
+  box-shadow: 0 6px 18px rgba(74,144,226,0.08);
+  outline: none;
+}
+
+/* =========================================
+   8. SPECIFIC SECTIONS / IDS
+   ========================================= */
+/* --- Inbetween (Rotating Image) --- */
+#inbetween {
+  text-align: center;
+  padding: clamp(1rem, 3vw, 3rem) 0;
+  backdrop-filter: blur(6px);
 }
 
 #inbetween img {
@@ -126,38 +536,7 @@ header ul li a:hover {
   transform: rotate(360deg) scale(1.05);
 }
 
-/* Layout pieces (fluid and simple) */
-.container {
-  max-width: 1100px;
-  margin: 0 auto;
-  padding: 1rem;
-}
-aside {
-  flex: 1 0 auto;
-  display: flex;
-  flex-direction: column;
-}
-
-/* Responsive images on the index page */
-.mobile-img img {
-  display: inline-block;
-  width: clamp(80px, 18vw, 160px);
-  max-width: 100%;
-  height: auto;
-}
-
-/* Make the Login/Signup button on index more prominent and responsive */
-#indexAuthBtn {
-  padding: clamp(8px, 1.2vw, 12px) clamp(12px, 2.2vw, 18px);
-  font-size: clamp(14px, 2.2vw, 16px);
-}
-
-#inbetween {
-  text-align: center;
-  padding: clamp(1rem, 3vw, 3rem) 0;
-  backdrop-filter: blur(6px);
-}
-
+/* --- Middle Section --- */
 #middle {
   text-align: center;
   padding: clamp(1rem, 3vw, 2rem);
@@ -184,6 +563,7 @@ aside {
   margin: 0 auto;
 }
 
+/* --- Bottom Section --- */
 #bottom {
   padding: clamp(1rem, 3vw, 3rem);
   background-color: var(--white);
@@ -191,15 +571,16 @@ aside {
   box-shadow: 0 -4px 20px var(--shadow);
 }
 
-
 #bottom img {
   padding: 1rem;
   transition: transform 0.25s ease;
 }
+
 #bottom img:hover {
   transform: rotate(3deg) scale(1.05);
 }
 
+/* --- Slim Bar --- */
 #slim {
   display: flex;
   gap: 1rem;
@@ -225,6 +606,7 @@ aside {
   transform: translateX(4px);
 }
 
+/* --- BCIT Section --- */
 #bcit {
   margin: clamp(2rem, 5vw, 5rem) auto clamp(1rem, 3vw, 3rem);
   max-width: 900px;
@@ -239,6 +621,7 @@ aside {
   height: auto;
   display: block;
 }
+
 figcaption {
   background: var(--extra-color);
   color: var(--white);
@@ -255,128 +638,142 @@ figcaption:hover {
   box-shadow: 0 12px 34px rgba(0, 0, 0, 0.35);
 }
 
-/* Footer / site-footer */
-footer,
-site-footer {
-  position: static;
-  margin-top: auto;
-  width: 100%;
-  background: var(--secondary-color);
-  color: var(--white);
-  text-align: center;
-  padding: 0.75rem;
+/* =========================================
+   9. CARDS & GRID LAYOUTS
+   ========================================= */
+.cards {
+  /* Original Properties */
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  grid-auto-rows: 1fr; /* critical: every row's tracks are equal height */
+  align-items: stretch;
+  
+  /* New/Merged Properties */
+  grid-template-columns: repeat(auto-fit, minmax(260px,1fr));
+  align-items:start;
 }
 
-/* Forms and goals (kept consistent with app_home.css but here as baseline) */
-.form,
-.goal-form {
-  background: var(--white);
-  padding: 1rem;
-  border-radius: 8px;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
-}
-.input,
-input,
-textarea {
-  width: 100%;
-  padding: 0.6rem;
-  border: 1px solid #e0e0e0;
-  border-radius: 6px;
-  font-size: 1rem;
-}
-
-.btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  padding: 0.6rem 0.95rem;
+/* Card: stretch to fill the grid row so all cards in a row are same height */
+.main-card {
+  /* Original */
+  background: #fff;
   border-radius: 10px;
-  border: 0;
-  cursor: pointer;
-  font-weight: 600;
-  font-size: 1rem;
-  background: rgba(8, 12, 20, 0.45);
-  color: var(--white);
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
-  -webkit-backdrop-filter: blur(6px);
-  backdrop-filter: blur(6px);
-  transition: transform 0.12s ease, background 0.12s ease, box-shadow 0.12s ease,
-    backdrop-filter 0.12s ease;
+  padding: 1rem;
+  box-shadow: 0 6px 18px rgba(35, 35, 35, 0.06);
+  border: 1px solid rgba(0,0,0,0.04);
+  display: flex;
+  flex-direction: column;
+  height: 100%; 
+
+  /* New */
+  background: var(--surface);
+  border-radius: var(--radius-md);
+  padding: 1.05rem;
+  gap: .6rem;
+  box-shadow: var(--shadow-sm);
+  border: 1px solid rgba(2,6,23,0.03);
+  min-height: 100%;
 }
 
-.btn:hover {
-  transform: translateY(-2px);
-  background: rgba(8, 12, 20, 0.62);
-  color: #fff;
-  -webkit-backdrop-filter: blur(8px);
-  backdrop-filter: blur(8px);
-  box-shadow: 0 12px 34px rgba(0, 0, 0, 0.35);
+.main-card h2 {
+  margin: 0.2rem 0 0.45rem;
+  font-size: 1.12rem;
+  color: #08344a;
+  /* New */
+  margin: 0; color: var(--text); font-size: 1.05rem;
 }
-.btn:active {
-  transform: translateY(0);
-  background: rgba(8, 12, 20, 0.75);
-}
-.btn:focus {
-  outline: 3px solid rgba(74, 144, 226, 0.18);
+
+/* Focus outlines for accessibility */
+.main-card a:focus,
+.main-card button:focus {
+  outline: 3px solid rgba(14, 165, 233, 0.18);
   outline-offset: 3px;
-}
-.btn[disabled],
-.btn.disabled {
-  opacity: 0.6;
-  cursor: not-allowed;
-  transform: none;
-  box-shadow: none;
+  border-radius: 6px;
 }
 
-.btn-primary {
-  background-color: #007bff;
-  color: white;
+.main-card blockquote {
+  margin: 0.4rem 0;
+  padding-left: 0.6rem;
+  border-left: 3px solid rgba(3,102,214,0.12);
+  color: #0f172a;
+  font-style: italic;
+  font-size: 0.98rem;
 }
 
-.btn-primary:hover {
-  background-color: #0056b3;
+.card-media {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 0.6rem;
 }
 
-.btn-secondary {
-  background-color: #6c757d;
-  color: white;
+.card-media img {
+  width: 120px;
+  height: 120px;
+  object-fit: contain; /* use cover to fill/crop instead */
+  border-radius: 8px;
+  background: #f8fafc;
+  padding: 8px;
+  display: block;
+  /* New center logic */
+  margin: 0 auto;
 }
 
-.btn-secondary:hover {
-  background-color: #545b62;
+.card-text {
+  color: #334155;
+  font-size: 0.98rem;
+  line-height: 1.45;
+  margin-bottom: 0.7rem;
+  /* New */
+  color: var(--text-soft); line-height:1.4; font-size: .95rem;
 }
 
-.btn-success {
-  background-color: #28a745;
-  color: white;
+/* Lists inside cards */
+.card-list {
+  padding-left: 1.15rem;
+  margin: 0 0 0.7rem 0;
+  color: #334155;
 }
+.card-list li { margin: 0.3rem 0; }
 
-.btn-success:hover {
-  background-color: #218838;
+.card-cta {
+  margin-top: auto;
+  display: inline-block;
+  color: #0366d6;
+  text-decoration: none;
+  font-weight: 600;
+  padding: 0.35rem 0;
 }
+.card-cta:hover, .card-cta:focus { text-decoration: underline; }
 
-.btn:disabled {
-  background-color: #cccccc;
-  cursor: not-allowed;
-}
-
-.btn-link {
-  background: none;
-  border: none;
-  color: #dc3545;
-  cursor: pointer;
-  font-size: 14px;
-  text-decoration: underline;
+.task-card {
+  background: #f3f3ff;
   padding: 10px;
+  margin: 8px 0;
+  border-radius: 8px;
+}
+
+/* =========================================
+   10. UTILITIES
+   ========================================= */
+.text-center {
   text-align: center;
-  margin: 20px 0;
 }
 
-.btn-link:hover {
-  color: #a71d2a;
+.muted {
+  color: var(--text-light);
+  /* New */
+  color: var(--muted);
 }
 
-/* Compact bordered container used for small inline/grouped content */
+.left {
+  text-align: left;
+}
+.right {
+  text-align: right;
+}
+
 .extra {
   display: inline-block; /* only as big as its contents */
   background: #ffffff;
@@ -389,156 +786,65 @@ textarea {
   font-size: 2em;
 }
 
-/* Minor utilities */
-.text-center {
+/* Visually hidden utility */
+.visually-hidden {
+  position:absolute!important;
+  height:1px; width:1px;
+  overflow:hidden; clip:rect(1px,1px,1px,1px);
+  white-space:nowrap;
+}
+
+/* Prefer transform/opacity for animations to avoid layout thrashing */
+.smooth-transform { transition: transform var(--med) ease, opacity var(--med) ease; }
+
+/* Image utilities to improve LCP and give stable layout */
+.responsive-img { width:100%; height:auto; display:block; max-width:100%; }
+
+/* Mobile Responsive Utilities */
+.mobile-img img {
+  display: inline-block;
+  width: clamp(80px, 18vw, 160px);
+  max-width: 100%;
+  height: auto;
+}
+
+/* =========================================
+   11. FOOTER
+   ========================================= */
+.footer {
+  background: linear-gradient(135deg, var(--deep-purple), var(--midnight));
+  padding: 2.4rem 0;
+  color: #ffffff;
+  margin-top: 5rem;
+}
+
+.footer-content {
   text-align: center;
 }
-.muted {
-  color: var(--text-light);
+
+.footer-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: 0.6px;
+  color: var(--sand);       /* soft warm highlight */
+  margin-bottom: 0.3rem;
 }
 
-/* Accessibility focus states */
-a:focus,
-button:focus,
-input:focus,
-textarea:focus {
-  outline: 3px solid rgba(74, 144, 226, 0.18);
-  outline-offset: 2px;
+.footer-sub {
+  font-size: 0.95rem;
+  opacity: 0.92;
+  font-weight: 300;
 }
 
-/* Keep selectors from the original file that are commonly used */
-.left {
-  text-align: left;
-}
-.right {
-  text-align: right;
-}
-
-.task-card {
-  background: #f3f3ff;
-  padding: 10px;
-  margin: 8px 0;
-  border-radius: 8px;
-}
-site-navbar {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 1000;
-  display: block;
-}
-
-/* Add top padding to main content so it doesn't hide behind the nav */
-main {
-  padding-top: 70px; /* adjust based on your navbar height */
-}
-/* Container and grid */
-.story-section {
-  padding: 1.25rem;
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-/* Grid: responsive columns, force equal-height rows */
-.cards {
-  display: grid;
-  gap: 1rem;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  grid-auto-rows: 1fr; /* critical: every row's tracks are equal height */
-  align-items: stretch;
-}
-
-/* Card: stretch to fill the grid row so all cards in a row are same height */
-.main-card {
-  background: #fff;
-  border-radius: 10px;
-  padding: 1rem;
-  box-shadow: 0 6px 18px rgba(35, 35, 35, 0.06);
-  border: 1px solid rgba(0,0,0,0.04);
-
-  /* make card a column flex so inner content can be spaced and CTA pushed to bottom */
-  display: flex;
-  flex-direction: column;
-  height: 100%; /* ensures it fills the grid cell height set by grid-auto-rows */
-}
-
-/* Media (image) box: same fixed box for every card */
-.card-media {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-bottom: 0.6rem;
-}
-
-/* Force identical image box and preserve aspect with object-fit */
-.card-media img {
-  width: 120px;
-  height: 120px;
-  object-fit: contain; /* use cover to fill/crop instead */
-  border-radius: 8px;
-  background: #f8fafc;
-  padding: 8px;
-  display: block;
-}
-
-/* Headings and text */
-.main-card h2 {
-  margin: 0.2rem 0 0.45rem;
-  font-size: 1.12rem;
-  color: #08344a;
-}
-
-.card-text {
-  color: #334155;
-  font-size: 0.98rem;
-  line-height: 1.45;
-  margin-bottom: 0.7rem;
-}
-
-/* Lists inside cards */
-.card-list {
-  padding-left: 1.15rem;
-  margin: 0 0 0.7rem 0;
-  color: #334155;
-}
-.card-list li { margin: 0.3rem 0; }
-
-/* Push the CTA to the bottom so all cards appear the same height visually */
-.card-cta {
-  margin-top: auto;
-  display: inline-block;
-  color: #0366d6;
-  text-decoration: none;
-  font-weight: 600;
-  padding: 0.35rem 0;
-}
-.card-cta:hover, .card-cta:focus { text-decoration: underline; }
-
-/* Blockquote for testimonials */
-.main-card blockquote {
-  margin: 0.4rem 0;
-  padding-left: 0.6rem;
-  border-left: 3px solid rgba(3,102,214,0.12);
-  color: #0f172a;
-  font-style: italic;
-  font-size: 0.98rem;
-}
-
-/* Focus outlines for accessibility */
-.main-card a:focus,
-.main-card button:focus {
-  outline: 3px solid rgba(14, 165, 233, 0.18);
-  outline-offset: 3px;
-  border-radius: 6px;
-}
-
+/* =========================================
+   12. MEDIA QUERIES
+   ========================================= */
 /* Slightly larger spacing on wide screens */
 @media (min-width: 900px) {
   .cards { gap: 1.5rem; }
 }
 
-/* Smaller image box on very small screens to keep card balanced */
+/* Smaller image box on very small screens */
 @media (max-width: 420px) {
   .card-media img {
     width: 88px;
@@ -546,349 +852,8 @@ main {
     padding: 6px;
   }
 }
-/* Consolidated, improved site stylesheet
-   - Place at src/styles/style.css (or merge into your main stylesheet)
-   - Use <link rel="preconnect"> + <link href="https://fonts.googleapis.com/..." rel="stylesheet"> in HTML head instead of @import
-*/
 
-/* ---------------------------
-   Root variables / theme
-   --------------------------- */
-:root{
-  /* Core palette */
-  --bg: #f6f8fa;
-  --surface: #ffffff;
-  --muted: #6b7280;
-  --text: #0f172a;
-  --text-soft: #4b5563;
-  --primary: #4a90e2;      /* action color */
-  --accent: #764ba2;       /* brand secondary */
-  --danger: #ff6b6b;
-  --success: #16a34a;
-
-  /* UI */
-  --radius-sm: 8px;
-  --radius-md: 12px;
-  --shadow-sm: 0 6px 18px rgba(2,6,23,0.06);
-  --shadow-md: 0 12px 34px rgba(2,6,23,0.08);
-
-  --nav-height: 64px;
-  --container-width: 1100px;
-
-  /* Motion */
-  --fast: 160ms;
-  --med: 280ms;
-}
-
-/* ---------------------------
-   Lightweight reset / base
-   --------------------------- */
-*,
-*::before,
-*::after { box-sizing: border-box; }
-
-html,body{ height:100%; }
-html{ font-size:16px; -webkit-text-size-adjust:100%; -ms-text-size-adjust:100%; }
-body{
-  margin:0;
-  min-height:100%;
-  background: var(--bg);
-  color: var(--text);
-  font-family: "Poppins", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-  line-height:1.45;
-  -webkit-font-smoothing:antialiased;
-  -moz-osx-font-smoothing:grayscale;
-}
-
-/* ---------------------------
-   Container & layout helpers
-   --------------------------- */
-.container{
-  max-width: var(--container-width);
-  margin: 0 auto;
-  padding: 1rem;
-  width: 100%;
-}
-
-/* Simple responsive column helper */
-.row { display: flex; flex-wrap: wrap; gap: 1rem; }
-.col { flex: 1 1 0; }
-
-/* Visually hidden utility */
-.visually-hidden{
-  position:absolute!important;
-  height:1px; width:1px;
-  overflow:hidden; clip:rect(1px,1px,1px,1px);
-  white-space:nowrap;
-}
-
-/* Disable animations for users who prefer reduced motion */
-@media (prefers-reduced-motion: reduce) {
-  * { transition: none !important; animation: none !important; scroll-behavior: auto !important; }
-}
-
-/* ---------------------------
-   Header / Navbar (improved)
-   --------------------------- */
-.site-header{
-  position: sticky;
-  top: 0;
-  z-index: 1200;
-  background: linear-gradient(180deg, rgba(0,0,0,0.03), transparent), var(--accent);
-  color: #fff;
-  backdrop-filter: blur(6px);
-  -webkit-backdrop-filter: blur(6px);
-  box-shadow: var(--shadow-sm);
-}
-
-.site-header .container{
-  display:flex;
-  align-items:center;
-  gap:1rem;
-  height: var(--nav-height);
-  padding: 0 0.75rem;
-}
-
-/* Brand */
-.site-brand{
-  display:flex;
-  gap:0.75rem;
-  align-items:center;
-  text-decoration:none;
-  color:inherit;
-}
-.site-brand img{ width: clamp(36px, 5.2vw, 56px); height:auto; display:block; }
-.brand-text{ font-weight:700; font-size: clamp(1rem, 2.4vw, 1.15rem); line-height:1; }
-
-/* Primary nav */
-.site-nav{
-  margin-left:auto;
-  display:flex;
-  gap:0.45rem;
-  align-items:center;
-}
-
-/* Link style: accessible and compact */
-.site-nav a{
-  color: inherit;
-  text-decoration: none;
-  padding: 0.45rem 0.7rem;
-  border-radius: 8px;
-  font-weight: 600;
-  font-size: 0.98rem;
-  display:inline-flex;
-  align-items:center;
-  gap:0.6rem;
-  transition: transform var(--fast) ease, background var(--fast) ease, box-shadow var(--fast) ease;
-}
-
-/* Hover/focus */
-.site-nav a:hover,
-.site-nav a:focus{
-  background: rgba(255,255,255,0.08);
-  transform: translateY(-3px);
-  outline: none;
-  box-shadow: var(--shadow-sm);
-}
-
-/* CTA style */
-.nav-cta{
-  background: linear-gradient(90deg,var(--primary), #0366d6);
-  color: #fff;
-  padding: 0.45rem 0.9rem;
-  border-radius: 999px;
-  box-shadow: 0 6px 18px rgba(3,102,214,0.12);
-  font-weight:700;
-}
-
-/* Mobile toggle */
-.nav-toggle{
-  display:none;
-  margin-left:0.5rem;
-  background:transparent;
-  border:0;
-  color:inherit;
-  padding:0.35rem;
-  border-radius:8px;
-  cursor:pointer;
-}
-.nav-toggle:focus{ outline:3px solid rgba(255,255,255,0.12); outline-offset:2px; }
-
-/* Hamburger bars */
-.hamburger{
-  width:20px; height:2px;
-  background: currentColor;
-  display:inline-block;
-  position:relative;
-  transition: transform var(--fast) ease;
-}
-.hamburger::before,
-.hamburger::after{
-  content:"";
-  width:20px; height:2px; background:currentColor;
-  position:absolute; left:0;
-  transition: transform var(--fast) ease, opacity var(--fast) ease;
-}
-.hamburger::before{ top:-6px; }
-.hamburger::after{ top:6px; }
-
-/* ---------------------------
-   Mobile responsive behavior
-   --------------------------- */
-@media (max-width: 880px) {
-  .site-nav{
-    position: absolute;
-    left: 0;
-    right: 0;
-    top: var(--nav-height);
-    background: linear-gradient(180deg, rgba(0,0,0,0.02), transparent), var(--accent);
-    flex-direction: column;
-    gap: 0.35rem;
-    padding: 0.6rem;
-    max-height: 0;
-    overflow: hidden;
-    opacity: 0;
-    transition: max-height 320ms ease, opacity 220ms ease;
-    border-bottom-left-radius: 12px;
-    border-bottom-right-radius: 12px;
-  }
-
-  .site-nav a{
-    display:block;
-    padding: 0.9rem 1rem;
-    margin: 0.15rem 0;
-  }
-
-  .nav-toggle{ display:inline-flex; align-items:center; }
-
-  .site-nav[aria-expanded="true"]{
-    max-height: 480px; /* enough for typical nav */
-    opacity: 1;
-  }
-
-  /* transform hamburger into X when open (toggle handled by JS adding .is-open on header) */
-  .site-header.is-open .hamburger{ transform: rotate(45deg); }
-  .site-header.is-open .hamburger::before{ transform: rotate(90deg) translateX(0); top:0; }
-  .site-header.is-open .hamburger::after{ opacity: 0; }
-}
-
-/* ---------------------------
-   Buttons / Controls improvements
-   --------------------------- */
-.btn{
-  display:inline-flex;
-  align-items:center;
-  gap:.5rem;
-  padding: .55rem .8rem;
-  border-radius: 10px;
-  border: 0;
-  cursor:pointer;
-  font-weight: 700;
-  font-size: .95rem;
-  transition: transform var(--fast) ease, box-shadow var(--fast) ease, background var(--fast) ease;
-}
-
-.btn:focus{ outline: 3px solid rgba(74,144,226,0.14); outline-offset: 3px; }
-
-.btn-primary{
-  background: var(--primary);
-  color:#fff;
-  box-shadow: 0 8px 22px rgba(74,144,226,0.12);
-}
-.btn-primary:hover{ transform: translateY(-3px); }
-
-/* utility: ghost / secondary */
-.btn-ghost{
-  background:transparent;
-  border:1px solid rgba(15,23,42,0.06);
-  color:var(--text);
-}
-
-/* form inputs */
-input[type="text"], input[type="email"], input[type="date"], textarea, select {
-  width:100%;
-  padding: .6rem .7rem;
-  border-radius: 8px;
-  border: 1px solid #e6e9ee;
-  background: #fff;
-  font-size: .95rem;
-  color: var(--text);
-  box-shadow: inset 0 1px 0 rgba(16,24,40,0.02);
-}
-input:focus, textarea:focus, select:focus {
-  border-color: var(--primary);
-  box-shadow: 0 6px 18px rgba(74,144,226,0.08);
-  outline: none;
-}
-
-/* ---------------------------
-   Cards / grids / visuals
-   --------------------------- */
-.cards {
-  display:grid;
-  gap: 1rem;
-  grid-template-columns: repeat(auto-fit, minmax(260px,1fr));
-  align-items:start;
-  grid-auto-rows: 1fr;
-}
-
-.main-card{
-  background: var(--surface);
-  border-radius: var(--radius-md);
-  padding: 1.05rem;
-  display:flex;
-  flex-direction:column;
-  gap: .6rem;
-  box-shadow: var(--shadow-sm);
-  border: 1px solid rgba(2,6,23,0.03);
-  min-height: 100%;
-}
-
-/* card media */
-.card-media img{
-  width: 120px; height: 120px;
-  object-fit: contain;
-  border-radius: 8px;
-  background: #f8fafc;
-  padding: 8px;
-  display:block;
-  margin: 0 auto;
-}
-
-/* headings, text */
-.main-card h2{ margin: 0; color: var(--text); font-size: 1.05rem; }
-.card-text{ color: var(--text-soft); line-height:1.4; font-size: .95rem; }
-
-/* testimonials blockquote */
-blockquote{ margin: 0; padding-left: .6rem; border-left: 3px solid rgba(74,144,226,0.12); font-style: italic; color: var(--text); }
-
-/* ---------------------------
-   Accessibility & performance tips embedded
-   --------------------------- */
-/* Prefer transform/opacity for animations to avoid layout thrashing */
-.smooth-transform{ transition: transform var(--med) ease, opacity var(--med) ease; }
-
-/* Image utilities to improve LCP and give stable layout */
-.responsive-img{ width:100%; height:auto; display:block; max-width:100%; }
-
-/* Minor helpers */
-.text-center{ text-align:center; }
-.muted{ color: var(--muted); }
-
-/* ---------------------------
-   Footer
-   --------------------------- */
-.site-footer{
-  background: linear-gradient(180deg, rgba(0,0,0,0.04), transparent), var(--accent);
-  color: #fff;
-  padding: .9rem 0;
-  text-align:center;
-  margin-top: auto;
-}
-
-/* ---------------------------
-   Small responsive tweaks
-   --------------------------- */
+/* Small responsive tweaks from new file */
 @media (max-width: 520px){
   .container{ padding: .6rem; }
   .brand-text{ font-size: 1rem; }
@@ -896,3 +861,113 @@ blockquote{ margin: 0; padding-left: .6rem; border-left: 3px solid rgba(74,144,2
   .card-media img{ width: 88px; height: 88px; }
   .site-nav a{ font-size: .95rem; padding: .6rem .8rem; }
 }
+/* ===============================
+   HERO SECTION BACKGROUND
+   =============================== */
+
+#inbetween {
+  background-image: url("../../public/images/background-wide.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  width: 100%;
+  min-height: 420px;
+
+  padding: 100px 20px 120px 20px;
+  text-align: center;
+
+  border-radius: 0 0 40px 40px;
+}
+
+/* Improve text visibility */
+#inbetween h1,
+#inbetween span {
+  color: #fff;
+  text-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+/* Hero button style */
+#indexAuthBtn {
+  background: rgba(255, 255, 255, 0.85);
+  color: #333;
+  padding: 14px 28px;
+  border-radius: 12px;
+  font-weight: 600;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.15);
+}
+.site-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 1.4rem;
+  background: white;
+  border-bottom: 1px solid #eee;
+}
+
+.site-nav ul {
+  display: flex;
+  gap: 1rem;
+  list-style: none;
+}
+
+.site-nav a {
+  text-decoration: none;
+  font-weight: 600;
+  color: #333;
+}
+
+.nav-toggle {
+  display: none;
+  background: none;
+  font-size: 1.8rem;
+  border: none;
+}
+
+@media (max-width: 720px) {
+  .nav-toggle {
+    display: block;
+  }
+  .site-nav {
+    display: none;
+  }
+  .site-header.is-open .site-nav {
+    display: block;
+  }
+}
+.pf-navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.9rem 1.4rem;
+  background: #ffffff;
+  border-bottom: 1px solid #e5e7eb;
+  position: sticky;
+  top: 0;
+  z-index: 999;
+}
+
+.pf-logo {
+  width: 48px;
+  height: auto;
+}
+
+.pf-nav ul {
+  list-style: none;
+  display: flex;
+  gap: 1.2rem;
+  margin: 0;
+  padding: 0;
+}
+
+.pf-nav a {
+  text-decoration: none;
+  color: #333;
+  font-weight: 600;
+  transition: color 0.2s ease;
+}
+
+.pf-nav a:hover {
+  color: #764ba2;
+}
+
