@@ -1,4 +1,45 @@
-// src/quiz.js
+// -------------------------------------------------------------
+// QUIZ.JS — with Firestore integration for careerInterest
+// -------------------------------------------------------------
+
+console.log("quiz.js loaded");
+
+// Firebase + category mapping
+import { auth, db } from "./firebaseConfig.js";
+import { doc, setDoc } from "firebase/firestore";
+import { CATEGORY_MAP } from "./tasks.js";
+
+// -------------------------------------------------------------
+// SAVE QUIZ RESULT TO FIRESTORE
+// -------------------------------------------------------------
+async function saveQuizResultToFirestore(topCategory) {
+  const user = auth.currentUser;
+  if (!user) {
+    console.warn("No logged-in user — cannot save quiz result.");
+    return;
+  }
+
+  const mapped = CATEGORY_MAP[topCategory]; // e.g. "T" -> "software"
+  if (!mapped) {
+    console.warn("Invalid topCategory:", topCategory);
+    return;
+  }
+
+  try {
+    await setDoc(
+      doc(db, "users", user.uid),
+      { careerInterest: mapped },
+      { merge: true }
+    );
+    console.log("Saved careerInterest to Firestore:", mapped);
+  } catch (err) {
+    console.error("Error writing quiz result to Firestore:", err);
+  }
+}
+
+// -------------------------------------------------------------
+// ORIGINAL QUIZ LOGIC
+// -------------------------------------------------------------
 
 // Map A–E answers to categories
 // T = Tech, H = Health, E = Engineering/Trades, C = Creative, B = Business
@@ -71,7 +112,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const form = document.getElementById("quiz-form");
   if (!form) return;
 
-  form.addEventListener("submit", (event) => {
+  form.addEventListener("submit", async (event) => {
     event.preventDefault();
 
     const formData = {};
@@ -81,7 +122,7 @@ document.addEventListener("DOMContentLoaded", () => {
       formData[name] = val;
     }
 
-    // make sure all questions answered
+    // Make sure all questions answered
     const missing = Object.entries(formData)
       .filter(([, v]) => v === null)
       .map(([k]) => k);
@@ -94,6 +135,8 @@ document.addEventListener("DOMContentLoaded", () => {
     const scores = calculateCategoryScores(formData);
     const topCategory = getTopCategory(scores);
 
+    console.log("Top quiz category:", topCategory);
+
     // SAVE RESULT FOR RESULTS PAGE
     try {
       localStorage.setItem("pathfinderTopCategory", topCategory);
@@ -101,6 +144,9 @@ document.addEventListener("DOMContentLoaded", () => {
     } catch (e) {
       console.warn("Could not save quiz results to localStorage", e);
     }
+
+    // SAVE TO FIRESTORE FOR TASK SYSTEM
+    await saveQuizResultToFirestore(topCategory);
 
     // GO TO RESULTS PAGE
     window.location.href = "quizResults.html";

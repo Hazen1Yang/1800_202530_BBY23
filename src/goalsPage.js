@@ -1,5 +1,6 @@
 import { db } from "./firebaseConfig.js";
 import { onAuthReady } from "./authentication.js";
+
 import {
   collection,
   addDoc,
@@ -10,7 +11,9 @@ import {
   serverTimestamp,
   query,
   orderBy,
-} from "https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore.js";
+  getDoc,
+  getDocs
+} from "firebase/firestore";
 
 let currentUser = null;
 let editingId = null;
@@ -31,22 +34,14 @@ function createGoalCard(goalDoc) {
   const card = document.createElement("div");
   card.className = "goal-card";
   card.innerHTML = `
-          <strong>${escapeHtml(data.title)}</strong> — <em>${escapeHtml(
-    data.career
-  )}</em>
-          <div class="goal-meta">${escapeHtml(data.details || "")}</div>
-          <div class="goal-meta">Target date: ${escapeHtml(
-            data.byDate || ""
-          )}</div>
-          <div class="goal-controls">
-            <button data-id="${
-              goalDoc.id
-            }" class="small-btn btn-secondary editBtn">Edit</button>
-            <button data-id="${
-              goalDoc.id
-            }" class="small-btn btn-primary deleteBtn">Delete</button>
-          </div>
-        `;
+    <strong>${escapeHtml(data.title)}</strong> — <em>${escapeHtml(data.career)}</em>
+    <div class="goal-meta">${escapeHtml(data.details || "")}</div>
+    <div class="goal-meta">Target date: ${escapeHtml(data.byDate || "")}</div>
+    <div class="goal-controls">
+      <button data-id="${goalDoc.id}" class="small-btn btn-secondary editBtn">Edit</button>
+      <button data-id="${goalDoc.id}" class="small-btn btn-primary deleteBtn">Delete</button>
+    </div>
+  `;
   return card;
 }
 
@@ -54,21 +49,21 @@ function bindListListeners(listEl) {
   listEl.addEventListener("click", async (ev) => {
     const editBtn = ev.target.closest(".editBtn");
     const delBtn = ev.target.closest(".deleteBtn");
+
     if (editBtn) {
       const id = editBtn.dataset.id;
-      const d = await (
-        await import(
-          "https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore.js"
-        )
-      ).getDoc(doc(db, "users", currentUser.uid, "goals", id));
+      const d = await getDoc(doc(db, "users", currentUser.uid, "goals", id));
       const data = d.data();
+
       document.getElementById("career").value = data.career || "";
       document.getElementById("title").value = data.title || "";
       document.getElementById("details").value = data.details || "";
       document.getElementById("byDate").value = data.byDate || "";
+
       editingId = id;
       document.getElementById("saveBtn").textContent = "Save Changes";
     }
+
     if (delBtn) {
       const id = delBtn.dataset.id;
       if (confirm("Delete this goal?")) {
@@ -80,14 +75,14 @@ function bindListListeners(listEl) {
 
 onAuthReady(async (user) => {
   currentUser = user;
+
+  const listEl = document.getElementById("goalsList");
+
   if (!user) {
-    // not signed in — show a message and stop
-    const list = document.getElementById("goalsList");
-    list.innerHTML = "<p>Please sign in to save and view goals.</p>";
+    listEl.innerHTML = "<p>Please sign in to save and view goals.</p>";
     return;
   }
 
-  const listEl = document.getElementById("goalsList");
   const goalsColRef = collection(db, "users", user.uid, "goals");
   const q = query(goalsColRef, orderBy("createdAt", "desc"));
 
@@ -100,8 +95,7 @@ onAuthReady(async (user) => {
       return;
     }
     snapshot.forEach((docSnap) => {
-      const card = createGoalCard(docSnap);
-      listEl.appendChild(card);
+      listEl.appendChild(createGoalCard(docSnap));
     });
   });
 });
@@ -112,10 +106,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
   form.addEventListener("submit", async (ev) => {
     ev.preventDefault();
-    if (!currentUser) {
-      alert("Please sign in to save goals.");
-      return;
-    }
+
+    if (!currentUser) return alert("Please sign in to save goals.");
 
     const career = document.getElementById("career").value.trim();
     const title = document.getElementById("title").value.trim();
@@ -123,7 +115,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const byDate = document.getElementById("byDate").value;
 
     if (!career || !title || !byDate) {
-      alert("Please fill career, title and target date.");
+      alert("Please fill career, title, and target date.");
       return;
     }
 
@@ -137,6 +129,7 @@ document.addEventListener("DOMContentLoaded", () => {
         byDate,
         updatedAt: serverTimestamp(),
       });
+
       editingId = null;
       document.getElementById("saveBtn").textContent = "Save Goal";
     } else {
@@ -153,22 +146,17 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   clearBtn.addEventListener("click", async () => {
-    if (!currentUser) {
-      alert("Please sign in to clear goals.");
-      return;
-    }
+    if (!currentUser) return alert("Please sign in to clear goals.");
+
     if (confirm("Clear all saved goals?")) {
-      // delete all docs in the user's goals collection (simple approach)
-      const col = collection(db, "users", currentUser.uid, "goals");
-      const snap = await (
-        await import(
-          "https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore.js"
-        )
-      ).getDocs(col);
-      const deletes = snap.docs.map((d) =>
+      const colRef = collection(db, "users", currentUser.uid, "goals");
+      const snap = await getDocs(colRef);
+
+      const deletions = snap.docs.map((d) =>
         deleteDoc(doc(db, "users", currentUser.uid, "goals", d.id))
       );
-      await Promise.all(deletes);
+
+      await Promise.all(deletions);
     }
   });
 });
