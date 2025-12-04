@@ -53,15 +53,6 @@ export async function logoutUser() {
 export function checkAuthState() {
   if (!auth) return;
   onAuthStateChanged(auth, (user) => {
-    if (window.location.pathname.endsWith("main.html")) {
-      if (user) {
-        const displayName = user.displayName || user.email;
-        const welcomeMsg = document.getElementById("welcomeMessage");
-        if (welcomeMsg) welcomeMsg.textContent = `Hello, ${displayName}!`;
-      } else {
-        window.location.href = "main.html";
-      }
-    }
   });
 }
 

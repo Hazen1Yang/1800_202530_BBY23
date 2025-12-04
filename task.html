@@ -10,7 +10,7 @@
 
     <script type="module" src="src/components/site-navbar.js"></script>
     <script type="module" src="src/components/site-footer.js"></script>
-    <script type="module" src="/src/tasksData.js"></script>
+    <script type="module" src="src/tasks.js"></script>
   </head>
 
   <body>
@@ -22,7 +22,7 @@
       <div class="goals-header">
         <h1 class="page-title">Your Tasks</h1>
         <p class="page-subtitle">
-          View your daily tasks based on your career path. Tasks refresh every 24 hours.
+          Manage tasks for your specific goals. Break them down into actionable steps.
         </p>
       </div>
 
@@ -30,28 +30,49 @@
         Synced to your account — tasks update automatically.
       </div>
 
-      <div class="tasks-layout">
+      <!-- GOAL SELECTION GRID -->
+      <h2 class="section-title">Select a Goal to Manage Tasks</h2>
+      <div id="goals-grid" class="goals-grid">
+        <!-- Goal Cards injected here -->
+        <p class="muted">Loading goals...</p>
+      </div>
 
-        <section class="summary-card">
-          <div class="summary-row">
-            <div class="summary-col">
-              <h2 id="taskCount">0</h2>
-              <p>Today's tasks</p>
-            </div>
-            <div class="summary-col">
-              <h2>Daily Reset</h2>
-              <p id="resetTime">Updates Every 24 Hours</p>
+      <!-- ACTIVE GOAL SECTION -->
+      <section id="active-goal-container" class="active-goal-container" style="display: none;">
+        <div class="active-goal-header">
+          <div>
+            <span class="goal-label" id="active-goal-career">Career</span>
+            <h2 id="active-goal-title">Goal Title</h2>
+            <p class="muted" id="active-goal-date">Target Date</p>
+          </div>
+          <button id="close-goal-view" class="btn btn-secondary">Close View</button>
+        </div>
+
+        <div class="tasks-layout-split">
+          
+          <!-- ADD TASK -->
+          <div class="task-create-card">
+            <h3>Add New Task</h3>
+            <form id="add-task-form">
+              <input type="text" id="new-task-input" placeholder="e.g. Read Chapter 1..." required />
+              <button type="submit" class="btn btn-primary">Add</button>
+            </form>
+            <div class="suggested-tasks">
+              <h4>Suggested for this career:</h4>
+              <ul id="suggested-tasks-list"></ul>
             </div>
           </div>
-        </section>
 
+          <!-- TASK LIST -->
+          <div class="task-list-card">
+            <h3>My Tasks</h3>
+            <div id="goal-tasks-list" class="tasks-list">
+              <!-- Tasks injected here -->
+            </div>
+          </div>
 
-        <section class="tasks-card">
-          <h2>Today's Tasks</h2>
-          <div id="task-container" class="tasks-list"></div>
-        </section>
-
-      </div>
+        </div>
+      </section>
     </main>
 
     <site-footer></site-footer>

@@ -36,138 +36,271 @@
 
       <section class="quiz-container">
         <form id="quiz-form">
-          <!-- SECTION A – INTERESTS -->
-          <h2>Interests</h2>
+          <h2>Career Interests & Skills</h2>
+          <p class="instruction">Rate how much you agree with each statement (1 = Strongly Disagree, 5 = Strongly Agree).</p>
 
+          <!-- Questions 1-5 -->
           <div class="quiz-question">
-            <p>1. What type of activities do you enjoy the most?</p>
-            <label><input type="radio" name="q1" value="A" required> Solving logical problems</label>
-            <label><input type="radio" name="q1" value="B"> Helping people</label>
-            <label><input type="radio" name="q1" value="C"> Working with tools/machines</label>
-            <label><input type="radio" name="q1" value="D"> Creating designs or media</label>
-            <label><input type="radio" name="q1" value="E"> Organizing tasks & planning</label>
-          </div>
-
-          <div class="quiz-question">
-            <p>2. Which environment do you prefer?</p>
-            <label><input type="radio" name="q2" value="A" required> Computer labs / coding</label>
-            <label><input type="radio" name="q2" value="B"> Hospitals / clinics</label>
-            <label><input type="radio" name="q2" value="C"> Workshops / hands-on locations</label>
-            <label><input type="radio" name="q2" value="D"> Studios / creative spaces</label>
-            <label><input type="radio" name="q2" value="E"> Offices / business settings</label>
-          </div>
-
-          <div class="quiz-question">
-            <p>3. What describes your thinking style?</p>
-            <label><input type="radio" name="q3" value="A" required> Analytical & logical</label>
-            <label><input type="radio" name="q3" value="B"> Supportive & empathetic</label>
-            <label><input type="radio" name="q3" value="C"> Practical & hands-on</label>
-            <label><input type="radio" name="q3" value="D"> Creative & expressive</label>
-            <label><input type="radio" name="q3" value="E"> Strategic & organized</label>
-          </div>
-
-          <div class="quiz-question">
-            <p>4. Which projects excite you the most?</p>
-            <label><input type="radio" name="q4" value="A" required> Building software/apps</label>
-            <label><input type="radio" name="q4" value="B"> Caring for patients</label>
-            <label><input type="radio" name="q4" value="C"> Building or fixing equipment</label>
-            <label><input type="radio" name="q4" value="D"> Designing visuals & content</label>
-            <label><input type="radio" name="q4" value="E"> Running or planning a business</label>
-          </div>
-
-          <!-- SECTION B – SKILLS (1–5) -->
-          <h2>Skills</h2>
-
-          <div class="quiz-question">
-            <p>5. Rate your math confidence</p>
+            <p>1. I enjoy solving complex logical puzzles and coding problems.</p>
             <div class="scale">
-              <span>Low</span>
+              <span>Disagree</span>
+              <label><input type="radio" name="q1" value="1" required>1</label>
+              <label><input type="radio" name="q1" value="2">2</label>
+              <label><input type="radio" name="q1" value="3">3</label>
+              <label><input type="radio" name="q1" value="4">4</label>
+              <label><input type="radio" name="q1" value="5">5</label>
+              <span>Agree</span>
+            </div>
+          </div>
+
+          <div class="quiz-question">
+            <p>2. I feel fulfilled when I can help people improve their health.</p>
+            <div class="scale">
+              <span>Disagree</span>
+              <label><input type="radio" name="q2" value="1" required>1</label>
+              <label><input type="radio" name="q2" value="2">2</label>
+              <label><input type="radio" name="q2" value="3">3</label>
+              <label><input type="radio" name="q2" value="4">4</label>
+              <label><input type="radio" name="q2" value="5">5</label>
+              <span>Agree</span>
+            </div>
+          </div>
+
+          <div class="quiz-question">
+            <p>3. I like working with my hands to build or repair things.</p>
+            <div class="scale">
+              <span>Disagree</span>
+              <label><input type="radio" name="q3" value="1" required>1</label>
+              <label><input type="radio" name="q3" value="2">2</label>
+              <label><input type="radio" name="q3" value="3">3</label>
+              <label><input type="radio" name="q3" value="4">4</label>
+              <label><input type="radio" name="q3" value="5">5</label>
+              <span>Agree</span>
+            </div>
+          </div>
+
+          <div class="quiz-question">
+            <p>4. I enjoy expressing myself through art, design, or writing.</p>
+            <div class="scale">
+              <span>Disagree</span>
+              <label><input type="radio" name="q4" value="1" required>1</label>
+              <label><input type="radio" name="q4" value="2">2</label>
+              <label><input type="radio" name="q4" value="3">3</label>
+              <label><input type="radio" name="q4" value="4">4</label>
+              <label><input type="radio" name="q4" value="5">5</label>
+              <span>Agree</span>
+            </div>
+          </div>
+
+          <div class="quiz-question">
+            <p>5. I like organizing teams and planning projects.</p>
+            <div class="scale">
+              <span>Disagree</span>
               <label><input type="radio" name="q5" value="1" required>1</label>
               <label><input type="radio" name="q5" value="2">2</label>
               <label><input type="radio" name="q5" value="3">3</label>
               <label><input type="radio" name="q5" value="4">4</label>
               <label><input type="radio" name="q5" value="5">5</label>
-              <span>High</span>
+              <span>Agree</span>
             </div>
           </div>
 
+          <!-- Questions 6-10 -->
           <div class="quiz-question">
-            <p>6. Rate your computer proficiency</p>
+            <p>6. I am interested in how computer software and algorithms work.</p>
             <div class="scale">
-              <span>Low</span>
+              <span>Disagree</span>
               <label><input type="radio" name="q6" value="1" required>1</label>
               <label><input type="radio" name="q6" value="2">2</label>
               <label><input type="radio" name="q6" value="3">3</label>
               <label><input type="radio" name="q6" value="4">4</label>
               <label><input type="radio" name="q6" value="5">5</label>
-              <span>High</span>
+              <span>Agree</span>
             </div>
           </div>
 
           <div class="quiz-question">
-            <p>7. Rate your communication skills</p>
+            <p>7. I am comfortable dealing with medical situations and human biology.</p>
             <div class="scale">
-              <span>Low</span>
+              <span>Disagree</span>
               <label><input type="radio" name="q7" value="1" required>1</label>
               <label><input type="radio" name="q7" value="2">2</label>
               <label><input type="radio" name="q7" value="3">3</label>
               <label><input type="radio" name="q7" value="4">4</label>
               <label><input type="radio" name="q7" value="5">5</label>
-              <span>High</span>
+              <span>Agree</span>
             </div>
           </div>
 
           <div class="quiz-question">
-            <p>8. Rate your hands-on / mechanical skills</p>
+            <p>8. I enjoy understanding how machines and mechanical systems function.</p>
             <div class="scale">
-              <span>Low</span>
+              <span>Disagree</span>
               <label><input type="radio" name="q8" value="1" required>1</label>
               <label><input type="radio" name="q8" value="2">2</label>
               <label><input type="radio" name="q8" value="3">3</label>
               <label><input type="radio" name="q8" value="4">4</label>
               <label><input type="radio" name="q8" value="5">5</label>
-              <span>High</span>
+              <span>Agree</span>
             </div>
           </div>
 
-          <!-- SECTION C – LEARNING STYLE -->
-          <h2>Learning Style & Work Setting</h2>
-
           <div class="quiz-question">
-            <p>9. What is your preferred learning style?</p>
-            <label><input type="radio" name="q9" value="A" required> Coding, experimenting, and tinkering</label>
-            <label><input type="radio" name="q9" value="B"> Practicing directly with people</label>
-            <label><input type="radio" name="q9" value="C"> Hands-on building and labs</label>
-            <label><input type="radio" name="q9" value="D"> Creative projects and visuals</label>
-            <label><input type="radio" name="q9" value="E"> Case studies and business scenarios</label>
+            <p>9. I have a good eye for aesthetics, color, and layout.</p>
+            <div class="scale">
+              <span>Disagree</span>
+              <label><input type="radio" name="q9" value="1" required>1</label>
+              <label><input type="radio" name="q9" value="2">2</label>
+              <label><input type="radio" name="q9" value="3">3</label>
+              <label><input type="radio" name="q9" value="4">4</label>
+              <label><input type="radio" name="q9" value="5">5</label>
+              <span>Agree</span>
+            </div>
           </div>
 
           <div class="quiz-question">
-            <p>10. What work setting do you imagine yourself in?</p>
-            <label><input type="radio" name="q10" value="A" required> Tech company / software team</label>
-            <label><input type="radio" name="q10" value="B"> Healthcare environment</label>
-            <label><input type="radio" name="q10" value="C"> Trades or engineering workshop</label>
-            <label><input type="radio" name="q10" value="D"> Media / design studio</label>
-            <label><input type="radio" name="q10" value="E"> Business operations or management</label>
+            <p>10. I enjoy analyzing data to make business decisions.</p>
+            <div class="scale">
+              <span>Disagree</span>
+              <label><input type="radio" name="q10" value="1" required>1</label>
+              <label><input type="radio" name="q10" value="2">2</label>
+              <label><input type="radio" name="q10" value="3">3</label>
+              <label><input type="radio" name="q10" value="4">4</label>
+              <label><input type="radio" name="q10" value="5">5</label>
+              <span>Agree</span>
+            </div>
           </div>
 
-          <!-- SECTION D – GOALS -->
-          <h2>Career Goals</h2>
-
+          <!-- Questions 11-15 -->
           <div class="quiz-question">
-            <p>11. What is your top career priority?</p>
-            <label><input type="radio" name="q11" value="A" required> High salary</label>
-            <label><input type="radio" name="q11" value="B"> Helping others</label>
-            <label><input type="radio" name="q11" value="C"> Job stability</label>
-            <label><input type="radio" name="q11" value="D"> Creative freedom</label>
-            <label><input type="radio" name="q11" value="E"> Leadership opportunities</label>
+            <p>11. I would like a career that involves constant learning of new technologies.</p>
+            <div class="scale">
+              <span>Disagree</span>
+              <label><input type="radio" name="q11" value="1" required>1</label>
+              <label><input type="radio" name="q11" value="2">2</label>
+              <label><input type="radio" name="q11" value="3">3</label>
+              <label><input type="radio" name="q11" value="4">4</label>
+              <label><input type="radio" name="q11" value="5">5</label>
+              <span>Agree</span>
+            </div>
           </div>
 
           <div class="quiz-question">
-            <p>12. How soon do you want to enter the workforce?</p>
-            <label><input type="radio" name="q12" value="A" required> Within 2 years (fast-track)</label>
-            <label><input type="radio" name="q12" value="B"> 3–4 years</label>
-            <label><input type="radio" name="q12" value="C"> 5+ years, long-term path</label>
+            <p>12. I have a lot of patience and empathy for others.</p>
+            <div class="scale">
+              <span>Disagree</span>
+              <label><input type="radio" name="q12" value="1" required>1</label>
+              <label><input type="radio" name="q12" value="2">2</label>
+              <label><input type="radio" name="q12" value="3">3</label>
+              <label><input type="radio" name="q12" value="4">4</label>
+              <label><input type="radio" name="q12" value="5">5</label>
+              <span>Agree</span>
+            </div>
+          </div>
+
+          <div class="quiz-question">
+            <p>13. I prefer practical tasks over abstract theory.</p>
+            <div class="scale">
+              <span>Disagree</span>
+              <label><input type="radio" name="q13" value="1" required>1</label>
+              <label><input type="radio" name="q13" value="2">2</label>
+              <label><input type="radio" name="q13" value="3">3</label>
+              <label><input type="radio" name="q13" value="4">4</label>
+              <label><input type="radio" name="q13" value="5">5</label>
+              <span>Agree</span>
+            </div>
+          </div>
+
+          <div class="quiz-question">
+            <p>14. I enjoy brainstorming creative ideas and solutions.</p>
+            <div class="scale">
+              <span>Disagree</span>
+              <label><input type="radio" name="q14" value="1" required>1</label>
+              <label><input type="radio" name="q14" value="2">2</label>
+              <label><input type="radio" name="q14" value="3">3</label>
+              <label><input type="radio" name="q14" value="4">4</label>
+              <label><input type="radio" name="q14" value="5">5</label>
+              <span>Agree</span>
+            </div>
+          </div>
+
+          <div class="quiz-question">
+            <p>15. I am good at persuading others and selling ideas.</p>
+            <div class="scale">
+              <span>Disagree</span>
+              <label><input type="radio" name="q15" value="1" required>1</label>
+              <label><input type="radio" name="q15" value="2">2</label>
+              <label><input type="radio" name="q15" value="3">3</label>
+              <label><input type="radio" name="q15" value="4">4</label>
+              <label><input type="radio" name="q15" value="5">5</label>
+              <span>Agree</span>
+            </div>
+          </div>
+
+          <!-- Questions 16-20 -->
+          <div class="quiz-question">
+            <p>16. I enjoy troubleshooting technical issues on computers or devices.</p>
+            <div class="scale">
+              <span>Disagree</span>
+              <label><input type="radio" name="q16" value="1" required>1</label>
+              <label><input type="radio" name="q16" value="2">2</label>
+              <label><input type="radio" name="q16" value="3">3</label>
+              <label><input type="radio" name="q16" value="4">4</label>
+              <label><input type="radio" name="q16" value="5">5</label>
+              <span>Agree</span>
+            </div>
+          </div>
+
+          <div class="quiz-question">
+            <p>17. I would enjoy working in a hospital, clinic, or lab environment.</p>
+            <div class="scale">
+              <span>Disagree</span>
+              <label><input type="radio" name="q17" value="1" required>1</label>
+              <label><input type="radio" name="q17" value="2">2</label>
+              <label><input type="radio" name="q17" value="3">3</label>
+              <label><input type="radio" name="q17" value="4">4</label>
+              <label><input type="radio" name="q17" value="5">5</label>
+              <span>Agree</span>
+            </div>
+          </div>
+
+          <div class="quiz-question">
+            <p>18. I enjoy working with tools, materials, and equipment.</p>
+            <div class="scale">
+              <span>Disagree</span>
+              <label><input type="radio" name="q18" value="1" required>1</label>
+              <label><input type="radio" name="q18" value="2">2</label>
+              <label><input type="radio" name="q18" value="3">3</label>
+              <label><input type="radio" name="q18" value="4">4</label>
+              <label><input type="radio" name="q18" value="5">5</label>
+              <span>Agree</span>
+            </div>
+          </div>
+
+          <div class="quiz-question">
+            <p>19. I enjoy creating digital media, videos, or graphics.</p>
+            <div class="scale">
+              <span>Disagree</span>
+              <label><input type="radio" name="q19" value="1" required>1</label>
+              <label><input type="radio" name="q19" value="2">2</label>
+              <label><input type="radio" name="q19" value="3">3</label>
+              <label><input type="radio" name="q19" value="4">4</label>
+              <label><input type="radio" name="q19" value="5">5</label>
+              <span>Agree</span>
+            </div>
+          </div>
+
+          <div class="quiz-question">
+            <p>20. I am interested in entrepreneurship and starting my own business.</p>
+            <div class="scale">
+              <span>Disagree</span>
+              <label><input type="radio" name="q20" value="1" required>1</label>
+              <label><input type="radio" name="q20" value="2">2</label>
+              <label><input type="radio" name="q20" value="3">3</label>
+              <label><input type="radio" name="q20" value="4">4</label>
+              <label><input type="radio" name="q20" value="5">5</label>
+              <span>Agree</span>
+            </div>
           </div>
 
           <div class="quiz-actions">
