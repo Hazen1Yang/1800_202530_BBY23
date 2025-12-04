@@ -79,7 +79,6 @@ This can vary, and may change in the future, this is merely in its current state
 ├── goals.html
 ├── index.html
 ├── login.html
-├── main.html
 ├── package-lock.json
 ├── package.json
 ├── quiz.html

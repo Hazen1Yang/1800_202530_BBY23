@@ -1,55 +1,750 @@
 [
   {
-    "id": "software-developer",
-    "title": "Software Developer",
-    "noc": "21232",
-    "salary_bc_low": 28,
-    "salary_bc_high": 62,
-    "outlook_bc": "Good",
-    "skills": [
-      "JavaScript", "Databases", "Testing", "Version Control"
-    ],
-    "education": "Diploma or Bachelor's in Computer Science or related field.",
-    "duties": [
-      "Write and modify software code",
-      "Test and maintain applications",
-      "Collaborate with technical teams"
-    ],
-    "link_workbc": "https://www.workbc.ca/career-profiles/software-developer",
-    "link_jobbank": "https://www.jobbank.gc.ca/marketreport/summary-occupation/2173/ca"
-  },
-  {
     "id": "web-developer",
     "title": "Web Developer",
     "noc": "21234",
-    "salary_bc_low": 24,
-    "salary_bc_high": 48,
+    "salary_bc_low": 25.0,
+    "salary_bc_high": 55.0,
     "outlook_bc": "Good",
-    "skills": ["HTML/CSS", "JavaScript", "React", "Responsive Design"],
-    "education": "Diploma in web development or computer science.",
-    "duties": [
-      "Develop websites",
-      "Optimize performance",
-      "Maintain and update web content"
+    "skills": [
+      "HTML/CSS",
+      "JavaScript",
+      "React",
+      "Problem Solving"
     ],
-    "link_workbc": "https://www.workbc.ca/career-profiles/web-designer-and-developer",
-    "link_jobbank": "https://www.jobbank.gc.ca/marketreport/summary-occupation/2175/ca"
+    "education": "Bachelor's degree or college diploma in computer science or web development.",
+    "duties": [
+      "Write, modify, integrate and test website related code",
+      "Conduct tests and perform security and quality controls",
+      "Optimize website content and performance"
+    ],
+    "link_workbc": "https://www.workbc.ca/career-profiles/web-developers-and-programmers",
+    "link_jobbank": "https://www.jobbank.gc.ca/marketreport/summary-occupation/21234/ca"
+  },
+  {
+    "id": "ui-ux-designer",
+    "title": "UI/UX Designer",
+    "noc": "21233",
+    "salary_bc_low": 28.0,
+    "salary_bc_high": 52.0,
+    "outlook_bc": "Good",
+    "skills": [
+      "Figma",
+      "User Research",
+      "Prototyping",
+      "Visual Design"
+    ],
+    "education": "A university degree or college diploma in graphic design or web design.",
+    "duties": [
+      "Consult with clients to establish the overall look",
+      "Develop the graphic elements that meet the clients' objectives",
+      "Establish guidelines for layouts and design"
+    ],
+    "link_workbc": "https://www.workbc.ca/career-profiles/web-designers",
+    "link_jobbank": "https://www.jobbank.gc.ca/marketreport/summary-occupation/21233/ca"
+  },
+  {
+    "id": "software-developer",
+    "title": "Software Developer",
+    "noc": "21232",
+    "salary_bc_low": 30.0,
+    "salary_bc_high": 75.0,
+    "outlook_bc": "Very Good",
+    "skills": [
+      "Java",
+      "Python",
+      "System Architecture",
+      "Agile"
+    ],
+    "education": "A bachelor's degree in computer science or computer engineering.",
+    "duties": [
+      "Write, modify, integrate and test software code",
+      "Maintain existing computer programs",
+      "Identify and communicate technical problems"
+    ],
+    "link_workbc": "https://www.workbc.ca/career-profiles/software-developers-and-programmers",
+    "link_jobbank": "https://www.jobbank.gc.ca/marketreport/summary-occupation/21232/ca"
+  },
+  {
+    "id": "graphic-designer",
+    "title": "Graphic Designer",
+    "noc": "52120",
+    "salary_bc_low": 20.0,
+    "salary_bc_high": 45.0,
+    "outlook_bc": "Good",
+    "skills": [
+      "Adobe Creative Suite",
+      "Typography",
+      "Creativity",
+      "Communication"
+    ],
+    "education": "A university degree or college diploma in visual arts or graphic design.",
+    "duties": [
+      "Determine the medium best suited to produce the desired visual effect",
+      "Prepare sketches, layouts and graphic elements",
+      "Use existing photo and illustration banks and typography guides"
+    ],
+    "link_workbc": "https://www.workbc.ca/career-profiles/graphic-designers-and-illustrators",
+    "link_jobbank": "https://www.jobbank.gc.ca/marketreport/summary-occupation/52120/ca"
+  },
+  {
+    "id": "administrative-assistant",
+    "title": "Administrative Assistant",
+    "noc": "13110",
+    "salary_bc_low": 20.0,
+    "salary_bc_high": 35.0,
+    "outlook_bc": "Fair",
+    "skills": [
+      "Office Administration",
+      "Microsoft Office",
+      "Organization",
+      "Communication"
+    ],
+    "education": "Completion of secondary school is usually required. A one- or two-year college or other program for administrative assistants.",
+    "duties": [
+      "Prepare, key in, edit and proofread correspondence",
+      "Open and distribute incoming regular and electronic mail",
+      "Schedule and confirm appointments"
+    ],
+    "link_workbc": "https://www.workbc.ca/career-profiles/administrative-assistants",
+    "link_jobbank": "https://www.jobbank.gc.ca/marketreport/summary-occupation/13110/ca"
+  },
+  {
+    "id": "baker",
+    "title": "Baker",
+    "noc": "63202",
+    "salary_bc_low": 17.0,
+    "salary_bc_high": 28.0,
+    "outlook_bc": "Good",
+    "skills": [
+      "Baking",
+      "Food Safety",
+      "Attention to Detail",
+      "Physical Stamina"
+    ],
+    "education": "Completion of secondary school. Completion of a three- or four-year apprenticeship program for bakers.",
+    "duties": [
+      "Prepare dough for pies, bread, rolls and sweet goods",
+      "Bake mixed dough and batters",
+      "Frost and decorate cakes and other baked goods"
+    ],
+    "link_workbc": "https://www.workbc.ca/career-profiles/bakers",
+    "link_jobbank": "https://www.jobbank.gc.ca/marketreport/summary-occupation/63202/ca"
+  },
+  {
+    "id": "airport-operations-specialist",
+    "title": "Airport Operations Specialist",
+    "noc": "72601",
+    "salary_bc_low": 25.0,
+    "salary_bc_high": 45.0,
+    "outlook_bc": "Good",
+    "skills": [
+      "Aviation Regulations",
+      "Safety Management",
+      "Logistics",
+      "Communication"
+    ],
+    "education": "A college diploma in aviation management or airport operations.",
+    "duties": [
+      "Coordinate activities of ground crews",
+      "Ensure safety regulations are followed",
+      "Monitor airport facilities"
+    ],
+    "link_workbc": "https://www.workbc.ca/career-profiles/air-traffic-controllers-and-related-occupations",
+    "link_jobbank": "https://www.jobbank.gc.ca/marketreport/summary-occupation/72601/ca"
+  },
+  {
+    "id": "accountant",
+    "title": "Financial Accountant",
+    "noc": "11100",
+    "salary_bc_low": 28.0,
+    "salary_bc_high": 60.0,
+    "outlook_bc": "Very Good",
+    "skills": [
+      "Financial Reporting",
+      "Taxation",
+      "Auditing",
+      "Analytical Skills"
+    ],
+    "education": "A university degree and a professional training program approved by a provincial institute of chartered accountants.",
+    "duties": [
+      "Plan, set up and administer accounting systems",
+      "Prepare financial information for individuals",
+      "Analyze financial documents and reports"
+    ],
+    "link_workbc": "https://www.workbc.ca/career-profiles/financial-auditors-and-accountants",
+    "link_jobbank": "https://www.jobbank.gc.ca/marketreport/summary-occupation/11100/ca"
+  },
+  {
+    "id": "hr-specialist",
+    "title": "Human Resources Specialist",
+    "noc": "11200",
+    "salary_bc_low": 28.0,
+    "salary_bc_high": 55.0,
+    "outlook_bc": "Good",
+    "skills": [
+      "Recruitment",
+      "Employee Relations",
+      "Labor Laws",
+      "Interpersonal Skills"
+    ],
+    "education": "A university degree or college diploma in human resources management.",
+    "duties": [
+      "Plan, develop, implement and evaluate human resources policies",
+      "Advise managers and employees on the interpretation of personnel policies",
+      "Negotiate collective agreements"
+    ],
+    "link_workbc": "https://www.workbc.ca/career-profiles/human-resources-professionals",
+    "link_jobbank": "https://www.jobbank.gc.ca/marketreport/summary-occupation/11200/ca"
+  },
+  {
+    "id": "journalist",
+    "title": "Journalist",
+    "noc": "51113",
+    "salary_bc_low": 22.0,
+    "salary_bc_high": 48.0,
+    "outlook_bc": "Limited",
+    "skills": [
+      "Writing",
+      "Research",
+      "Interviewing",
+      "Digital Media"
+    ],
+    "education": "A university degree or college diploma in journalism or a related field.",
+    "duties": [
+      "Collect information through interview, investigation and observation",
+      "Write news stories for publication or broadcast",
+      "Receive, analyze and verify news and other copy"
+    ],
+    "link_workbc": "https://www.workbc.ca/career-profiles/journalists",
+    "link_jobbank": "https://www.jobbank.gc.ca/marketreport/summary-occupation/51113/ca"
+  },
+  {
+    "id": "chef",
+    "title": "Chef",
+    "noc": "62200",
+    "salary_bc_low": 18.0,
+    "salary_bc_high": 35.0,
+    "outlook_bc": "Good",
+    "skills": [
+      "Culinary Arts",
+      "Menu Planning",
+      "Kitchen Management",
+      "Leadership"
+    ],
+    "education": "Completion of secondary school. Cook's trade certification.",
+    "duties": [
+      "Plan menus and ensure food meets quality standards",
+      "Supervise cooks and other kitchen staff",
+      "Estimate food requirements and food and labour costs"
+    ],
+    "link_workbc": "https://www.workbc.ca/career-profiles/chefs",
+    "link_jobbank": "https://www.jobbank.gc.ca/marketreport/summary-occupation/62200/ca"
+  },
+  {
+    "id": "medical-lab-assistant",
+    "title": "Medical Laboratory Assistant",
+    "noc": "33101",
+    "salary_bc_low": 22.0,
+    "salary_bc_high": 32.0,
+    "outlook_bc": "Good",
+    "skills": [
+      "Phlebotomy",
+      "Sample Processing",
+      "Laboratory Safety",
+      "Attention to Detail"
+    ],
+    "education": "Completion of a college certificate program in medical laboratory science.",
+    "duties": [
+      "Collect blood or other samples from patients",
+      "Log patient samples and prepare them for testing",
+      "Set up medical laboratory equipment"
+    ],
+    "link_workbc": "https://www.workbc.ca/career-profiles/medical-laboratory-assistants-and-related-technical-occupations",
+    "link_jobbank": "https://www.jobbank.gc.ca/marketreport/summary-occupation/33101/ca"
+  },
+  {
+    "id": "architectural-technologist",
+    "title": "Architectural Technologist",
+    "noc": "22210",
+    "salary_bc_low": 25.0,
+    "salary_bc_high": 48.0,
+    "outlook_bc": "Good",
+    "skills": [
+      "AutoCAD",
+      "Building Codes",
+      "Drafting",
+      "Project Management"
+    ],
+    "education": "Completion of a two- to three-year college program in architectural technology.",
+    "duties": [
+      "Assist in the development of architectural designs",
+      "Analyze building codes, by-laws, space requirements and other technical documents",
+      "Prepare drawings, specifications and cost estimates"
+    ],
+    "link_workbc": "https://www.workbc.ca/career-profiles/architectural-technologists-and-technicians",
+    "link_jobbank": "https://www.jobbank.gc.ca/marketreport/summary-occupation/22210/ca"
+  },
+  {
+    "id": "systems-analyst",
+    "title": "Information Systems Analyst",
+    "noc": "21222",
+    "salary_bc_low": 35.0,
+    "salary_bc_high": 65.0,
+    "outlook_bc": "Very Good",
+    "skills": [
+      "System Analysis",
+      "Requirements Gathering",
+      "SQL",
+      "Communication"
+    ],
+    "education": "A bachelor's degree in computer science or related field.",
+    "duties": [
+      "Confer with clients to identify and document requirements",
+      "Conduct business and technical studies",
+      "Design, develop and implement information systems business solutions"
+    ],
+    "link_workbc": "https://www.workbc.ca/career-profiles/information-systems-analysts-and-consultants",
+    "link_jobbank": "https://www.jobbank.gc.ca/marketreport/summary-occupation/21222/ca"
+  },
+  {
+    "id": "network-administrator",
+    "title": "Network Administrator",
+    "noc": "22220",
+    "salary_bc_low": 28.0,
+    "salary_bc_high": 52.0,
+    "outlook_bc": "Good",
+    "skills": [
+      "Networking",
+      "Security",
+      "Troubleshooting",
+      "Server Management"
+    ],
+    "education": "A college diploma or university degree in computer science or network administration.",
+    "duties": [
+      "Maintain, troubleshoot and administer the use of local area networks (LANs)",
+      "Evaluate and install computer hardware",
+      "Provide problem-solving services to network users"
+    ],
+    "link_workbc": "https://www.workbc.ca/career-profiles/computer-network-technicians",
+    "link_jobbank": "https://www.jobbank.gc.ca/marketreport/summary-occupation/22220/ca"
+  },
+  {
+    "id": "marketing-manager",
+    "title": "Marketing Manager",
+    "noc": "10022",
+    "salary_bc_low": 35.0,
+    "salary_bc_high": 75.0,
+    "outlook_bc": "Good",
+    "skills": [
+      "Marketing Strategy",
+      "Digital Marketing",
+      "Leadership",
+      "Analytics"
+    ],
+    "education": "A university degree or college diploma in business administration or a related field.",
+    "duties": [
+      "Plan, direct and evaluate the activities of firms and departments",
+      "Establish distribution networks for products and services",
+      "Direct and evaluate the marketing strategies of establishments"
+    ],
+    "link_workbc": "https://www.workbc.ca/career-profiles/advertising-marketing-and-public-relations-managers",
+    "link_jobbank": "https://www.jobbank.gc.ca/marketreport/summary-occupation/10022/ca"
+  },
+  {
+    "id": "financial-planner",
+    "title": "Financial Planner",
+    "noc": "11102",
+    "salary_bc_low": 25.0,
+    "salary_bc_high": 60.0,
+    "outlook_bc": "Good",
+    "skills": [
+      "Financial Planning",
+      "Investment Strategies",
+      "Client Relations",
+      "Sales"
+    ],
+    "education": "A bachelor's degree in business administration, commerce, economics or a related field.",
+    "duties": [
+      "Develop financial plans for clients",
+      "Analyze clients' financial records",
+      "Advise clients on investment strategies"
+    ],
+    "link_workbc": "https://www.workbc.ca/career-profiles/financial-and-investment-analysts",
+    "link_jobbank": "https://www.jobbank.gc.ca/marketreport/summary-occupation/11102/ca"
+  },
+  {
+    "id": "electrical-engineer",
+    "title": "Electrical Engineer",
+    "noc": "21310",
+    "salary_bc_low": 35.0,
+    "salary_bc_high": 70.0,
+    "outlook_bc": "Very Good",
+    "skills": [
+      "Circuit Design",
+      "Power Systems",
+      "AutoCAD",
+      "Project Management"
+    ],
+    "education": "A bachelor's degree in electrical engineering.",
+    "duties": [
+      "Conduct research into the feasibility, design, operation and performance of electrical generation and distribution networks",
+      "Prepare material cost and timing estimates",
+      "Design electrical and electronic circuits"
+    ],
+    "link_workbc": "https://www.workbc.ca/career-profiles/electrical-and-electronics-engineers",
+    "link_jobbank": "https://www.jobbank.gc.ca/marketreport/summary-occupation/21310/ca"
+  },
+  {
+    "id": "registered-nurse",
+    "title": "Registered Nurse",
+    "noc": "31301",
+    "salary_bc_low": 35.0,
+    "salary_bc_high": 55.0,
+    "outlook_bc": "Very Good",
+    "skills": [
+      "Patient Care",
+      "Medical Knowledge",
+      "Empathy",
+      "Critical Thinking"
+    ],
+    "education": "Completion of a university, college or other approved registered nursing program.",
+    "duties": [
+      "Assess patients to identify appropriate nursing interventions",
+      "Collaborate with members of an interdisciplinary health team",
+      "Administer medications and treatments"
+    ],
+    "link_workbc": "https://www.workbc.ca/career-profiles/registered-nurses-and-registered-psychiatric-nurses",
+    "link_jobbank": "https://www.jobbank.gc.ca/marketreport/summary-occupation/31301/ca"
+  },
+  {
+    "id": "civil-engineer",
+    "title": "Civil Engineer",
+    "noc": "21300",
+    "salary_bc_low": 35.0,
+    "salary_bc_high": 65.0,
+    "outlook_bc": "Good",
+    "skills": [
+      "Structural Analysis",
+      "Project Management",
+      "AutoCAD",
+      "Civil 3D"
+    ],
+    "education": "A bachelor's degree in civil engineering.",
+    "duties": [
+      "Confer with clients and other members of the engineering team",
+      "Conduct research and determine construction specifications",
+      "Plan and design major civil projects"
+    ],
+    "link_workbc": "https://www.workbc.ca/career-profiles/civil-engineers",
+    "link_jobbank": "https://www.jobbank.gc.ca/marketreport/summary-occupation/21300/ca"
+  },
+  {
+    "id": "building-science-engineer",
+    "title": "Building Science Engineer",
+    "noc": "21300",
+    "salary_bc_low": 38.0,
+    "salary_bc_high": 70.0,
+    "outlook_bc": "Good",
+    "skills": [
+      "Building Envelopes",
+      "Energy Efficiency",
+      "Thermodynamics",
+      "Reporting"
+    ],
+    "education": "A master's degree in building science or related engineering field.",
+    "duties": [
+      "Analyze building envelope performance",
+      "Design energy-efficient building systems",
+      "Conduct field reviews and testing"
+    ],
+    "link_workbc": "https://www.workbc.ca/career-profiles/civil-engineers",
+    "link_jobbank": "https://www.jobbank.gc.ca/marketreport/summary-occupation/21300/ca"
+  },
+  {
+    "id": "hotel-manager",
+    "title": "Hotel Manager",
+    "noc": "60031",
+    "salary_bc_low": 22.0,
+    "salary_bc_high": 50.0,
+    "outlook_bc": "Fair",
+    "skills": [
+      "Hospitality Management",
+      "Customer Service",
+      "Operations",
+      "Budgeting"
+    ],
+    "education": "A university degree or college diploma in hotel management.",
+    "duties": [
+      "Plan, organize, direct, control and evaluate the operations of a hotel",
+      "Recruit and supervise staff",
+      "Set room rates and allocate funds"
+    ],
+    "link_workbc": "https://www.workbc.ca/career-profiles/accommodation-service-managers",
+    "link_jobbank": "https://www.jobbank.gc.ca/jobsearch/jobsearch?searchstring=Hotel+Manager"
+  },
+  {
+    "id": "bookkeeper",
+    "title": "Bookkeeper",
+    "noc": "12200",
+    "salary_bc_low": 20.0,
+    "salary_bc_high": 35.0,
+    "outlook_bc": "Good",
+    "skills": [
+      "Accounting Software",
+      "Data Entry",
+      "Attention to Detail",
+      "Math"
+    ],
+    "education": "Completion of secondary school. Completion of a college program in accounting, bookkeeping or a related field.",
+    "duties": [
+      "Keep financial records and establish, maintain and balance various accounts",
+      "Post journal entries",
+      "Prepare trial balances of books"
+    ],
+    "link_workbc": "https://www.workbc.ca/career-profiles/accounting-technicians-and-bookkeepers",
+    "link_jobbank": "https://www.jobbank.gc.ca/marketreport/summary-occupation/12200/ca"
+  },
+  {
+    "id": "flight-dispatcher",
+    "title": "Flight Dispatcher",
+    "noc": "72601",
+    "salary_bc_low": 22.0,
+    "salary_bc_high": 45.0,
+    "outlook_bc": "Good",
+    "skills": [
+      "Aviation Meteorology",
+      "Flight Planning",
+      "Regulations",
+      "Decision Making"
+    ],
+    "education": "Completion of secondary school. A college diploma in aviation or related field.",
+    "duties": [
+      "Authorize the departure of aircraft",
+      "Prepare flight plans",
+      "Monitor flight progress"
+    ],
+    "link_workbc": "https://www.workbc.ca/career-profiles/air-traffic-controllers-and-related-occupations",
+    "link_jobbank": "https://www.jobbank.gc.ca/marketreport/summary-occupation/72601/ca"
+  },
+  {
+    "id": "health-info-practitioner",
+    "title": "Health Information Management Practitioner",
+    "noc": "12111",
+    "salary_bc_low": 24.0,
+    "salary_bc_high": 40.0,
+    "outlook_bc": "Good",
+    "skills": [
+      "Health Records",
+      "Data Privacy",
+      "Medical Terminology",
+      "Coding"
+    ],
+    "education": "A college diploma in health information management.",
+    "duties": [
+      "Classify and code diseases",
+      "Collect and analyze health data",
+      "Manage health information systems"
+    ],
+    "link_workbc": "https://www.workbc.ca/career-profiles/health-information-management-occupations",
+    "link_jobbank": "https://www.jobbank.gc.ca/marketreport/summary-occupation/12111/ca"
+  },
+  {
+    "id": "database-analyst",
+    "title": "Database Analyst",
+    "noc": "21223",
+    "salary_bc_low": 30.0,
+    "salary_bc_high": 60.0,
+    "outlook_bc": "Good",
+    "skills": [
+      "SQL",
+      "Database Design",
+      "Data Modeling",
+      "Performance Tuning"
+    ],
+    "education": "A bachelor's degree in computer science or related field.",
+    "duties": [
+      "Collect and document user requirements",
+      "Design and develop database architecture",
+      "Design, construct, modify, integrate and test data models"
+    ],
+    "link_workbc": "https://www.workbc.ca/career-profiles/database-analysts-and-data-administrators",
+    "link_jobbank": "https://www.jobbank.gc.ca/marketreport/summary-occupation/21223/ca"
+  },
+  {
+    "id": "digital-marketer",
+    "title": "Digital Marketer",
+    "noc": "11202",
+    "salary_bc_low": 25.0,
+    "salary_bc_high": 50.0,
+    "outlook_bc": "Good",
+    "skills": [
+      "SEO/SEM",
+      "Social Media",
+      "Content Creation",
+      "Analytics"
+    ],
+    "education": "A university degree or college diploma in marketing or communications.",
+    "duties": [
+      "Develop and implement digital marketing strategies",
+      "Manage social media accounts",
+      "Analyze marketing campaign performance"
+    ],
+    "link_workbc": "https://www.workbc.ca/career-profiles/professional-occupations-in-advertising-marketing-and-public-relations",
+    "link_jobbank": "https://www.jobbank.gc.ca/marketreport/summary-occupation/11202/ca"
+  },
+  {
+    "id": "project-manager",
+    "title": "Project Manager",
+    "noc": "10011",
+    "salary_bc_low": 40.0,
+    "salary_bc_high": 80.0,
+    "outlook_bc": "Good",
+    "skills": [
+      "Project Planning",
+      "Risk Management",
+      "Leadership",
+      "Budgeting"
+    ],
+    "education": "A university degree or college diploma. Project Management Professional (PMP) certification is often required.",
+    "duties": [
+      "Plan, organize, direct, control and evaluate the activities of a project",
+      "Develop and implement project plans",
+      "Manage project budgets and timelines"
+    ],
+    "link_workbc": "https://www.workbc.ca/job-search-results?search=Project%20Manager",
+    "link_jobbank": "https://www.jobbank.gc.ca/jobsearch/jobsearch?searchstring=Project+Manager"
   },
   {
     "id": "it-support",
     "title": "IT Support Technician",
-    "noc": "22220",
-    "salary_bc_low": 22,
-    "salary_bc_high": 38,
+    "noc": "22221",
+    "salary_bc_low": 22.0,
+    "salary_bc_high": 38.0,
     "outlook_bc": "Good",
-    "skills": ["Troubleshooting", "Customer Support", "Networking"],
-    "education": "Diploma or certificate in IT.",
-    "duties": [
-      "Answer technical support tickets",
-      "Maintain hardware/software",
-      "Provide customer assistance"
+    "skills": [
+      "Troubleshooting",
+      "Customer Service",
+      "Hardware",
+      "Windows"
     ],
-    "link_workbc": "https://www.workbc.ca/career-profiles/user-support-technician",
-    "link_jobbank": "https://www.jobbank.gc.ca/marketreport/summary-occupation/2282/ca"
+    "education": "College certificate or diploma.",
+    "duties": [
+      "Communicate electronically and in person with computer users",
+      "Provide advice and training to users",
+      "Maintain troubleshooting logs"
+    ],
+    "link_workbc": "https://www.workbc.ca/career-profiles/user-support-technicians",
+    "link_jobbank": "https://www.jobbank.gc.ca/marketreport/summary-occupation/22221/ca"
+  },
+  {
+    "id": "event-manager",
+    "title": "Event Manager",
+    "noc": "12103",
+    "salary_bc_low": 24.0,
+    "salary_bc_high": 45.0,
+    "outlook_bc": "Good",
+    "skills": [
+      "Organization",
+      "Communication",
+      "Budgeting",
+      "Creativity"
+    ],
+    "education": "A university degree or college diploma in business, tourism or hospitality.",
+    "duties": [
+      "Plan, organize and coordinate conferences",
+      "Meet with trade and professional associations",
+      "Coordinate services for events"
+    ],
+    "link_workbc": "https://www.workbc.ca/career-profiles/conference-and-event-planners",
+    "link_jobbank": "https://www.jobbank.gc.ca/marketreport/summary-occupation/12103/ca"
+  },
+  {
+    "id": "construction-manager",
+    "title": "Construction Manager",
+    "noc": "70010",
+    "salary_bc_low": 38.0,
+    "salary_bc_high": 75.0,
+    "outlook_bc": "Good",
+    "skills": [
+      "Project Management",
+      "Budgeting",
+      "Safety Regulations",
+      "Blueprints"
+    ],
+    "education": "A university degree in civil engineering or a college diploma in construction technology.",
+    "duties": [
+      "Plan, organize, direct, control and evaluate construction projects",
+      "Prepare and submit construction project budget estimates",
+      "Plan and prepare construction schedules and milestones"
+    ],
+    "link_workbc": "https://www.workbc.ca/career-profiles/construction-managers",
+    "link_jobbank": "https://www.jobbank.gc.ca/marketreport/summary-occupation/70010/ca"
+  },
+  {
+    "id": "aircraft-maintenance-engineer",
+    "title": "Aircraft Maintenance Engineer",
+    "noc": "72404",
+    "salary_bc_low": 28.0,
+    "salary_bc_high": 55.0,
+    "outlook_bc": "Very Good",
+    "skills": [
+      "Aircraft Systems",
+      "Maintenance Regulations",
+      "Troubleshooting",
+      "Safety"
+    ],
+    "education": "A college diploma in aircraft maintenance.",
+    "duties": [
+      "Troubleshoot aircraft structural, mechanical or hydraulic systems",
+      "Adjust and repair aircraft systems",
+      "Inspect and test aircraft systems"
+    ],
+    "link_workbc": "https://www.workbc.ca/career-profiles/aircraft-mechanics-and-aircraft-inspectors",
+    "link_jobbank": "https://www.jobbank.gc.ca/marketreport/summary-occupation/72404/ca"
+  },
+  {
+    "id": "ecologist",
+    "title": "Ecologist",
+    "noc": "21111",
+    "salary_bc_low": 30.0,
+    "salary_bc_high": 60.0,
+    "outlook_bc": "Good",
+    "skills": [
+      "Field Research",
+      "Data Analysis",
+      "Environmental Impact Assessment",
+      "Report Writing"
+    ],
+    "education": "A bachelor's degree in biology, ecology or a related field.",
+    "duties": [
+      "Conduct field research and surveys",
+      "Study the effects of human activity on the environment",
+      "Prepare reports and management plans"
+    ],
+    "link_workbc": "https://www.workbc.ca/career-profiles/biologists-and-related-scientists",
+    "link_jobbank": "https://www.jobbank.gc.ca/marketreport/summary-occupation/21111/ca"
+  },
+  {
+    "id": "forestry-technologist",
+    "title": "Forestry Technologist",
+    "noc": "22112",
+    "salary_bc_low": 25.0,
+    "salary_bc_high": 50.0,
+    "outlook_bc": "Good",
+    "skills": [
+      "Forest Management",
+      "GIS",
+      "Silviculture",
+      "Surveying"
+    ],
+    "education": "A college diploma in forestry technology.",
+    "duties": [
+      "Conduct forest inventories and surveys",
+      "Assist in planning and supervising forestry operations",
+      "Implement silviculture programs"
+    ],
+    "link_workbc": "https://www.workbc.ca/career-profiles/forestry-technologists-and-technicians",
+    "link_jobbank": "https://www.jobbank.gc.ca/marketreport/summary-occupation/22112/ca"
   }
 ]

@@ -1,29 +1,180 @@
 {
-  "computer-systems-technology-cst": [
+  "front-end-web-developer": [
+    "web-developer",
+    "ui-ux-designer",
+    "graphic-designer"
+  ],
+  "ui-ux-design": [
+    "ui-ux-designer",
+    "web-developer",
+    "graphic-designer"
+  ],
+  "applied-software-development": [
     "software-developer",
     "web-developer",
-    "it-support",
-    "systems-analyst",
-    "database-analyst"
-  ],
-  "computer-information-technology-cit": [
-    "it-support",
-    "network-administrator",
     "systems-analyst"
+  ],
+  "office-administrator-with-technology": [
+    "administrative-assistant",
+    "bookkeeper",
+    "hr-specialist"
+  ],
+  "graphic-design-foundations": [
+    "graphic-designer",
+    "ui-ux-designer",
+    "web-developer"
+  ],
+  "baking-pastry-arts": [
+    "baker",
+    "chef",
+    "hotel-manager"
+  ],
+  "airport-operations": [
+    "airport-operations-specialist",
+    "flight-dispatcher",
+    "hotel-manager"
+  ],
+  "accounting": [
+    "accountant",
+    "bookkeeper",
+    "financial-planner"
+  ],
+  "human-resource-management": [
+    "hr-specialist",
+    "administrative-assistant",
+    "project-manager"
+  ],
+  "broadcast-online-journalism": [
+    "journalist",
+    "digital-marketer",
+    "graphic-designer"
   ],
   "digital-design-development": [
     "web-developer",
     "ui-ux-designer",
-    "front-end-developer"
+    "graphic-designer"
+  ],
+  "culinary-arts": [
+    "chef",
+    "baker",
+    "hotel-manager"
+  ],
+  "aviation-management-operations": [
+    "airport-operations-specialist",
+    "flight-dispatcher",
+    "project-manager"
+  ],
+  "medical-laboratory-assistant": [
+    "medical-lab-assistant",
+    "health-info-practitioner"
+  ],
+  "health-information-management": [
+    "health-info-practitioner",
+    "medical-lab-assistant",
+    "administrative-assistant"
+  ],
+  "architectural-building-technology": [
+    "architectural-technologist",
+    "civil-engineer",
+    "building-science-engineer"
+  ],
+  "computer-systems-technology-cst": [
+    "software-developer",
+    "systems-analyst",
+    "database-analyst",
+    "web-developer"
+  ],
+  "computer-information-technology-cit": [
+    "network-administrator",
+    "systems-analyst",
+    "it-support"
+  ],
+  "new-media-design-web-development": [
+    "web-developer",
+    "ui-ux-designer",
+    "digital-marketer"
   ],
   "business-administration": [
+    "project-manager",
     "administrative-assistant",
-    "marketing-specialist",
-    "business-analyst"
+    "marketing-manager"
   ],
   "marketing-management": [
-    "marketing-specialist",
+    "marketing-manager",
     "digital-marketer",
-    "social-media-manager"
+    "graphic-designer"
+  ],
+  "financial-planning": [
+    "financial-planner",
+    "accountant",
+    "bookkeeper"
+  ],
+  "bachelor-of-technology-computer-systems": [
+    "software-developer",
+    "systems-analyst",
+    "network-administrator"
+  ],
+  "bachelor-of-digital-arts-media-design": [
+    "graphic-designer",
+    "ui-ux-designer",
+    "digital-marketer"
+  ],
+  "bachelor-of-business-administration": [
+    "project-manager",
+    "marketing-manager",
+    "accountant"
+  ],
+  "bachelor-of-engineering-electrical": [
+    "electrical-engineer",
+    "systems-analyst",
+    "project-manager"
+  ],
+  "bachelor-of-science-in-nursing": [
+    "registered-nurse",
+    "health-info-practitioner"
+  ],
+  "bachelor-of-hospitality-management": [
+    "hotel-manager",
+    "chef",
+    "event-manager"
+  ],
+  "master-of-engineering-building-science": [
+    "building-science-engineer",
+    "civil-engineer",
+    "architectural-technologist"
+  ],
+  "master-of-applied-science-building-engineering": [
+    "building-science-engineer",
+    "civil-engineer",
+    "project-manager"
+  ],
+  "master-of-engineering": [
+    "project-manager",
+    "electrical-engineer",
+    "civil-engineer"
+  ],
+  "civil-engineering": [
+    "civil-engineer",
+    "construction-manager",
+    "project-manager"
+  ],
+  "construction-management": [
+    "construction-manager",
+    "project-manager",
+    "architectural-technologist"
+  ],
+  "aircraft-maintenance": [
+    "aircraft-maintenance-engineer",
+    "airport-operations-specialist"
+  ],
+  "ecological-restoration": [
+    "ecologist",
+    "forestry-technologist",
+    "building-science-engineer"
+  ],
+  "forest-and-natural-areas-management": [
+    "forestry-technologist",
+    "ecologist",
+    "project-manager"
   ]
 }

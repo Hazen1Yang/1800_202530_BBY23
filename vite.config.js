@@ -10,7 +10,6 @@ export default defineConfig({
     rollupOptions: {
       input: {
         index: resolve(__dirname, "index.html"),
-        main: resolve(__dirname, "main.html"),
         login: resolve(__dirname, "login.html"),
         goals: resolve(__dirname, "goals.html"),
         quiz: resolve(__dirname, "quiz.html"),

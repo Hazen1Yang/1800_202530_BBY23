@@ -1,41 +1,58 @@
-/* BCIT Programs Page Styles */
+/* BCIT Programs Page Styles - Matched to Careers Page */
 
 .programs-container {
   max-width: 1200px;
-  margin: 20px auto;
+  margin: 0 auto;
   padding: 20px;
   padding-bottom: 100px;
-  background: #fff;
-  border-radius: 10px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  /* Removed white box to match open layout of careers page */
+  background: transparent;
+  box-shadow: none;
 }
 
+/* Header styled like Career Hero */
 .programs-header {
   text-align: center;
-  margin-bottom: 40px;
-  padding: 30px 20px;
-  background:#667eea;
-  border-radius: 10px;
-  color: white;
+  margin-bottom: 30px;
+  padding: 4rem 2rem;
+  background: radial-gradient(circle at top left, rgba(225, 210, 255, 0.4), transparent 45%),
+    linear-gradient(135deg, #0a1027, #1b1f3f 45%, #2d1c53);
+  border-radius: 20px;
+  color: #fdfbff;
+  box-shadow: 0 20px 40px rgba(10, 16, 39, 0.2);
 }
 
 .programs-header h1 {
-  font-size: 32px;
+  font-size: clamp(2rem, 5vw, 3rem);
   margin-bottom: 15px;
-  color: white;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+  color: #fff;
+  text-shadow: none;
 }
 
 .programs-intro {
-  font-size: 18px;
+  font-size: 1.1rem;
   line-height: 1.6;
-  color: rgba(255, 255, 255, 0.95);
-  margin: 0;
+  color: rgba(255, 255, 255, 0.8);
+  margin: 0 auto;
+  max-width: 800px;
 }
 
-/* Search and Filter Controls */
+/* Search and Filter Controls - Glassmorphism */
 .programs-controls {
   margin-bottom: 40px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.16); /* Light border for glass effect if on dark bg, but here on white body it needs contrast */
+  /* Since body is likely white, we need a different approach or a dark container for controls if we want glass. 
+     However, careers page has controls INSIDE the dark hero. 
+     Here controls are outside. Let's give them a distinct style or put them in a dark container.
+     Let's use a dark glass style that stands out on white/light gray.
+  */
+  background: #1b1f3f; /* Fallback */
+  background: linear-gradient(135deg, #1b1f3f, #2d1c53);
+  border-radius: 20px;
+  padding: 1.5rem;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+  color: white;
 }
 
 .search-box {
@@ -43,18 +60,26 @@
 }
 
 .search-box input {
-  width: 96%;
+  width: 100%;
   padding: 15px 20px;
   font-size: 16px;
-  border: 2px solid #ddd;
-  border-radius: 8px;
-  transition: border-color 0.3s;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+  transition: all 0.3s;
+  box-sizing: border-box;
+}
+
+.search-box input::placeholder {
+  color: rgba(255, 255, 255, 0.6);
 }
 
 .search-box input:focus {
   outline: none;
-  border-color: #667eea;
-  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+  background: rgba(255, 255, 255, 0.15);
+  border-color: #ffd59a;
+  box-shadow: 0 0 0 3px rgba(255, 213, 154, 0.1);
 }
 
 .filter-buttons {
@@ -68,23 +93,24 @@
   padding: 10px 20px;
   font-size: 14px;
   font-weight: 600;
-  border: 2px solid #667eea;
-  background: white;
-  color: #667eea;
-  border-radius: 25px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  background: transparent;
+  color: rgba(255, 255, 255, 0.9);
+  border-radius: 999px;
   cursor: pointer;
-  transition: all 0.3s;
+  transition: all 0.2s;
 }
 
 .filter-btn:hover {
-  background: #f0f3ff;
+  background: rgba(255, 255, 255, 0.1);
   transform: translateY(-2px);
 }
 
 .filter-btn.active {
-  background: #667eea;
-  color: white;
-  box-shadow: 0 4px 8px rgba(102, 126, 234, 0.3);
+  background: rgba(255, 255, 255, 0.2);
+  border-color: #ffd59a;
+  color: #ffd59a;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
 
 /* Program Category Sections */
@@ -94,20 +120,21 @@
 
 .category-title {
   font-size: 28px;
-  color: #333;
+  color: #1b1f3f;
   margin-bottom: 15px;
-  border-bottom: 3px solid #667eea;
+  border-bottom: 3px solid #ffd59a; /* Matching accent */
   padding-bottom: 10px;
+  display: inline-block;
 }
 
 .category-description {
   font-size: 16px;
-  color: #666;
+  color: #555;
   margin-bottom: 25px;
   line-height: 1.6;
 }
 
-/* Programs Grid */
+/* Programs Grid - Matching Career Cards */
 .programs-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -116,51 +143,56 @@
 }
 
 .program-card {
-  background: white;
-  border: 2px solid #e0e0e0;
-  border-radius: 10px;
-  padding: 20px;
-  transition: all 0.3s;
+  background: #fff;
+  border-radius: 20px;
+  padding: 1.5rem;
+  border: 1px solid rgba(15, 23, 42, 0.08);
+  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.06);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
   display: flex;
   flex-direction: column;
 }
 
 .program-card:hover {
-  border-color: #667eea;
-  box-shadow: 0 6px 20px rgba(102, 126, 234, 0.15);
-  transform: translateY(-3px);
+  border-color: transparent;
+  transform: translateY(-4px);
+  box-shadow: 0 25px 50px rgba(15, 23, 42, 0.12);
 }
 
 .program-name {
-  font-size: 18px;
-  margin-bottom: 10px;
+  font-size: 1.25rem;
+  margin-bottom: 0.75rem;
   line-height: 1.4;
+  font-weight: 700;
 }
 
 .program-name a {
-  color: #333;
+  color: #121633;
   text-decoration: none;
-  font-weight: 600;
   transition: color 0.3s;
 }
 
 .program-name a:hover {
-  color: #667eea;
-  text-decoration: underline;
+  color: #6e4e9e;
 }
 
 .program-area {
-  font-size: 14px;
-  color: #667eea;
+  font-size: 0.75rem;
+  color: #fff;
+  background: var(--primary-color);
   font-weight: 600;
-  margin-bottom: 10px;
+  margin-bottom: 0.75rem;
   text-transform: uppercase;
-  letter-spacing: 0.5px;
+  letter-spacing: 0.08em;
+  padding: 0.35rem 0.85rem;
+  border-radius: 6px;
+  align-self: flex-start;
+  box-shadow: 0 2px 5px rgba(122, 97, 177, 0.25);
 }
 
 .program-description {
-  font-size: 14px;
-  color: #666;
+  font-size: 0.95rem;
+  color: #4b5563;
   line-height: 1.5;
   margin: 0;
   flex-grow: 1;
@@ -169,14 +201,15 @@
 /* Resources Section */
 .resources-section {
   margin-top: 50px;
-  padding: 30px;
+  padding: 40px;
   background: #f8f9fa;
-  border-radius: 10px;
+  border-radius: 20px;
+  border: 1px solid rgba(0,0,0,0.05);
 }
 
 .resources-section h2 {
   font-size: 28px;
-  color: #333;
+  color: #1b1f3f;
   margin-bottom: 25px;
   text-align: center;
 }
@@ -190,29 +223,23 @@
 
 .resource-card {
   background: white;
-  border-radius: 10px;
+  border-radius: 16px;
   padding: 25px;
   text-align: center;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
   transition: all 0.3s;
+  border: 1px solid rgba(0,0,0,0.05);
 }
 
 .resource-card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
 }
 
 .resource-card h3 {
   font-size: 20px;
-  color: #333;
+  color: #1b1f3f;
   margin-bottom: 10px;
-}
-
-.resource-card p {
-  font-size: 14px;
-  color: #666;
-  margin-bottom: 20px;
-  line-height: 1.6;
 }
 
 /* Action Buttons */
@@ -228,7 +255,7 @@
   padding: 12px 30px;
   font-size: 16px;
   font-weight: 600;
-  border-radius: 8px;
+  border-radius: 12px;
   text-decoration: none;
   cursor: pointer;
   transition: all 0.3s;
@@ -237,45 +264,42 @@
 }
 
 .btn-primary {
-  background: #667eea;
+  background: #6e4e9e;
   color: white;
-  box-shadow: 0 4px 6px rgba(102, 126, 234, 0.3);
+  box-shadow: 0 4px 10px rgba(110, 78, 158, 0.3);
 }
 
 .btn-primary:hover {
-  background: #5568d3;
+  background: #5a3e85;
   transform: translateY(-2px);
-  box-shadow: 0 6px 12px rgba(102, 126, 234, 0.4);
+  box-shadow: 0 8px 20px rgba(110, 78, 158, 0.4);
 }
 
 .btn-secondary {
   background: white;
-  color: #667eea;
-  border: 2px solid #667eea;
+  color: #6e4e9e;
+  border: 2px solid #6e4e9e;
 }
 
 .btn-secondary:hover {
-  background: #f0f3ff;
+  background: #f5f0ff;
   transform: translateY(-2px);
 }
 
 /* Responsive Design */
 @media (max-width: 768px) {
   .programs-container {
-    margin: 10px;
+    margin: 0;
     padding: 15px;
+  }
+
+  .programs-header {
+    padding: 3rem 1.5rem;
+    border-radius: 15px;
   }
 
   .programs-header h1 {
     font-size: 24px;
-  }
-
-  .programs-intro {
-    font-size: 16px;
-  }
-
-  .category-title {
-    font-size: 22px;
   }
 
   .programs-grid {
@@ -289,40 +313,5 @@
 
   .filter-btn {
     width: 100%;
-  }
-
-  .resources-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .action-buttons {
-    flex-direction: column;
-  }
-
-  .btn {
-    width: 100%;
-    text-align: center;
-  }
-}
-
-@media (max-width: 480px) {
-  .programs-header {
-    padding: 20px 15px;
-  }
-
-  .programs-header h1 {
-    font-size: 20px;
-  }
-
-  .programs-intro {
-    font-size: 14px;
-  }
-
-  .program-card {
-    padding: 15px;
-  }
-
-  .program-name {
-    font-size: 16px;
   }
 }

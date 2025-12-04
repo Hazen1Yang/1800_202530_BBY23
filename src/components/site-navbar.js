@@ -30,15 +30,21 @@ class SiteNavbar extends HTMLElement {
           <nav id="primary-navigation" class="site-nav" aria-label="Main navigation" aria-expanded="false">
             <div class="nav-groups">
               <ul class="nav-left" aria-label="Primary links">
-                <li><a href="main.html">Home</a></li>
+                <li><a href="index.html">Home</a></li>
                 <li><a href="quiz.html">Quiz</a></li>
                 <li><a href="programs.html">Programs</a></li>
+                <li><a href="careers.html">Careers</a></li>
+                <li><a href="goals.html">Goals</a></li>
+                <li><a href="task.html">Tasks</a></li>
                 <li><a href="roadmap.html">Roadmap</a></li>
+
+                <li class="nav-label">General</li>
+                <li class="compact-row">
+                  <a href="faq.html">FAQ</a>
+                  <a href="about.html">About</a>
+                </li>
               </ul>
               <ul class="nav-right" aria-label="Secondary links">
-                <li><a href="careers.html">Careers</a></li>
-                <li><a href="faq.html">FAQ</a></li>
-                <li><a href="about.html">About</a></li>
                 <li class="nav-auth"><button id="authBtn" class="btn nav-cta" type="button">Login/Signup</button></li>
               </ul>
             </div>
@@ -49,79 +55,78 @@ class SiteNavbar extends HTMLElement {
   }
 
   setupBehaviour() {
-    this.headerEl = this.querySelector(".site-header");
-    this.navEl = this.querySelector(".site-nav");
-    this.toggleBtn = this.querySelector(".nav-toggle");
+    // Wait for DOM to be ready
+    requestAnimationFrame(() => {
+      this.headerEl = this.querySelector(".site-header");
+      this.navEl = this.querySelector(".site-nav");
+      this.toggleBtn = this.querySelector(".nav-toggle");
 
-    if (!this.headerEl || !this.navEl || !this.toggleBtn) {
-      return;
-    }
-
-    this.linkHandlers = [];
-    this.setExpanded(false);
-
-    this.toggleHandler = () => {
-      const nextState = this.toggleBtn.getAttribute("aria-expanded") !== "true";
-      this.setExpanded(nextState);
-      if (nextState) {
-        const focusable = this.navEl.querySelector("a, button");
-        if (focusable) focusable.focus();
+      if (!this.headerEl || !this.navEl || !this.toggleBtn) {
+        console.warn("Navbar elements not found, retrying...");
+        setTimeout(() => this.setupBehaviour(), 100);
+        return;
       }
-    };
 
-    this.escapeHandler = (event) => {
-      if (event.key === "Escape" && this.toggleBtn.getAttribute("aria-expanded") === "true") {
-        this.setExpanded(false);
-        this.toggleBtn.focus();
-      }
-    };
-
-    this.resizeHandler = () => {
-      if (window.innerWidth > 1024 && this.toggleBtn.getAttribute("aria-expanded") === "true") {
-        this.setExpanded(false);
-      }
-    };
-
-    this.clickOutsideHandler = (event) => {
-      if (this.toggleBtn.getAttribute("aria-expanded") !== "true") return;
-      if (this.contains(event.target)) return;
+      this.linkHandlers = [];
       this.setExpanded(false);
-    };
 
-    this.linkHandlers = Array.from(this.navEl.querySelectorAll("a, button"))
-      .filter((el) => el.id !== "authBtn")
-      .map((el) => {
-        const handler = () => {
-          if (this.toggleBtn.getAttribute("aria-expanded") === "true") {
-            this.setExpanded(false);
-          }
-        };
-        el.addEventListener("click", handler);
-        return { element: el, handler };
-      });
+      this.toggleHandler = (e) => {
+        e.stopPropagation(); // Prevent immediate close
+        const nextState = this.toggleBtn.getAttribute("aria-expanded") !== "true";
+        this.setExpanded(nextState);
+        if (nextState) {
+          const focusable = this.navEl.querySelector("a, button");
+          if (focusable) focusable.focus();
+        }
+      };
 
-    this.toggleBtn.addEventListener("click", this.toggleHandler);
-    document.addEventListener("keydown", this.escapeHandler);
-    window.addEventListener("resize", this.resizeHandler);
-    document.addEventListener("click", this.clickOutsideHandler);
+      this.escapeHandler = (event) => {
+        if (event.key === "Escape" && this.toggleBtn.getAttribute("aria-expanded") === "true") {
+          this.setExpanded(false);
+          this.toggleBtn.focus();
+        }
+      };
 
-    // Focus trap setup for mobile menu
-    this.focusTrapHandler = (e) => {
-      if (this.toggleBtn.getAttribute("aria-expanded") !== "true") return;
-      if (e.key !== "Tab") return;
-      const focusables = this.getFocusableElements();
-      if (!focusables.length) return;
-      const first = focusables[0];
-      const last = focusables[focusables.length - 1];
-      if (e.shiftKey && document.activeElement === first) {
-        e.preventDefault();
-        last.focus();
-      } else if (!e.shiftKey && document.activeElement === last) {
-        e.preventDefault();
-        first.focus();
-      }
-    };
-    document.addEventListener("keydown", this.focusTrapHandler);
+      this.clickOutsideHandler = (event) => {
+        if (this.toggleBtn.getAttribute("aria-expanded") !== "true") return;
+        if (this.contains(event.target)) return;
+        this.setExpanded(false);
+      };
+
+      this.linkHandlers = Array.from(this.navEl.querySelectorAll("a, button"))
+        .filter((el) => el.id !== "authBtn")
+        .map((el) => {
+          const handler = () => {
+            if (this.toggleBtn.getAttribute("aria-expanded") === "true") {
+              this.setExpanded(false);
+            }
+          };
+          el.addEventListener("click", handler);
+          return { element: el, handler };
+        });
+
+      this.toggleBtn.addEventListener("click", this.toggleHandler);
+      document.addEventListener("keydown", this.escapeHandler);
+      document.addEventListener("click", this.clickOutsideHandler);
+
+      // Focus trap setup for mobile menu
+      this.focusTrapHandler = (e) => {
+        if (this.toggleBtn.getAttribute("aria-expanded") !== "true") return;
+        if (e.key !== "Tab") return;
+        const focusables = this.getFocusableElements();
+        if (!focusables.length) return;
+        const first = focusables[0];
+        const last = focusables[focusables.length - 1];
+        if (e.shiftKey && document.activeElement === first) {
+          e.preventDefault();
+          last.focus();
+        } else if (!e.shiftKey && document.activeElement === last) {
+          e.preventDefault();
+          first.focus();
+        }
+      };
+      document.addEventListener("keydown", this.focusTrapHandler);
+    });
   }
 
   teardownBehaviour() {
@@ -131,9 +136,9 @@ class SiteNavbar extends HTMLElement {
     if (this.escapeHandler) {
       document.removeEventListener("keydown", this.escapeHandler);
     }
-    if (this.resizeHandler) {
-      window.removeEventListener("resize", this.resizeHandler);
-    }
+    // if (this.resizeHandler) {
+    //   window.removeEventListener("resize", this.resizeHandler);
+    // }
     if (this.clickOutsideHandler) {
       document.removeEventListener("click", this.clickOutsideHandler);
     }

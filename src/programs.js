@@ -188,7 +188,18 @@ export const bcitPrograms = {
     programs: [
       { title: "Electrical", advisor: "electrical@bcit.ca" },
       { title: "Welding", advisor: "welding@bcit.ca" },
-      { title: "HVAC", advisor: "hvac@bcit.ca" }
+      { title: "HVAC", advisor: "hvac@bcit.ca" },
+      { title: "Civil Engineering", advisor: "civil@bcit.ca", url: "https://www.bcit.ca/programs/civil-engineering-bachelor-of-engineering-full-time-8500beng/" },
+      { title: "Construction Management", advisor: "construction@bcit.ca", url: "https://www.bcit.ca/programs/construction-management-bachelor-of-technology-full-time-part-time-8800btech/" },
+      { title: "Aircraft Maintenance", advisor: "aviation@bcit.ca", url: "https://www.bcit.ca/programs/aircraft-maintenance-engineer-category-m-maintenance-diploma-full-time-1050dipma/" }
+    ]
+  },
+
+  "S": {
+    name: "Sustainability & Environment",
+    programs: [
+      { title: "Ecological Restoration", advisor: "eco@bcit.ca", url: "https://www.bcit.ca/programs/ecological-restoration-bachelor-of-science-full-time-8700bsc/" },
+      { title: "Forest and Natural Areas Management", advisor: "forest@bcit.ca", url: "https://www.bcit.ca/programs/forest-and-natural-areas-management-diploma-full-time-7460dipma/" }
     ]
   },
 

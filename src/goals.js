@@ -26,6 +26,7 @@ const domReady = new Promise((resolve) => {
 
 let currentUser = null;
 let editingId = null;
+let editingTasks = null;
 let usingLocal = true;
 let unsubscribe = null;
 
@@ -34,14 +35,17 @@ let formEl;
 let clearBtn;
 let saveBtn;
 let modeBadge;
-let summaryCountEl;
-let summaryNextEl;
+let summaryCountEls = [];
+let summaryNextEls = [];
+let dockAddBtn;
+let dockListBtn;
 
 onAuthReady((user) => {
   domReady.then(() => {
     cleanupSubscription();
     currentUser = user || null;
     editingId = null;
+    editingTasks = null;
     updateSaveButtonLabel();
 
     if (user && db) {
@@ -68,11 +72,14 @@ domReady.then(() => {
   clearBtn = document.getElementById("clearBtn");
   saveBtn = document.getElementById("saveBtn");
   modeBadge = document.getElementById("goalMode");
-  summaryCountEl = document.querySelector("[data-goal-summary='count']");
-  summaryNextEl = document.querySelector("[data-goal-summary='next']");
+  summaryCountEls = Array.from(document.querySelectorAll("[data-goal-summary='count']"));
+  summaryNextEls = Array.from(document.querySelectorAll("[data-goal-summary='next']"));
+  dockAddBtn = document.querySelector("[data-goal-action='add']");
+  dockListBtn = document.querySelector("[data-goal-action='list']");
 
   attachFormHandlers();
   attachListHandlers();
+  attachDockHandlers();
   renderGoalList(getLocalGoals());
 });
 
@@ -100,6 +107,7 @@ function attachFormHandlers() {
 
     formEl.reset();
     editingId = null;
+    editingTasks = null;
     updateSaveButtonLabel();
   });
 
@@ -169,6 +177,7 @@ function populateForm(goal) {
   formEl.byDate.value = goal.byDate || "";
 
   editingId = goal.id || null;
+  editingTasks = Array.isArray(goal.tasks) ? goal.tasks : null;
   updateSaveButtonLabel();
   formEl.scrollIntoView({ behavior: "smooth", block: "start" });
 }
@@ -183,6 +192,26 @@ function updateModeBadge(message, modeClass) {
   modeBadge.textContent = message;
   modeBadge.classList.remove("mode-cloud", "mode-local");
   if (modeClass) modeBadge.classList.add(modeClass);
+}
+
+function attachDockHandlers() {
+  if (dockAddBtn) {
+    dockAddBtn.addEventListener("click", () => {
+      if (formEl) {
+        formEl.scrollIntoView({ behavior: "smooth", block: "start" });
+        const firstField = formEl.querySelector("input, textarea");
+        if (firstField) firstField.focus();
+      }
+    });
+  }
+
+  if (dockListBtn) {
+    dockListBtn.addEventListener("click", () => {
+      if (listEl) {
+        listEl.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+    });
+  }
 }
 
 function subscribeToCloudGoals() {
@@ -209,13 +238,15 @@ function saveLocalGoal(goal) {
   if (editingId) {
     const index = goals.findIndex((item) => item.id === editingId);
     if (index > -1) {
-      goals[index] = { ...goals[index], ...goal };
+      const preservedTasks = goals[index].tasks || [];
+      goals[index] = { ...goals[index], ...goal, tasks: preservedTasks };
     }
   } else {
-    goals.unshift({ id: createLocalId(), ...goal });
+    goals.unshift({ id: createLocalId(), tasks: [], ...goal });
   }
   setLocalGoals(goals);
   renderGoalList(goals);
+  editingTasks = null;
 }
 
 async function saveCloudGoal(goal) {
@@ -223,13 +254,20 @@ async function saveCloudGoal(goal) {
   const goalsCol = collection(db, "users", currentUser.uid, "goals");
 
   if (editingId) {
-    await updateDoc(doc(db, "users", currentUser.uid, "goals", editingId), {
+    const docRef = doc(db, "users", currentUser.uid, "goals", editingId);
+    const payload = {
       ...goal,
       updatedAt: serverTimestamp(),
-    });
+    };
+    if (Array.isArray(editingTasks)) {
+      payload.tasks = editingTasks;
+    }
+    await updateDoc(docRef, payload);
+    editingTasks = null;
   } else {
     await addDoc(goalsCol, {
       ...goal,
+      tasks: [],
       createdAt: serverTimestamp(),
     });
   }
@@ -244,25 +282,40 @@ function renderGoalList(goals) {
     return;
   }
 
-  listEl.innerHTML = goals
+  // Sort by date: Soonest first. Past dates still appear but sorted correctly.
+  const sortedGoals = [...goals].sort((a, b) => {
+    const dateA = new Date(a.byDate);
+    const dateB = new Date(b.byDate);
+    return dateA - dateB;
+  });
+
+  listEl.innerHTML = sortedGoals
     .map((goal) => createGoalCard(goal))
     .join("");
 
-  updateSummary(goals.length, getNextDate(goals));
+  updateSummary(goals.length, getNextDate(sortedGoals));
 }
 
 function createGoalCard(goal) {
   const details = goal.details ? escapeHtml(goal.details) : "No details added yet.";
   const byDate = formatDate(goal.byDate);
+  
+  // Check if date is in the past
+  const isPast = new Date(goal.byDate) < new Date().setHours(0,0,0,0);
+  const pastClass = isPast ? "goal-past" : "";
+  const dateLabel = isPast ? "Past Due" : "Target Date";
 
   return `
-    <article class="goal-card">
+    <article class="goal-card ${pastClass}">
       <div class="goal-card-head">
         <div>
           <p class="goal-label">${escapeHtml(goal.career || "General")}</p>
           <h3>${escapeHtml(goal.title || "Untitled goal")}</h3>
         </div>
-        <span class="goal-date">${byDate}</span>
+        <div class="goal-date-badge ${pastClass}">
+          <span class="date-label">${dateLabel}</span>
+          <span class="date-value">${byDate}</span>
+        </div>
       </div>
       <p class="goal-details">${details}</p>
       <div class="goal-controls">
@@ -274,20 +327,26 @@ function createGoalCard(goal) {
 }
 
 function getNextDate(goals) {
+  const now = new Date().setHours(0,0,0,0);
   const validDates = goals
     .map((goal) => goal.byDate)
     .filter(Boolean)
     .map((dateStr) => new Date(dateStr))
-    .filter((date) => !Number.isNaN(date.getTime()))
+    .filter((date) => !Number.isNaN(date.getTime()) && date >= now) // Only future dates
     .sort((a, b) => a - b);
 
   return validDates[0] || null;
 }
 
 function updateSummary(count, nextDate) {
-  if (summaryCountEl) summaryCountEl.textContent = count;
-  if (summaryNextEl)
-    summaryNextEl.textContent = nextDate ? formatDate(nextDate) : "—";
+  summaryCountEls.forEach((el) => {
+    el.textContent = count;
+  });
+
+  const nextText = nextDate ? formatDate(nextDate) : "—";
+  summaryNextEls.forEach((el) => {
+    el.textContent = nextText;
+  });
 }
 
 function formatDate(date) {
