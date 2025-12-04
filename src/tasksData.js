@@ -1,6 +1,8 @@
 import { auth, db } from "./firebaseConfig.js";
 import { doc, getDoc, setDoc, increment, updateDoc, serverTimestamp } from "firebase/firestore";
 import { TASKS } from "./tasks.js";
+import { arrayUnion } from "firebase/firestore";
+
 import "./styles/task.css";
 import "./app.js";
 
@@ -53,7 +55,11 @@ function displayTasks(list) {
         </div>`
     )
     .join("");
+
+  // 🔥 update the counter
+  updateTaskCount(list.length);
 }
+
 
 /* ---------------------------------------------
    DISPLAY TASKS ON DASHBOARD PREVIEW
@@ -75,26 +81,47 @@ function displayTasksOnDashboard(list) {
 /* ---------------------------------------------
    SAVE COMPLETION CHECKBOXES
 --------------------------------------------- */
-async function recordTaskCompletion() {
+async function recordTaskCompletion(index) {
   const uid = auth.currentUser?.uid;
   if (!uid) return;
 
-  const ref = doc(db, "userProgress", uid);
+  const dailyRef = doc(db, "dailyTasks", uid);
 
-  await updateDoc(ref, {
-    completedCount: increment(1),
+  await updateDoc(dailyRef, {
+    completed: increment(0), // ensures field exists
+    completedTasks: arrayUnion(index)
   });
 }
 
+
 document.addEventListener("change", (e) => {
   if (e.target.type === "checkbox") {
-    recordTaskCompletion();
+    const index = parseInt(e.target.id.replace("task-", ""));
+    recordTaskCompletion(index);
+    removeTaskFromUI(index);
   }
 });
+
 
 /* ---------------------------------------------
    ⭐ DAILY TASK MANAGER (24-HOUR RESET)
 --------------------------------------------- */
+function removeTaskFromUI(index) {
+  const card = document.getElementById(`task-${index}`)?.closest(".task-card");
+  if (!card) return;
+
+  // play animation
+  card.classList.add("completed");
+
+  // wait for animation, THEN remove, THEN update count
+  setTimeout(() => {
+    card.remove();
+    updateRemainingTaskCount(); // 🔥 ALWAYS accurate now
+  }, 250);
+}
+
+
+
 async function loadDailyTasks() {
   const user = auth.currentUser;
   if (!user) {
@@ -110,16 +137,22 @@ async function loadDailyTasks() {
 
   // 🔹 Step 1: If a saved set exists & is <24 hrs old → reuse it
   if (dailySnap.exists()) {
-    const data = dailySnap.data();
-    const last = data.tasksLastGenerated?.toMillis() || 0;
+  const data = dailySnap.data();
+  const last = data.tasksLastGenerated?.toMillis() || 0;
 
-    if (now - last < DAY_MS) {
-      // Reuse today's tasks
-      displayTasks(data.todayTasks);
-      displayTasksOnDashboard(data.todayTasks);
-      return;
-    }
+  if (now - last < DAY_MS) {
+    let tasks = data.todayTasks;
+    let completed = data.completedTasks || [];
+
+    // remove completed tasks
+    let remaining = removeCompletedTasksFromList(tasks, completed);
+
+    displayTasks(remaining);
+    displayTasksOnDashboard(remaining);
+    return;
   }
+}
+
 
   // 🔹 Step 2: No tasks or 24 hours passed → generate NEW tasks
   const profile = FAKE_DEBUG_MODE
@@ -150,3 +183,21 @@ async function loadDailyTasks() {
 auth.onAuthStateChanged((user) => {
   if (user) loadDailyTasks();
 });
+
+function updateTaskCount(count) {
+  const el = document.getElementById("taskCount");
+  if (el) el.textContent = count;
+}
+
+function updateRemainingTaskCount() {
+  const remaining = document.querySelectorAll(
+    "#task-container .task-card:not(.completed)"
+  ).length;
+
+  updateTaskCount(remaining);
+}
+
+function removeCompletedTasksFromList(tasks, completedIndexes) {
+  return tasks.filter((task, index) => !completedIndexes.includes(index));
+}
+

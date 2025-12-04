@@ -10,10 +10,16 @@ import {
 
 const PREVIEW_ID = "goalsPreview";
 
+/* ------------------------------------------
+   Utility: Get preview container on main.html
+------------------------------------------- */
 function getPreviewContainer() {
   return document.getElementById(PREVIEW_ID);
 }
 
+/* ------------------------------------------
+   Escape HTML for safe display
+------------------------------------------- */
 function escapeHtml(value = "") {
   return String(value).replace(/[&<>"']/g, (ch) => ({
     "&": "&amp;",
@@ -23,6 +29,9 @@ function escapeHtml(value = "") {
   })[ch]);
 }
 
+/* ------------------------------------------
+   Format date nicely
+------------------------------------------- */
 function formatDate(date) {
   if (!date) return "Date TBA";
   const d = typeof date === "string" ? new Date(date) : date;
@@ -34,9 +43,12 @@ function formatDate(date) {
   }).format(d);
 }
 
+/* ------------------------------------------
+   RENDER GOAL PREVIEW (Dashboard)
+------------------------------------------- */
 function renderPreview(goals) {
   const box = getPreviewContainer();
-  if (!box) return;
+  if (!box) return; // Only runs on main.html
 
   if (!goals || goals.length === 0) {
     box.innerHTML = `<p class="dashboard-empty">No goals yet. Create one on the Goals page.</p>`;
@@ -58,9 +70,12 @@ function renderPreview(goals) {
     .join("");
 }
 
+/* ------------------------------------------
+   Real-time listener for user's goals
+------------------------------------------- */
 auth.onAuthStateChanged((user) => {
   const box = getPreviewContainer();
-  if (!box) return; // only run on home page
+  if (!box) return; // Only run on main page
 
   if (!user) {
     box.innerHTML = "<p>Please sign in to view your goals.</p>";

@@ -1,45 +1,59 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <!-- Update this with name of the page. -->
     <title>Pathfinder Tasks</title>
-    <meta name="pathfinder-application" content="pathfinder" />
     <meta charset="utf-8" />
-    <meta name="author" content="Matthew, Hazen, Vincent, Melina." />
-    <!--This makes it so it's responsive to the device's screen size-->
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta
-      name="description"
-      content="Pathfinder - A career guidance platform helping you find the right career path."
-    />
-    <meta name="generator" content="Phoenix Code, VS Code" />
-    <meta name="keywords" content="XHTML,CSS,BCIT" />
-    <!-- The little icon that appears beside the tab name. -->
-  <link rel="icon" href="images/logo.png" type="image/png" />
 
+    <link rel="icon" href="images/logo.png" type="image/png" />
     <link rel="stylesheet" href="src/styles/style.css" />
 
-    <!-- Use a single main script (for here tasksData.js) to import all other JS and CSS 
-      (such as app.js). This makes builds and hosting more reliable. -->
     <script type="module" src="src/components/site-navbar.js"></script>
-  <script type="module" src="src/components/site-footer.js"></script>
+    <script type="module" src="src/components/site-footer.js"></script>
     <script type="module" src="/src/tasksData.js"></script>
   </head>
 
   <body>
-    <!-- Navbar -->
     <site-navbar></site-navbar>
 
-    <!-- Main content area -->
     <main class="container my-4">
-      <h1>Hello</h1>
-      <!-- Your layout or app content goes here -->
-      <div class="text-center">
-        <div id="task-container" class="extra"></div>
+
+      <!-- PAGE HEADER -->
+      <div class="goals-header">
+        <h1 class="page-title">Your Tasks</h1>
+        <p class="page-subtitle">
+          View your daily tasks based on your career path. Tasks refresh every 24 hours.
+        </p>
+      </div>
+
+      <div class="sync-banner">
+        Synced to your account — tasks update automatically.
+      </div>
+
+      <div class="tasks-layout">
+
+        <section class="summary-card">
+          <div class="summary-row">
+            <div class="summary-col">
+              <h2 id="taskCount">0</h2>
+              <p>Today's tasks</p>
+            </div>
+            <div class="summary-col">
+              <h2>Daily Reset</h2>
+              <p id="resetTime">Updates Every 24 Hours</p>
+            </div>
+          </div>
+        </section>
+
+
+        <section class="tasks-card">
+          <h2>Today's Tasks</h2>
+          <div id="task-container" class="tasks-list"></div>
+        </section>
+
       </div>
     </main>
 
-    <!-- Footer -->
     <site-footer></site-footer>
   </body>
 </html>
