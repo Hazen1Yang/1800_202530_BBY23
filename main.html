@@ -15,9 +15,13 @@
     <meta name="keywords" content="XHTML,CSS,BCIT" />
 
   <link rel="stylesheet" href="src/styles/style.css" />
+  <link rel="stylesheet" href="src/styles/main.css">
   <script type="module" src="src/components/site-navbar.js"></script>
   <script type="module" src="src/components/site-footer.js"></script>
   <script type="module" src="/src/app.js"></script>
+  <script type="module" src="/src/homeTasks.js"></script>
+  <script type="module" src="/src/homeGoals.js"></script>
+  <script type="module" src="/src/tasksData.js"></script>
   </head>
 
   <body>
@@ -32,8 +36,60 @@
         Welcome to PathFinder, <span id="name-goes-here">my friend!</span>
         <span id="quote-goes-here">Join other students like yourself.</span>
       </h3>
-      <p>Still needs to make it so after logging in it takes you here</p>
-      <div class="extra">Test</div>
+      <!-- ===== QUIZ SECTION (Clickable) ===== -->
+<a href="quiz.html" class="big-feature-box quiz-link">
+  <div class="feature-title">Quiz</div>
+  <p class="feature-desc">
+    Tell us about you with this quiz.<br>
+    Your future experience will be tailored just for you!
+  </p>
+</a>
+
+      <!-- ===== TASKS SECTION (replaces Latest News) ===== -->
+<section class="home-section">
+  <div class="section-header">
+    <h2>Today's Tasks</h2>
+    <a href="task.html" class="section-more">More →</a>
+  </div>
+
+  <div id="taskCards" class="task-cards">
+    <!-- Populated dynamically by task.js -->
+  </div>
+</section>
+
+
+<!-- ===== GOALS SECTION (replaces Forums Seeking Advice) ===== -->
+<section class="home-section">
+  <div class="section-header">
+    <h2>Your Goals</h2>
+    <a href="goals.html" class="section-more">More →</a>
+  </div>
+
+  <div id="goalsPreview" class="goals-preview">
+    <!-- Filled by goals.js using first 2–3 goals -->
+  </div>
+
+  <a href="goals.html" class="write-own-btn">Write Your Own</a>
+</section>
+<!-- ===== QUICK NAV BOXES ===== -->
+<section class="quick-links">
+  <a href="programs.html" class="quick-box">
+    <span>Programs</span>
+    <img src="images/icons/program.png" alt="">
+  </a>
+
+  <a href="roadmap.html" class="quick-box">
+    <span>Roadmap</span>
+    <img src="images/icons/roadmap.png" alt="">
+  </a>
+
+  <a href="careers.html" class="quick-box">
+    <span>Careers</span>
+    <img src="images/icons/career.png" alt="">
+  </a>
+</section>
+
+
     </main>
 
     <!-- Footer -->

@@ -12,7 +12,7 @@ class SiteNavbar extends HTMLElement {
           </button>
 
           <nav id="primary-navigation" class="site-nav" aria-label="Main navigation" aria-expanded="false">
-            <a href="index.html">Home</a>
+            <a href="main.html">Home</a>
             <a href="quiz.html">Quiz</a>
             <a href="programs.html">Programs</a>
             <a href="roadmap.html">Roadmap</a>

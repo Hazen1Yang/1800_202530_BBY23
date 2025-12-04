@@ -59,7 +59,7 @@ export function checkAuthState() {
         const welcomeMsg = document.getElementById("welcomeMessage");
         if (welcomeMsg) welcomeMsg.textContent = `Hello, ${displayName}!`;
       } else {
-        window.location.href = "index.html";
+        window.location.href = "main.html";
       }
     }
   });

@@ -30,7 +30,7 @@ class SiteNavbar extends HTMLElement {
           <nav id="primary-navigation" class="site-nav" aria-label="Main navigation" aria-expanded="false">
             <div class="nav-groups">
               <ul class="nav-left" aria-label="Primary links">
-                <li><a href="index.html">Home</a></li>
+                <li><a href="main.html">Home</a></li>
                 <li><a href="quiz.html">Quiz</a></li>
                 <li><a href="programs.html">Programs</a></li>
                 <li><a href="roadmap.html">Roadmap</a></li>
@@ -145,12 +145,16 @@ class SiteNavbar extends HTMLElement {
     }
   }
 
-  setExpanded(isOpen) {
-    const expanded = String(!!isOpen);
-    if (this.navEl) this.navEl.setAttribute("aria-expanded", expanded);
-    if (this.toggleBtn) this.toggleBtn.setAttribute("aria-expanded", expanded);
-    if (this.headerEl) this.headerEl.classList.toggle("is-open", isOpen);
-  }
+ setExpanded(isOpen) {
+  const expanded = String(!!isOpen);
+
+  if (this.navEl) this.navEl.setAttribute("aria-expanded", expanded);
+  if (this.toggleBtn) this.toggleBtn.setAttribute("aria-expanded", expanded);
+  if (this.headerEl) this.headerEl.classList.toggle("is-open", isOpen);
+
+  document.body.classList.toggle("menu-open", isOpen);
+}
+
 
   renderAuthControls() {
     const authBtn = this.querySelector("#authBtn");
