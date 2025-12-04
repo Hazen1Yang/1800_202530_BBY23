@@ -35,8 +35,10 @@ let formEl;
 let clearBtn;
 let saveBtn;
 let modeBadge;
-let summaryCountEl;
-let summaryNextEl;
+let summaryCountEls = [];
+let summaryNextEls = [];
+let dockAddBtn;
+let dockListBtn;
 
 onAuthReady((user) => {
   domReady.then(() => {
@@ -70,11 +72,14 @@ domReady.then(() => {
   clearBtn = document.getElementById("clearBtn");
   saveBtn = document.getElementById("saveBtn");
   modeBadge = document.getElementById("goalMode");
-  summaryCountEl = document.querySelector("[data-goal-summary='count']");
-  summaryNextEl = document.querySelector("[data-goal-summary='next']");
+  summaryCountEls = Array.from(document.querySelectorAll("[data-goal-summary='count']"));
+  summaryNextEls = Array.from(document.querySelectorAll("[data-goal-summary='next']"));
+  dockAddBtn = document.querySelector("[data-goal-action='add']");
+  dockListBtn = document.querySelector("[data-goal-action='list']");
 
   attachFormHandlers();
   attachListHandlers();
+  attachDockHandlers();
   renderGoalList(getLocalGoals());
 });
 
@@ -189,6 +194,26 @@ function updateModeBadge(message, modeClass) {
   if (modeClass) modeBadge.classList.add(modeClass);
 }
 
+function attachDockHandlers() {
+  if (dockAddBtn) {
+    dockAddBtn.addEventListener("click", () => {
+      if (formEl) {
+        formEl.scrollIntoView({ behavior: "smooth", block: "start" });
+        const firstField = formEl.querySelector("input, textarea");
+        if (firstField) firstField.focus();
+      }
+    });
+  }
+
+  if (dockListBtn) {
+    dockListBtn.addEventListener("click", () => {
+      if (listEl) {
+        listEl.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+    });
+  }
+}
+
 function subscribeToCloudGoals() {
   if (!currentUser) return;
 
@@ -230,12 +255,14 @@ async function saveCloudGoal(goal) {
 
   if (editingId) {
     const docRef = doc(db, "users", currentUser.uid, "goals", editingId);
-    const tasksField = Array.isArray(editingTasks) ? editingTasks : undefined;
-    await updateDoc(docRef, {
+    const payload = {
       ...goal,
-      tasks: tasksField ?? [],
       updatedAt: serverTimestamp(),
-    });
+    };
+    if (Array.isArray(editingTasks)) {
+      payload.tasks = editingTasks;
+    }
+    await updateDoc(docRef, payload);
     editingTasks = null;
   } else {
     await addDoc(goalsCol, {
@@ -312,9 +339,14 @@ function getNextDate(goals) {
 }
 
 function updateSummary(count, nextDate) {
-  if (summaryCountEl) summaryCountEl.textContent = count;
-  if (summaryNextEl)
-    summaryNextEl.textContent = nextDate ? formatDate(nextDate) : "—";
+  summaryCountEls.forEach((el) => {
+    el.textContent = count;
+  });
+
+  const nextText = nextDate ? formatDate(nextDate) : "—";
+  summaryNextEls.forEach((el) => {
+    el.textContent = nextText;
+  });
 }
 
 function formatDate(date) {

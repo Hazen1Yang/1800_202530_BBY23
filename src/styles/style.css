@@ -653,13 +653,24 @@ figcaption:hover {
 }
 
 .footer-logo {
-  width: 160px; /* 2x bigger */
+  width: 220px;
   height: auto;
-  filter: drop-shadow(0 12px 25px rgba(0,0,0,0.35));
+  filter: drop-shadow(0 16px 32px rgba(0,0,0,0.35));
 }
 
 .footer-credits {
   text-align: right;
+}
+
+.footer-authors {
+  font-size: clamp(0.95rem, 2vw, 1.1rem);
+  font-weight: 600;
+  color: #fefefe;
+}
+
+.footer-authors span {
+  font-weight: 700;
+  color: #ffffff;
 }
 
 @media (max-width: 720px) {

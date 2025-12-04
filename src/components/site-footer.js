@@ -10,7 +10,7 @@ class SiteFooter extends HTMLElement {
             </a>
           </div>
           <div class="footer-credits">
-            <p class="muted small">&copy; ${year} Pathfinder — Built by Hazen, Matthew & <span class="melina-trigger">Melina<span class="melina-secret"> (loves using AI)</span></span></p>
+              <p class="footer-authors">&copy; ${year} Pathfinder — Built by <span>Hazen</span>, <span>Matthew</span> & <span class="melina-trigger">Melina<span class="melina-secret"> (loves using AI)</span></span></p>
           </div>
         </div>
       </footer>

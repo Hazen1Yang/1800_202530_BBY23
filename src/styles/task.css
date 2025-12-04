@@ -66,6 +66,16 @@
   border-color: #cbd5e1;
 }
 
+.goal-card-item.active {
+  border-color: #6e4e9e;
+  box-shadow: 0 12px 30px rgba(110, 78, 158, 0.25);
+}
+
+.goal-card-item.active .goal-category {
+  background: rgba(110, 78, 158, 0.15);
+  color: #4c3370;
+}
+
 .goal-card-top {
   display: flex;
   justify-content: space-between;
@@ -216,6 +226,19 @@
   margin-bottom: 1rem;
 }
 
+.suggested-tasks ul {
+  list-style: disc;
+  padding-left: 1.25rem;
+  color: #475569;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.suggested-tasks li {
+  font-size: 0.95rem;
+}
+
 /* TASK LIST */
 .task-list-card {
   background: #fff;
@@ -320,4 +343,23 @@
   margin-bottom: 1.5rem;
   color: #64748b;
   font-size: 1.1rem;
+}
+
+.active-goal-footer {
+  margin-top: 2rem;
+  text-align: center;
+}
+
+.btn.btn-outline {
+  border: 1px solid #6e4e9e;
+  color: #6e4e9e;
+  background: transparent;
+  padding: 0.65rem 1.5rem;
+  border-radius: 999px;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+.btn.btn-outline:hover {
+  background: rgba(110, 78, 158, 0.08);
 }
