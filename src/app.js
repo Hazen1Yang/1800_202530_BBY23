@@ -16,8 +16,8 @@ import {
 } from "firebase/firestore";
 
 // Global Footer and Navbar components:
-import "./components/footer.js";
-import "./components/navbar.js";
+import "./components/site-footer.js";
+import "./components/site-navbar.js";
 
 // Global style for all pages (you can still import a different css file after):
 import "./styles/style.css";

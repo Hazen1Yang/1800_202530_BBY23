@@ -13,12 +13,14 @@
     <meta name="generator" content="Phoenix Code, VS Code" />
     <meta name="keywords" content="XHTML,CSS,BCIT" />
 
-    <link rel="icon" href="public/images/logo.png" type="image/png" />
-    <link rel="stylesheet" href="src/styles/style.css">
+  <link rel="icon" href="images/logo.png" type="image/png" />
+  <link rel="stylesheet" href="src/styles/base.css">
+  <link rel="stylesheet" href="src/styles/style.css">
       
     <!-- style.css already has animations. -->
-    <script type="module" src="src/index.js"></script>
-    <script type="module" src="src/components/site-navbar.js"></script>
+  <script type="module" src="src/index.js"></script>
+  <script type="module" src="src/components/site-navbar.js"></script>
+  <script type="module" src="src/components/site-footer.js"></script>
   </head>
 
   <body>
@@ -56,16 +58,16 @@
       <div class="mobile-img">
         <div id="middle">
           <a href="login.html">
-            <img src="public/images/bus.png" width="10%" alt=" Bus" />
+            <img src="images/bus.png" width="10%" alt=" Bus" />
           </a>
           <a href="quiz.html">
-            <img src="public/images/textbook.png" width="10%" alt="Textbook" />
+            <img src="images/textbook.png" width="10%" alt="Textbook" />
           </a>
           <a href="goals.html">
-            <img src="public/images/school-bag.png" width="10%" alt="School Bag" />
+            <img src="images/school-bag.png" width="10%" alt="School Bag" />
           </a>
           <a href="main.html">
-            <img src="public/images/school.png" width="10%" alt="School" />
+            <img src="images/school.png" width="10%" alt="School" />
           </a>
 
           <div id="side_text">
@@ -91,7 +93,7 @@
     <!-- The Start -->
     <article class="main-card" id="the-start">
       <div class="card-media" aria-hidden="false">
-        <img src="public/images/classroom.png" alt="Classroom" />
+  <img src="images/classroom.png" alt="Classroom" />
       </div>
 
       <h2>The Start</h2>
@@ -105,7 +107,7 @@
     <!-- Our Goal -->
     <article class="main-card" id="our-goal">
       <div class="card-media" aria-hidden="false">
-        <img src="public/images/children.png" alt="Children" />
+  <img src="images/children.png" alt="Children" />
       </div>
 
       <h2>Our Goal</h2>
@@ -118,7 +120,7 @@
     <!-- How We'll Do It -->
     <article class="main-card" id="how-we-will-do-it">
       <div class="card-media" aria-hidden="false">
-        <img src="public/images/board.png" alt="Quiz board" />
+  <img src="images/board.png" alt="Quiz board" />
       </div>
 
       <h2>How We'll Do It</h2>
@@ -134,7 +136,7 @@
     <!-- Testimonials -->
     <article class="main-card" id="testimonials">
       <div class="card-media" aria-hidden="true">
-        <img src="public/images/students.png" alt="Students" />
+  <img src="images/students.png" alt="Students" />
       </div>
 
       <h2>What Students Say</h2>
@@ -164,12 +166,7 @@
         </figure>
       </div>
     </aside>
-    <footer class="footer">
-  <div class="footer-content">
-    <h3 class="footer-title">Pathfinder</h3>
-    <p class="footer-sub">Created by Hazen, Matthew & Melina</p>
-  </div>
-</footer>
+    <site-footer></site-footer>
 
   </body>
 </html>

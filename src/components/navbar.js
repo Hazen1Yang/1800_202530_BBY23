@@ -4,8 +4,7 @@ class SiteNavbar extends HTMLElement {
       <header class="site-header" role="banner">
         <div class="container" style="display:flex;align-items:center;gap:1rem;">
           <a class="site-brand" href="index.html" aria-label="Pathfinder home" style="display:flex;align-items:center;gap:0.6rem;text-decoration:none;color:inherit;">
-            <img id="logo" src="public/images/logo2.png" alt="Pathfinder logo" style="width:48px;height:auto;" />
-            <span class="brand-text">Pathfinder</span>
+            <img id="logo" src="images/logo2.png" alt="Pathfinder logo" style="width:48px;height:auto;" />
           </a>
 
           <button class="nav-toggle" aria-controls="primary-navigation" aria-expanded="false" aria-label="Toggle menu" type="button" style="margin-left:auto;">

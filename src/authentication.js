@@ -12,10 +12,12 @@ import {
 } from "firebase/auth";
 
 export async function loginUser(email, password) {
+  if (!auth) throw new Error("Authentication service not available");
   return signInWithEmailAndPassword(auth, email, password);
 }
 
 export async function signupUser(name, email, password) {
+  if (!auth) throw new Error("Authentication service not available");
   const userCredential = await createUserWithEmailAndPassword(
     auth,
     email,
@@ -26,13 +28,15 @@ export async function signupUser(name, email, password) {
   await updateProfile(user, { displayName: name });
 
   try {
-    await setDoc(doc(db, "users", user.uid), {
-      name: name,
-      email: email,
-      country: "Canada", // Default value
-      school: "BCIT", // Default value
-    });
-    console.log("Firestore user document created successfully!");
+    if (db) {
+      await setDoc(doc(db, "users", user.uid), {
+        name: name,
+        email: email,
+        country: "Canada", // Default value
+        school: "BCIT", // Default value
+      });
+      console.log("Firestore user document created successfully!");
+    }
   } catch (err) {
     console.error("Error creating Firestore document:", err);
   }
@@ -41,18 +45,19 @@ export async function signupUser(name, email, password) {
 }
 
 export async function logoutUser() {
+  if (!auth) return;
   await signOut(auth);
   window.location.href = "index.html";
 }
 
 export function checkAuthState() {
+  if (!auth) return;
   onAuthStateChanged(auth, (user) => {
     if (window.location.pathname.endsWith("main.html")) {
       if (user) {
         const displayName = user.displayName || user.email;
-        document.getElementById(
-          "welcomeMessage"
-        ).textContent = `Hello, ${displayName}!`;
+        const welcomeMsg = document.getElementById("welcomeMessage");
+        if (welcomeMsg) welcomeMsg.textContent = `Hello, ${displayName}!`;
       } else {
         window.location.href = "index.html";
       }
@@ -61,6 +66,7 @@ export function checkAuthState() {
 }
 
 export function onAuthReady(callback) {
+  if (!auth) return;
   return onAuthStateChanged(auth, callback);
 }
 

@@ -5,7 +5,10 @@
   <title>Pathfinder Authentication</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
+  <link rel="stylesheet" href="src/styles/style.css" />
   <link rel="stylesheet" href="src/styles/auth.css" />
+  <script type="module" src="src/components/site-navbar.js"></script>
+  <script type="module" src="src/components/site-footer.js"></script>
   <script type="module" src="/src/loginSignup.js"></script>
 </head>
 
@@ -20,7 +23,7 @@
     <!-- LOGIN VIEW -->
     <section id="loginView" class="auth-card">
       <div class="auth-brand">
-        <img src="public/images/logo.png" alt="Pathfinder logo" style="width:40px;height:auto;">
+  <img src="images/logo.png" alt="Pathfinder logo" style="width:40px;height:auto;">
         <span class="brand-text">Pathfinder</span>
       </div>
 
@@ -52,7 +55,7 @@
     <!-- SIGNUP VIEW -->
     <section id="signupView" class="auth-card d-none" aria-hidden="true">
       <div class="auth-brand">
-        <img src="public/images/logo.png" alt="Pathfinder logo" style="width:40px;height:auto;">
+  <img src="images/logo.png" alt="Pathfinder logo" style="width:40px;height:auto;">
         <span class="brand-text">Pathfinder</span>
       </div>
 
@@ -92,6 +95,8 @@
 <script type="module" src="/src/authentication.js"></script>
 <script type="module" src="/src/loginSignup.js"></script>
  <script type="module" src="/src/app.js"></script>
+
+  <site-footer></site-footer>
 
 </body>
 </html>

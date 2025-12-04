@@ -15,10 +15,14 @@
     <meta name="generator" content="Phoenix Code, VS Code" />
     <meta name="keywords" content="XHTML,CSS,BCIT" />
     <!-- The little icon that appears beside the tab name. -->
-    <link rel="icon" href="/images/logo.png" type="image/png" />
+  <link rel="icon" href="images/logo.png" type="image/png" />
+
+    <link rel="stylesheet" href="src/styles/style.css" />
 
     <!-- Use a single main script (for here tasksData.js) to import all other JS and CSS 
-         (such as app.js). This makes builds and hosting more reliable. -->
+      (such as app.js). This makes builds and hosting more reliable. -->
+    <script type="module" src="src/components/site-navbar.js"></script>
+  <script type="module" src="src/components/site-footer.js"></script>
     <script type="module" src="/src/tasksData.js"></script>
   </head>
 
@@ -36,5 +40,6 @@
     </main>
 
     <!-- Footer -->
+    <site-footer></site-footer>
   </body>
 </html>

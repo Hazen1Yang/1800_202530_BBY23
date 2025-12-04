@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Pathfinder – Careers</title>
 
-  <link rel="icon" href="public/images/logo.png" type="image/png" />
+  <link rel="icon" href="images/logo.png" type="image/png" />
 
   <!-- MAIN GLOBAL STYLES -->
   <link rel="stylesheet" href="src/styles/style.css" />
@@ -13,6 +13,7 @@
 
   <!-- NAVBAR COMPONENT (REQUIRED FOR <site-navbar>) -->
   <script type="module" src="src/components/site-navbar.js"></script>
+  <script type="module" src="src/components/site-footer.js"></script>
 
   <!-- CAREERS PAGE SCRIPT -->
   <script type="module" src="src/careers.js"></script>
@@ -24,18 +25,71 @@
 
   <!-- HERO SECTION -->
   <section class="career-hero">
-    <h1>Explore Careers in Canada</h1>
-    <p class="career-subtitle">Search careers and explore real salary, NOC, skills, and outlook.</p>
+    <div class="career-hero-inner">
+      <div class="hero-copy">
+        <h1>Explore Careers in Canada</h1>
+        <p class="career-subtitle">Search roles, compare salaries, and dive into the skills that employers expect.</p>
+      </div>
 
-    <input 
-      id="careerSearch" 
-      placeholder="Search careers…" 
-      class="career-search"
-    />
+      <div class="career-tools">
+        <label class="sr-only" for="careerSearch">Search careers</label>
+        <div class="search-control">
+          <input 
+            id="careerSearch" 
+            placeholder="Try “developer”, “designer”, “technician”…" 
+            class="career-search"
+          />
+          <button type="button" id="clearSearch" aria-label="Clear search">Clear</button>
+        </div>
+
+        <div class="filter-row">
+          <div class="chip-group" role="group" aria-label="Filter by job outlook">
+            <button class="filter-chip is-active" data-outlook="all">All outlooks</button>
+            <button class="filter-chip" data-outlook="excellent">Excellent</button>
+            <button class="filter-chip" data-outlook="very good">Very good</button>
+            <button class="filter-chip" data-outlook="good">Good</button>
+          </div>
+
+          <div class="range-group">
+            <label for="salaryRange">
+              Minimum hourly salary
+              <span id="salaryValue">$0</span>
+            </label>
+            <input type="range" id="salaryRange" min="0" max="80" step="2" value="0" />
+          </div>
+
+          <div class="sort-group">
+            <label for="sortSelect">Sort results</label>
+            <select id="sortSelect">
+              <option value="recommended">Recommended</option>
+              <option value="salary-high">Highest salary</option>
+              <option value="salary-low">Lowest salary</option>
+              <option value="az">A → Z</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <div class="career-stats" id="careerStats">
+        <div class="stat-card">
+          <span class="stat-value" data-stat="count">0</span>
+          <span class="stat-label">roles match</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-value" data-stat="median">$0/hr</span>
+          <span class="stat-label">median wage</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-value" data-stat="outlook">—</span>
+          <span class="stat-label">top outlook</span>
+        </div>
+      </div>
+    </div>
   </section>
 
   <!-- CAREER GRID -->
   <div id="careerGrid" class="career-grid"></div>
+  <p id="careerEmpty" class="career-empty hidden">No careers match those filters yet — try adjusting the outlook or salary slider.</p>
 
   <!-- CAREER MODAL -->
   <div id="careerModal" class="career-modal hidden">
@@ -44,6 +98,8 @@
       <div id="modalBody"></div>
     </div>
   </div>
+
+  <site-footer></site-footer>
 
 </body>
 </html>

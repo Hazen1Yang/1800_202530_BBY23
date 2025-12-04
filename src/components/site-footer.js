@@ -1,35 +1,25 @@
 class SiteFooter extends HTMLElement {
   connectedCallback() {
+    const year = new Date().getFullYear();
     this.innerHTML = `
-      <!-- Bottom Navigation Bar -->
-      <nav class="bottombar">
-        <img
-          src="https://www.svgrepo.com/show/343466/news-feed.svg"
-          class="icon left-icon"
-          alt="news"
-        />
+      <footer class="site-footer" role="contentinfo">
+        <div class="footer-container">
+          <div class="footer-brand">
+            <a class="logo-link" href="index.html" aria-label="Pathfinder home">
+              <img class="footer-logo" src="images/logo2.png" alt="Pathfinder logo" />
+              <span class="brand-text">Pathfinder</span>
+            </a>
+            <p class="muted small">&copy; ${year} Pathfinder — Built by Hazen, Matthew & Melina</p>
+          </div>
 
-        <div class="home-pill">
-          <a href="index.html">
-            <img
-              class="home-button"
-              src="https://www.svgrepo.com/show/521703/home.svg"
-              alt="home"
-            />
-          </a>
+          <nav class="footer-nav" aria-label="Footer">
+            <a href="quiz.html">Quiz</a>
+            <a href="programs.html">Programs</a>
+            <a href="roadmap.html">Roadmap</a>
+            <a href="careers.html">Careers</a>
+            <a href="goals.html">Goals</a>
+          </nav>
         </div>
-
-        <img
-          src="https://www.svgrepo.com/show/512737/question-1445.svg"
-          class="icon right-icon"
-          alt="help"
-        />
-      </nav>
-
-      <!-- Real Page Footer -->
-      <footer class="page-footer">
-        <h3 class="footer-title">Pathfinder</h3>
-        <p class="footer-team">Created by Hazen, Matthew & Melina</p>
       </footer>
     `;
   }

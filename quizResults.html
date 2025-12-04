@@ -10,34 +10,16 @@
     />
     <link rel="icon" href="images/logo.png" type="image/png" />
 
-    <link rel="stylesheet" href="src/styles/quiz.css" />
-    <script type="module" src="src/app.js"></script>
-
+  <link rel="stylesheet" href="src/styles/style.css" />
+  <link rel="stylesheet" href="src/styles/quiz.css" />
+  <script type="module" src="src/components/site-navbar.js"></script>
+  <script type="module" src="src/components/site-footer.js"></script>
+  <script type="module" src="src/app.js"></script>
     <script type="module" src="src/quizResults.js"></script>
   </head>
 
   <body>
     <site-navbar></site-navbar>
-<header id="home">
-    <div class="left">
-      <div class="row">
-        <img id="logo" src="public/images/logo2.png" width="10%" alt="Study" />
-      </div>
-    </div>
-
-    <nav>
-      <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="quiz.html">Quiz</a></li>
-        <li><a href="programs.html">Programs</a></li>
-        <li><a href="roadmap.html">Roadmap</a></li>
-        <li><a href="profile.html">Profile</a></li>
-        <li><a href="#careers">Careers</a></li>
-        <li><a href="#how">FAQ</a></li>
-        <li><a href="#about">About</a></li>
-      </ul>
-    </nav>
-  </header> 
     <main class="quiz-page">
       <section class="quiz-intro">
         <h1>Your BCIT Program Matches</h1>
@@ -51,6 +33,6 @@
         <!-- Filled by quizResults.js -->
       </section>
     </main>
-
+    <site-footer></site-footer>
   </body>
 </html>

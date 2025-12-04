@@ -1,179 +1,210 @@
-<<<<<<< HEAD
-class SiteNavbar extends HTMLElement {
-  connectedCallback() {
-    this.innerHTML = `
-      <header class="site-header">
-        <a href="index.html" class="logo-link">
-          <img id="logo" src="public/images/logo2.png" alt="PathFinder logo" />
-        </a>
-
-        <button class="nav-toggle" aria-expanded="false" aria-label="Toggle Menu">
-          <span class="hamburger"></span>
-        </button>
-
-        <nav class="site-nav" id="primary-navigation">
-          <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="quiz.html">Quiz</a></li>
-            <li><a href="programs.html">Programs</a></li>
-            <li><a href="roadmap.html">Roadmap</a></li>
-            <li><a href="careers.html">Careers</a></li>
-            <li><a href="#how">FAQ</a></li>
-            <li><a href="#about">About</a></li>
-          </ul>
-        </nav>
-      </header>
-=======
 import { onAuthReady, logoutUser } from "../authentication.js";
 
+console.log("site-navbar.js loaded");
+
 class SiteNavbar extends HTMLElement {
   connectedCallback() {
-    this.renderNavbar();
+    this.render();
+    this.setupBehaviour();
     this.renderAuthControls();
+    this.markActiveLink();
+    this.setupScrollEffect();
   }
 
-  renderNavbar() {
+  disconnectedCallback() {
+    this.teardownBehaviour();
+  }
+
+  render() {
     this.innerHTML = `
-      <style>
-        @import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+      <header class="site-header" role="banner">
+        <div class="container">
+          <a class="site-brand logo-link" href="index.html" aria-label="Pathfinder home">
+            <img id="logo" src="images/logo2.png" alt="Pathfinder logo" />
+          </a>
 
-        :host { display: block; width: 100%; }
+          <button class="nav-toggle" aria-controls="primary-navigation" aria-expanded="false" aria-label="Toggle menu" type="button">
+            <span class="hamburger" aria-hidden="true"></span>
+          </button>
 
-        nav {
-          background: var(--secondary-color);
-          color: #f1faee;
-          padding: clamp(0.5rem, 1.2vw, 0.9rem) clamp(0.75rem, 2vw, 1.25rem);
-          position: relative;
-          z-index: 1000;
-          display: flex;
-          align-items: center;
-          justify-content: space-between;
-          flex-wrap: wrap;
-          transition: all 0.3s ease;
-          min-height: clamp(56px, 8vw, 72px);
-          box-sizing: border-box;
-        }
-
-        .hamburger {
-          display: flex;
-          flex-direction: column;
-          justify-content: center;
-          align-items: center;
-          width: clamp(34px, 6vw, 42px);
-          height: clamp(34px, 6vw, 42px);
-          cursor: pointer;
-          gap: clamp(4px, .9vw, 6px);
-          z-index: 1101;
-        }
-        .bar {
-          width: clamp(20px, 4vw, 26px);
-          height: 3px;
-          background-color: #f1faee;
-          border-radius: 2px;
-        }
-
-        .side-menu {
-          position: fixed;
-          top: 0; left: 0;
-          width: 260px; height: 100vh;
-          background: #2E294E;
-          transform: translateX(-100%);
-          transition: .3s ease-in-out;
-          padding: 80px 24px;
-          z-index: 1100;
-        }
-        .side-menu.open { transform: translateX(0); }
-
-        .menu-logo {
-          font-family: 'Pacifico', cursive;
-          font-size: 32px;
-          color: #fff;
-          margin-bottom: 20px;
-        }
-
-        .side-menu a {
-          color: #fff;
-          text-decoration: none;
-          padding: 12px 0;
-        }
-
-        .overlay {
-          position: fixed;
-          width: 100vw; height: 100vh;
-          background: rgba(0,0,0,.4);
-          opacity: 0;
-          pointer-events: none;
-          transition: .3s ease;
-          z-index: 1099;
-        }
-        .overlay.show { opacity: 1; pointer-events: auto; }
-
-        .site-brand {
-          font-family: 'Pacifico', cursive;
-          color: #fff;
-          font-size: 32px;
-        }
-
-        #authBtn {
-          padding: 8px 14px;
-        }
-      </style>
-
-      <nav>
-        <div class="hamburger" id="hamburger">
-          <div class="bar"></div>
-          <div class="bar"></div>
-          <div class="bar"></div>
+          <nav id="primary-navigation" class="site-nav" aria-label="Main navigation" aria-expanded="false">
+            <div class="nav-groups">
+              <ul class="nav-left" aria-label="Primary links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="quiz.html">Quiz</a></li>
+                <li><a href="programs.html">Programs</a></li>
+                <li><a href="roadmap.html">Roadmap</a></li>
+              </ul>
+              <ul class="nav-right" aria-label="Secondary links">
+                <li><a href="careers.html">Careers</a></li>
+                <li><a href="faq.html">FAQ</a></li>
+                <li><a href="about.html">About</a></li>
+                <li class="nav-auth"><button id="authBtn" class="btn nav-cta" type="button">Login/Signup</button></li>
+              </ul>
+            </div>
+          </nav>
         </div>
-
-        <div class="side-menu" id="sideMenu">
-          <div class="menu-logo">Pathfinder</div>
-          <a href="main.html">App</a>
-          <a href="quiz.html">Quiz</a>
-          <a href="programs.html">Programs</a>
-          <a href="profile.html">Profile</a>
-          <a href="goals.html">Goals</a>
-          <a href="task.html">Tasks</a>
-          <a href="index.html#about">About</a>
-        </div>
-
-        <div class="overlay" id="overlay"></div>
-
-        <div class="right-section">
-          <button id="authBtn" class="btn" type="button">Login/Signup</button>
-          <a href="index.html"><span class="site-brand">Pathfinder</span></a>
-        </div>
-      </nav>
->>>>>>> 8f2ffae7e4392e431195000d1a8647f326464c9b
+      </header>
     `;
+  }
 
-    const hamburger = this.querySelector("#hamburger");
-    const sideMenu = this.querySelector("#sideMenu");
-    const overlay = this.querySelector("#overlay");
+  setupBehaviour() {
+    this.headerEl = this.querySelector(".site-header");
+    this.navEl = this.querySelector(".site-nav");
+    this.toggleBtn = this.querySelector(".nav-toggle");
 
-    hamburger.addEventListener("click", () => {
-      const open = sideMenu.classList.toggle("open");
-      overlay.classList.toggle("show", open);
-    });
+    if (!this.headerEl || !this.navEl || !this.toggleBtn) {
+      return;
+    }
 
-    overlay.addEventListener("click", () => {
-      sideMenu.classList.remove("open");
-      overlay.classList.remove("show");
-    });
+    this.linkHandlers = [];
+    this.setExpanded(false);
+
+    this.toggleHandler = () => {
+      const nextState = this.toggleBtn.getAttribute("aria-expanded") !== "true";
+      this.setExpanded(nextState);
+      if (nextState) {
+        const focusable = this.navEl.querySelector("a, button");
+        if (focusable) focusable.focus();
+      }
+    };
+
+    this.escapeHandler = (event) => {
+      if (event.key === "Escape" && this.toggleBtn.getAttribute("aria-expanded") === "true") {
+        this.setExpanded(false);
+        this.toggleBtn.focus();
+      }
+    };
+
+    this.resizeHandler = () => {
+      if (window.innerWidth > 1024 && this.toggleBtn.getAttribute("aria-expanded") === "true") {
+        this.setExpanded(false);
+      }
+    };
+
+    this.clickOutsideHandler = (event) => {
+      if (this.toggleBtn.getAttribute("aria-expanded") !== "true") return;
+      if (this.contains(event.target)) return;
+      this.setExpanded(false);
+    };
+
+    this.linkHandlers = Array.from(this.navEl.querySelectorAll("a, button"))
+      .filter((el) => el.id !== "authBtn")
+      .map((el) => {
+        const handler = () => {
+          if (this.toggleBtn.getAttribute("aria-expanded") === "true") {
+            this.setExpanded(false);
+          }
+        };
+        el.addEventListener("click", handler);
+        return { element: el, handler };
+      });
+
+    this.toggleBtn.addEventListener("click", this.toggleHandler);
+    document.addEventListener("keydown", this.escapeHandler);
+    window.addEventListener("resize", this.resizeHandler);
+    document.addEventListener("click", this.clickOutsideHandler);
+
+    // Focus trap setup for mobile menu
+    this.focusTrapHandler = (e) => {
+      if (this.toggleBtn.getAttribute("aria-expanded") !== "true") return;
+      if (e.key !== "Tab") return;
+      const focusables = this.getFocusableElements();
+      if (!focusables.length) return;
+      const first = focusables[0];
+      const last = focusables[focusables.length - 1];
+      if (e.shiftKey && document.activeElement === first) {
+        e.preventDefault();
+        last.focus();
+      } else if (!e.shiftKey && document.activeElement === last) {
+        e.preventDefault();
+        first.focus();
+      }
+    };
+    document.addEventListener("keydown", this.focusTrapHandler);
+  }
+
+  teardownBehaviour() {
+    if (this.toggleBtn && this.toggleHandler) {
+      this.toggleBtn.removeEventListener("click", this.toggleHandler);
+    }
+    if (this.escapeHandler) {
+      document.removeEventListener("keydown", this.escapeHandler);
+    }
+    if (this.resizeHandler) {
+      window.removeEventListener("resize", this.resizeHandler);
+    }
+    if (this.clickOutsideHandler) {
+      document.removeEventListener("click", this.clickOutsideHandler);
+    }
+    if (this.focusTrapHandler) {
+      document.removeEventListener("keydown", this.focusTrapHandler);
+    }
+    if (this.linkHandlers) {
+      this.linkHandlers.forEach(({ element, handler }) => element.removeEventListener("click", handler));
+    }
+  }
+
+  setExpanded(isOpen) {
+    const expanded = String(!!isOpen);
+    if (this.navEl) this.navEl.setAttribute("aria-expanded", expanded);
+    if (this.toggleBtn) this.toggleBtn.setAttribute("aria-expanded", expanded);
+    if (this.headerEl) this.headerEl.classList.toggle("is-open", isOpen);
   }
 
   renderAuthControls() {
     const authBtn = this.querySelector("#authBtn");
+    if (!authBtn) return;
 
     onAuthReady((user) => {
-      const loggedIn = !!user;
+      const loggedIn = Boolean(user);
       authBtn.textContent = loggedIn ? "Logout" : "Login/Signup";
 
       authBtn.onclick = () => {
-        if (loggedIn) logoutUser();
-        else window.location.href = "login.html";
+        if (this.toggleBtn && this.toggleBtn.getAttribute("aria-expanded") === "true") {
+          this.setExpanded(false);
+        }
+        if (loggedIn) {
+          logoutUser();
+        } else {
+          window.location.href = "login.html";
+        }
       };
     });
+  }
+
+  markActiveLink() {
+    try {
+      const path = (location.pathname.split('/').pop() || 'index.html').toLowerCase();
+      const links = this.querySelectorAll('.site-nav a');
+      links.forEach((a) => {
+        const href = (a.getAttribute('href') || '').toLowerCase();
+        if (href === path) {
+          a.setAttribute('aria-current', 'page');
+        } else {
+          a.removeAttribute('aria-current');
+        }
+      });
+    } catch (_) {
+      // no-op
+    }
+  }
+
+  setupScrollEffect() {
+    this.scrollHandler = () => {
+      if (!this.headerEl) this.headerEl = this.querySelector('.site-header');
+      if (!this.headerEl) return;
+      const scrolled = window.scrollY > 4;
+      this.headerEl.classList.toggle('scrolled', scrolled);
+    };
+    window.addEventListener('scroll', this.scrollHandler, { passive: true });
+    // initialize state
+    this.scrollHandler();
+  }
+
+  getFocusableElements() {
+    return Array.from(this.navEl.querySelectorAll('a[href], button:not([disabled]), [tabindex="0"]'))
+      .filter((el) => !el.hasAttribute('disabled') && el.offsetParent !== null);
   }
 }
 

@@ -13,9 +13,12 @@
     />
     <meta name="generator" content="Phoenix Code, VS Code" />
     <meta name="keywords" content="XHTML,CSS,BCIT" />
-    <link rel="icon" href="/images/logo.png" type="image/png" />
-    <link rel="stylesheet" href="src/styles/goals.css" />
-    <script type="module" src="src/goals.js"></script>
+  <link rel="icon" href="images/logo.png" type="image/png" />
+  <link rel="stylesheet" href="src/styles/style.css" />
+  <link rel="stylesheet" href="src/styles/goals.css" />
+  <script type="module" src="src/components/site-navbar.js"></script>
+  <script type="module" src="src/components/site-footer.js"></script>
+  <script type="module" src="src/goals.js"></script>
   </head>
 
   <body>
@@ -24,7 +27,10 @@
 
     <!-- Main content area -->
     <main class="goals-container">
-      <h1 class="goals-heading">Set Your Career Goals</h1>
+      <div class="goals-header">
+        <h1 class="goals-heading">Set Your Career Goals</h1>
+        <p id="goalMode" class="goals-mode" role="status">Checking account status…</p>
+      </div>
       <section id="goal-form-section" class="goal-form">
         <h2>
           Use this form to record career-related goals: the career area, what
@@ -82,11 +88,22 @@
       </section>
 
       <div class="extra">
+        <div class="goal-summary" aria-live="polite">
+          <div class="goal-summary-block">
+            <span class="goal-summary-value" data-goal-summary="count">0</span>
+            <span class="goal-summary-label">Active goals</span>
+          </div>
+          <div class="goal-summary-block">
+            <span class="goal-summary-label">Next target</span>
+            <span class="goal-summary-value" data-goal-summary="next">—</span>
+          </div>
+        </div>
         <h2>Saved Goals</h2>
         <div id="goalsList" aria-live="polite"></div>
       </div>
     </main>
 
-    <!-- Footer -->
+  <!-- Footer -->
+  <site-footer></site-footer>
   </body>
 </html>
